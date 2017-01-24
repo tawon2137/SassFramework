@@ -1,0 +1,63 @@
+$maxcol : 12;
+@import "./color.scss";
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+html{
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+}
+
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  &::after {
+    content : "";
+    display: table;
+    clear:both;
+  }
+
+  .col{
+    float: left;
+    box-sizing: border-box;
+    padding: 0 0.75rem;
+    min-height: 1px;
+    @for $i from 1 through $maxcol {
+      &.s#{$i}{
+        background-color: red;
+        width : (100% / ($maxcol /$i));
+      }
+    }
+
+
+
+
+
+    @media only screen and (min-width : 720px) {
+      @for $i from 1 through $maxcol {
+        &.m#{$i}{
+          background-color: red;
+          width : (100% / ($maxcol /$i));
+        }
+      }
+    }
+
+
+    @media only screen and (min-width : 1024px) {
+      @for $i from 1 through $maxcol {
+        &.l#{$i}{
+          background-color: red;
+          width : (100% / ($maxcol /$i));
+        }
+      }
+    }
+
+
+
+  }
+}
