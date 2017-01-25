@@ -1,0 +1,14 @@
+.card {
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
+  .card img.profile {
+    border-radius: 5px 5px 0 0;
+    width: 100%; }
+  .card .card-content {
+    padding: 0.75rem; }
+  .card .card-action {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem; }
+    .card .card-action a {
+      margin-right: 20px;
+      color: #ff6f00; }

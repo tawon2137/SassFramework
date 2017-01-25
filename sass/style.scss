@@ -29,7 +29,6 @@ body{
     min-height: 1px;
     @for $i from 1 through $maxcol {
       &.s#{$i}{
-        background-color: red;
         width : (100% / ($maxcol /$i));
       }
     }
@@ -41,7 +40,6 @@ body{
     @media only screen and (min-width : 720px) {
       @for $i from 1 through $maxcol {
         &.m#{$i}{
-          background-color: red;
           width : (100% / ($maxcol /$i));
         }
       }
@@ -51,7 +49,6 @@ body{
     @media only screen and (min-width : 1024px) {
       @for $i from 1 through $maxcol {
         &.l#{$i}{
-          background-color: red;
           width : (100% / ($maxcol /$i));
         }
       }

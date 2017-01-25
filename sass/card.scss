@@ -1,0 +1,23 @@
+$radiuspx: 5px;
+$card-link-color : #ff6f00;
+.card{
+  border-radius: $radiuspx;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    & img.profile{
+        border-radius: $radiuspx $radiuspx 0 0;
+        width: 100%;
+    }
+    & .card-content{
+        padding: 0.75rem;
+
+    }
+    & .card-action{
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding: 1.5rem;
+        & a {
+            margin-right: 20px;
+            color : $card-link-color;
+
+        }
+    }
+}
