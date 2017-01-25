@@ -1,0 +1,138 @@
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+html {
+  margin-top: 20px;
+  background-color: #f1f1f1; }
+
+.card {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
+  .card.sidetemple {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .card.sidetemple .side-content {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1; }
+      .card.sidetemple .side-content .card-content {
+        -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1; }
+    .card.sidetemple .sideimg {
+      max-width: 50%;
+      position: relative;
+      bottom: 0px; }
+      .card.sidetemple .sideimg img {
+        display: block;
+        position: relative;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        max-width: 100%;
+        width: auto;
+        border-radius: 5px 0 0 5px; }
+  .card .card-title {
+    display: block;
+    margin: 0;
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+    padding: 0.2rem; }
+  .card .card-profile img {
+    border-radius: 5px 5px 0 0;
+    width: 100%; }
+  .card .card-content {
+    border-radius: 5px;
+    padding: 0.75rem; }
+  .card .card-action {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 1.5rem; }
+    .card .card-action a:not(.btn) {
+      margin-right: 20px;
+      color: #ffb300;
+      text-decoration: none;
+      -webkit-transition: all 0.2s ease-in;
+      -moz-transition: all 0.2s ease-in;
+      -o-transition: all 0.2s ease-in;
+      -ms-transition: all 0.2s ease-in;
+      transition: all 0.2s ease-in; }
+      .card .card-action a:not(.btn):hover {
+        color: #ff6f00;
+        text-decoration: underline; }
+
+html {
+  font-family: 'Hanna', serif; }
+
+.btn {
+  border: none;
+  border-radius: 3px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 2rem;
+  font-weight: bold;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  background-color: green;
+  color: white; }
+  .btn.large {
+    height: 54px;
+    line-height: 54px; }
+
+.wave {
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  background: -webkit-radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+  background: -o-radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+  background: -ms-radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+  background: -moz-radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+  background: radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  -ms-transition-property: -o-transform, opacity;
+  -o-transition-property: -o-transform, opacity;
+  transition-property: transform, opacity;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0); }
+
+.animate {
+  -webkit-animation: ripple 0.5s linear;
+  -moz-animation: ripple 0.5s linear;
+  -ms-animation: ripple 0.5s linear;
+  -o-animation: ripple 0.5s linear;
+  animation: ripple 0.5s linear; }
+
+@-webkit-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}
+  @-moz-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}
+  @-o-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}
+  @-ms-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}
+  @keyframes ripple {100% {opacity: 0; transform: scale(2.5);}};

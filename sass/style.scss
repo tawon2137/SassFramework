@@ -37,18 +37,15 @@ body{
         @for $i from 1 through $maxcol {
           $colwidth : (100% / ($maxcol /$i));
           &.s#{$i}{
-            background-color: yellow;
             width : $colwidth;
           }
           &.offset-s#{$i}{
             margin-left: $colwidth;
           }
           &.push-s#{$i}{
-            background-color: red;
             left : $colwidth;
           }
           &.pull-s#{$i}{
-            background-color: black;
             right : $colwidth
           }
     }
@@ -58,18 +55,15 @@ body{
         @for $i from 1 through $maxcol {
           $colwidth : (100% / ($maxcol /$i));
           &.m#{$i}{
-            background-color: blue;
             width : $colwidth;
           }
           &.offset-m#{$i}{
             margin-left: $colwidth;
           }
           &.push-m#{$i}{
-            background-color: red;
             left : $colwidth;
           }
           &.pull-m#{$i}{
-            background-color: black;
             right : $colwidth
           }
         }
@@ -80,18 +74,15 @@ body{
         @for $i from 1 through $maxcol {
           $colwidth : (100% / ($maxcol /$i));
           &.l#{$i}{
-            background-color: green;
             width : $colwidth;
           }
           &.offset-l#{$i}{
             margin-left: $colwidth;
           }
           &.push-l#{$i}{
-            background-color: red;
             left : $colwidth;
           }
           &.pull-l#{$i}{
-            background-color: black;
             right : $colwidth
           }
         }
