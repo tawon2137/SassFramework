@@ -29,7 +29,6 @@ body{
         box-sizing: border-box;
         padding: 0 0.75rem;
         min-height: 1px;
-
         &[class*="push-"],
         &[class*="pull-"] {
           position: relative;
@@ -55,6 +54,7 @@ body{
     }
 
     @media only screen and (min-width : 720px) {
+
         @for $i from 1 through $maxcol {
           $colwidth : (100% / ($maxcol /$i));
           &.m#{$i}{

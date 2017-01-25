@@ -1,0 +1,104 @@
+$radiuspx: 5px;
+$card-link-color : #ffb300;
+$card-linkhover-color : #ff6f00;
+@mixin transition($value){
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -o-transition: $value;
+  -ms-transition: $value;
+  transition: $value;
+}
+@mixin display-flex{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+@mixin flex-column {
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
+}
+@mixin flex ($integer){
+  -webkit-flex: $integer;
+    -ms-flex: $integer;
+    flex: $integer;
+}
+@mixin flex-grow ($integer){
+  -webkit-flex-grow: $integer;
+  -ms-flex-positive: $integer;
+  flex-grow: $integer;
+}
+html{
+  margin-top: 20px;
+  background-color: #f1f1f1;
+
+}
+.card{
+  background-color: white;
+  border-radius: $radiuspx;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    &.sidetemple{
+        @include display-flex;
+
+        & .side-content{
+          @include display-flex;
+          @include flex-column;
+          @include flex(1);
+          & .card-content{
+              @include flex-grow(1);
+          }
+        }
+        & .sideimg{
+            max-width: 50%;
+            position: relative;
+            bottom:0px;
+            & img{
+                display: block;
+                position: relative;
+                top:0;
+                left:0;
+                bottom:0;
+                right: 0;
+                max-width: 100%;
+                width: auto;
+                border-radius: $radiuspx 0 0 $radiuspx;
+            }
+        }
+
+    }
+
+    & .card-title{
+        display: block;
+        margin: 0;
+        width: 100%;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: left;
+        padding: 0.2rem;
+    }
+
+    & .card-profile{
+        & img{
+          border-radius: $radiuspx $radiuspx 0 0;
+          width: 100%;
+        }
+    }
+    & .card-content{
+        border-radius: $radiuspx;
+        padding: 0.75rem;
+    }
+    & .card-action{
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding: 1.5rem;
+        & a {
+            margin-right: 20px;
+            color : $card-link-color;
+            text-decoration : none;
+            @include transition(all 0.2s ease-in);
+            &:hover{
+                color : $card-linkhover-color;
+                text-decoration: underline;
+            }
+        }
+    }
+}
