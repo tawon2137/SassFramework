@@ -1,44 +1,9 @@
-@import "./card.scss";
+@import "./mixin.scss";
+@import "./variable.scss"
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 html{
   font-family: 'Hanna', serif !important;
 }
-$button-radius : 3px;
-$button-shadow : 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-$button-height-default : 36px;
-$button-height-large : 54px;
-$button-wavacolor : "255, 255, 255";
-//button mixin
-@mixin wavebackground ($default, $color) {
-  background: $default;
-  background: -webkit-radial-gradient(#{$color});
-  background: -o-radial-gradient(#{$color});
-  background: -ms-radial-gradient(#{$color});
-  background: -moz-radial-gradient(#{$color});
-  background: radial-gradient(#{$color});
-}
-@mixin animate ($value){
-  -webkit-animation:#{$value};
-   -moz-animation:#{$value};
-    -ms-animation:#{$value};
-     -o-animation:#{$value};
-        animation:#{$value};
-}
-@mixin keyframesubfix($title , $value) {
-  @-webkit-keyframes #{$title} #{$value}
-  @-moz-keyframes #{$title} #{$value}
-  @-o-keyframes #{$title} #{$value}
-  @-ms-keyframes #{$title} #{$value}
-  @keyframes #{$title} #{$value}
-};
-@mixin transform($value) {
-  -webkit-transform:scale($value);
-     -moz-transform:scale($value);
-       -o-transform:scale($value);
-      -ms-transform:scale($value);
-          transform:scale($value);
-}
-
 .btn{
   border: none;
   border-radius: $button-radius;

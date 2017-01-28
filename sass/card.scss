@@ -1,33 +1,6 @@
-$radiuspx: 5px;
-$card-link-color : #ffb300;
-$card-linkhover-color : #ff6f00;
-@mixin transition($value){
-  -webkit-transition: $value;
-  -moz-transition: $value;
-  -o-transition: $value;
-  -ms-transition: $value;
-  transition: $value;
-}
-@mixin display-flex{
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-}
-@mixin flex-column {
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-      flex-direction: column;
-}
-@mixin flex ($integer){
-  -webkit-flex: $integer;
-    -ms-flex: $integer;
-    flex: $integer;
-}
-@mixin flex-grow ($integer){
-  -webkit-flex-grow: $integer;
-  -ms-flex-positive: $integer;
-  flex-grow: $integer;
-}
+@import "./mixin.scss";
+@import "./variable.scss";
+
 html{
   margin-top: 20px;
   background-color: #f1f1f1;

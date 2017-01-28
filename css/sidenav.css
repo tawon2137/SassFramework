@@ -1,0 +1,41 @@
+.sidenav {
+  position: fixed;
+  width: 0px;
+  height: 100%;
+  z-index: 900;
+  top: 0;
+  left: 0;
+  background: white;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out; }
+  .sidenav a {
+    padding: .5rem .5rem .5rem 2rem;
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in; }
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px; }
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+  transition: margin-left .5s;
+  padding: 20px; }
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px; } }
