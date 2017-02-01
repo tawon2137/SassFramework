@@ -13,7 +13,17 @@
     <script type="text/javascript" src="./js/nativescript.js"></script>
   </head>
   <body>
+
+
     <div class="row">
+
+      <div id="mySidenav" class="sidenav">
+          <a id="closeNav" class="closebtn">&times;</a>
+          <a href="#">About</a>
+          <a href="#">Services</a>
+          <a href="#">Clients</a>
+          <a href="#">Contact</a>
+        </div>
       <div class="col s2">
       <div class="card">
 
@@ -65,25 +75,12 @@
   </div>
   </div>
 </div>
-
-
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Clients</a>
-  <a href="#">Contact</a>
-</div>
-
 <!-- Use any element to open the sidenav -->
-
-
-
 <div class="col s2">
-  <button class="btn" onclick="openNav()">open nav</btn>
+  <button id="openNav" class="btn" >open nav</btn>
   </div>
   <div class="col s12">
-      <a class="btn">button</a>
+      <a class="btn large wave-efct">button</a>
       <a class="btn">button</a>
       <a class="btn">button!</a>
       <button class="btn">button!!!!!!!!!!!!!</button>

@@ -19,7 +19,7 @@
   @extend .z-depth-1;
 
   // Right Align
-  &.right-aligned {
+  & .right-aligned {
     right: 0;
     transform: translateX(105%);
     left: auto;

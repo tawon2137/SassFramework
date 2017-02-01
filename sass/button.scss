@@ -1,8 +1,14 @@
 @import "./mixin.scss";
-@import "./variable.scss"
+@import "./variable.scss";
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+
 html{
   font-family: 'Hanna', serif !important;
+  background-color: #f1f1f1;
+}
+body {
+  margin-top: 20px;
 }
 .btn{
   border: none;

@@ -1,11 +1,6 @@
 @import "./mixin.scss";
 @import "./variable.scss";
 
-html{
-  margin-top: 20px;
-  background-color: #f1f1f1;
-
-}
 .card{
   background-color: white;
   border-radius: $radiuspx;
