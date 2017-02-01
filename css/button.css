@@ -10,8 +10,6 @@ body {
   border: none;
   border-radius: 3px;
   display: inline-block;
-  position: relative;
-  overflow: hidden;
   height: 36px;
   line-height: 36px;
   padding: 0 2rem;
@@ -34,21 +32,19 @@ body {
     height: 54px;
     line-height: 54px; }
 
+.waves-effect {
+  overflow: hidden;
+  position: relative; }
+
 .wave {
   display: block;
   position: absolute;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  background: -webkit-radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
-  background: -o-radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
-  background: -ms-radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
-  background: -moz-radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
-  background: radial-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.3) 40%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
   -webkit-transition-property: -webkit-transform, opacity;
   -moz-transition-property: -moz-transform, opacity;
   -ms-transition-property: -o-transform, opacity;
@@ -59,6 +55,42 @@ body {
   -o-transform: scale(0);
   -ms-transform: scale(0);
   transform: scale(0); }
+  .wave.wave-effect-white {
+    background: rgba(255,255,255, 0.3);
+    background: -webkit-radial-gradient(rgba(255,255,255, 0.3) 0, rgba(255,255,255, 0.35) 40%, rgba(255,255,255, 0.40) 50%, rgba(255,255,255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -o-radial-gradient(rgba(255,255,255, 0.3) 0, rgba(255,255,255, 0.35) 40%, rgba(255,255,255, 0.40) 50%, rgba(255,255,255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -ms-radial-gradient(rgba(255,255,255, 0.3) 0, rgba(255,255,255, 0.35) 40%, rgba(255,255,255, 0.40) 50%, rgba(255,255,255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -moz-radial-gradient(rgba(255,255,255, 0.3) 0, rgba(255,255,255, 0.35) 40%, rgba(255,255,255, 0.40) 50%, rgba(255,255,255, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(rgba(255,255,255, 0.3) 0, rgba(255,255,255, 0.35) 40%, rgba(255,255,255, 0.40) 50%, rgba(255,255,255, 0.5) 60%, rgba(0, 0, 0, 0) 70%); }
+  .wave.wave-effect-black {
+    background: rgba(0,0,0, 0.3);
+    background: -webkit-radial-gradient(rgba(0,0,0, 0.3) 0, rgba(0,0,0, 0.35) 40%, rgba(0,0,0, 0.40) 50%, rgba(0,0,0, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -o-radial-gradient(rgba(0,0,0, 0.3) 0, rgba(0,0,0, 0.35) 40%, rgba(0,0,0, 0.40) 50%, rgba(0,0,0, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -ms-radial-gradient(rgba(0,0,0, 0.3) 0, rgba(0,0,0, 0.35) 40%, rgba(0,0,0, 0.40) 50%, rgba(0,0,0, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -moz-radial-gradient(rgba(0,0,0, 0.3) 0, rgba(0,0,0, 0.35) 40%, rgba(0,0,0, 0.40) 50%, rgba(0,0,0, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(rgba(0,0,0, 0.3) 0, rgba(0,0,0, 0.35) 40%, rgba(0,0,0, 0.40) 50%, rgba(0,0,0, 0.5) 60%, rgba(0, 0, 0, 0) 70%); }
+  .wave.wave-effect-green {
+    background: rgba(76, 175, 80, 0.3);
+    background: -webkit-radial-gradient(rgba(76, 175, 80, 0.3) 0, rgba(76, 175, 80, 0.35) 40%, rgba(76, 175, 80, 0.40) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -o-radial-gradient(rgba(76, 175, 80, 0.3) 0, rgba(76, 175, 80, 0.35) 40%, rgba(76, 175, 80, 0.40) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -ms-radial-gradient(rgba(76, 175, 80, 0.3) 0, rgba(76, 175, 80, 0.35) 40%, rgba(76, 175, 80, 0.40) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -moz-radial-gradient(rgba(76, 175, 80, 0.3) 0, rgba(76, 175, 80, 0.35) 40%, rgba(76, 175, 80, 0.40) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(rgba(76, 175, 80, 0.3) 0, rgba(76, 175, 80, 0.35) 40%, rgba(76, 175, 80, 0.40) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(0, 0, 0, 0) 70%); }
+  .wave.wave-effect-yellow {
+    background: rgba(255, 235, 59, 0.3);
+    background: -webkit-radial-gradient(rgba(255, 235, 59, 0.3) 0, rgba(255, 235, 59, 0.35) 40%, rgba(255, 235, 59, 0.40) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -o-radial-gradient(rgba(255, 235, 59, 0.3) 0, rgba(255, 235, 59, 0.35) 40%, rgba(255, 235, 59, 0.40) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -ms-radial-gradient(rgba(255, 235, 59, 0.3) 0, rgba(255, 235, 59, 0.35) 40%, rgba(255, 235, 59, 0.40) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: -moz-radial-gradient(rgba(255, 235, 59, 0.3) 0, rgba(255, 235, 59, 0.35) 40%, rgba(255, 235, 59, 0.40) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(0, 0, 0, 0) 70%);
+    background: radial-gradient(rgba(255, 235, 59, 0.3) 0, rgba(255, 235, 59, 0.35) 40%, rgba(255, 235, 59, 0.40) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(0, 0, 0, 0) 70%); }
+  .wave.wave-effect-column-white {
+    background: rgba(255,255,255, 0.3); }
+  .wave.wave-effect-column-black {
+    background: rgba(0,0,0, 0.3); }
+  .wave.wave-effect-column-green {
+    background: rgba(76, 175, 80, 0.3); }
+  .wave.wave-effect-column-yellow {
+    background: rgba(255, 235, 59, 0.3); }
 
 .animate {
   -webkit-animation: ripple 0.5s linear;

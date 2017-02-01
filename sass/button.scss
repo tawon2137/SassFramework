@@ -1,5 +1,6 @@
 @import "./mixin.scss";
 @import "./variable.scss";
+@import "./function.scss";
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 
@@ -14,8 +15,6 @@ body {
   border: none;
   border-radius: $button-radius;
   display: inline-block;
-  position: relative;
-  overflow:hidden;
   height: $button-height-default;
   line-height: $button-height-default;
   padding: 0 2rem;
@@ -38,22 +37,48 @@ body {
 }
 
 
-
+.waves-effect {
+    overflow: hidden;
+    position: relative;
+}
 
 .wave {
   display: block;
   position: absolute;
   border-radius: 50%;
-  @include wavebackground(rgba(255, 255, 255,.5),"rgba("+$button-wavacolor+", 0.2) 0, rgba("+$button-wavacolor+", 0.3) 40%, rgba("+$button-wavacolor+", 0.4) 50%, rgba("+$button-wavacolor+", 0.5) 60%, rgba(0, 0, 0, 0) 70%");
-  @include transition(all 0.3s ease-out);
+  @include transition(all 0.2s ease-out);
    -webkit-transition-property: -webkit-transform, opacity;
    -moz-transition-property: -moz-transform, opacity;
    -ms-transition-property: -o-transform, opacity;
    -o-transition-property: -o-transform, opacity;
    transition-property: transform, opacity;
   @include transform(0);
-}
 
+  &.wave-effect-white{
+    @include wavebackground(waves-color-column-setting($button-color-white),waves-color-setting($button-color-white));
+  }
+  &.wave-effect-black{
+    @include wavebackground(waves-color-column-setting($button-color-black),waves-color-setting($button-color-black));
+  }
+  &.wave-effect-green{
+    @include wavebackground(waves-color-column-setting($button-color-green),waves-color-setting($button-color-green));
+  }
+  &.wave-effect-yellow{
+    @include wavebackground(waves-color-column-setting($button-color-yellow),waves-color-setting($button-color-yellow));
+  }
+  &.wave-effect-column-white{
+    background: #{waves-color-column-setting($button-color-white)};
+  }
+  &.wave-effect-column-black{
+    background: #{waves-color-column-setting($button-color-black)};
+  }
+  &.wave-effect-column-green{
+    background: #{waves-color-column-setting($button-color-green)};
+  }
+  &.wave-effect-column-yellow{
+    background: #{waves-color-column-setting($button-color-yellow)};
+  }
+}
 .animate {
   @include animate("ripple 0.5s linear");
 }

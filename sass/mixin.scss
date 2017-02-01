@@ -1,7 +1,7 @@
 
 //button mixin
 @mixin wavebackground ($default, $color) {
-  background: $default;
+  background: #{$default};
   background: -webkit-radial-gradient(#{$color});
   background: -o-radial-gradient(#{$color});
   background: -ms-radial-gradient(#{$color});

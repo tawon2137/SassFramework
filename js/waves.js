@@ -1,32 +1,32 @@
 (function(win){
 
   var query = {
-      $ : function(selector){
-          return document.querySelector(selector);
+      config : {
+        waves_color_list : {
+            "waves-yellow" : "wave-effect-yellow",
+            "waves-green" : "wave-effect-green",
+            "waves-black" : "wave-effect-black",
+            "waves-white" : "wave-effect-white",
+            "waves-col-yellow" : "wave-effect-column-yellow",
+            "waves-col-green" : "wave-effect-column-green",
+            "waves-col-black" : "wave-effect-column-black",
+            "waves-col-white" : "wave-effect-column-white",
+        }
       },
-
-      All : function(selector){
-          return document.querySelectorAll(selector);
-      },
-
-      find : function(selector){
-          return this.querySelector(selector);
-      },
-
-      findAll : function(selector){
-          return this.querySelectorAll(selector);
-      },
-
-
       btnclick : function (e) {
         //웨이브 이펙트를 실행할 엘리먼트가 있는지 먼저확인하고 없으면 생성
-        if(this.querySelectorAll(".wave").length === 0){
+        if(this.getElementsByClassName("wave").length === 0){
             var effect = document.createElement("span");
             effect.classList.add("wave");
+            for (var i = 0; i < this.classList.length; i++) {
+              if (query.config.waves_color_list[this.classList[i]]) {
+                  effect.classList.add(query.config.waves_color_list[this.classList[i]]);
+              }
+            }
             this.insertBefore(effect , this.firstChild);
         }
         //애니메이션 추가
-        var animation = this.querySelector(".wave");
+        var animation = this.getElementsByClassName("wave")[0];
         animation.classList.remove("animate");
 
         //애니메이션 크기 지정전에 값이 있는지 확인
@@ -50,8 +50,7 @@
 
 
       Waveliston : function () {
-        var btn = query.All(".wave-efct");
-        console.log(btn[0].__proto__);
+        var btn = document.getElementsByClassName("waves-effect");
         for (var i = 0; i < btn.length; i++) {
           btn[i].onclick = query.btnclick
         }
@@ -59,30 +58,28 @@
 
 
       Nav : function(){
-          query.$("#openNav").onclick = query.OpensideNavbar;
-          query.$("#closeNav").onclick = query.ClosesideNavbar;
+          document.getElementById("openNav").onclick = query.OpensideNavbar;
+          document.getElementById("closeNav").onclick = query.ClosesideNavbar;
       },
 
-
+      //sidenav open 함수
       OpensideNavbar : function(){
-              //sidenav 그림자영역 생성 id : sha-ray  onclick 이벤트 : 그림자영역클릭시 닫기이벤트 등록
+            /*sidenav 그림자영역 엘리먼트
+            //생성 id : sha-ray
+            onclick 이벤트 : 그림자영역클릭시 닫기이벤트 등록*/
             var Shadowele = document.createElement("div");
             Shadowele.id="sha-ray";
             Shadowele.onclick = query.ClosesideNavbar;
             document.body.appendChild(Shadowele);
-
-            setTimeout(function () {
-              query.$("#sha-ray").style.opacity = "1";
-            },0);
-
-            query.$("#mySidenav").style.transform = "translateX(0px)";
-
-            var sidenavShadow = query.$("#sha-ray");
+            document.getElementById("mySidenav").addEventListener("transitionend",function(e){
+              Shadowele.style.opacity = "1";
+            });
+            document.getElementById("mySidenav").style.transform = "translateX(0px)";
+            var sidenavShadow = document.getElementById("sha-ray");
             //그림자 영역 설정완료시 그림자가없으면 엘리먼트 제거
-            query.$("#sha-ray").addEventListener("transitionend",function(){
+            document.getElementById("sha-ray").addEventListener("transitionend",function(e){
 
               var shadowstyle = this.currentStyle || window.getComputedStyle(this);
-
               if(shadowstyle.opacity === "0" && sidenavShadow){
                   var parent = sidenavShadow.parentElement;
                   parent.removeChild(sidenavShadow);
@@ -92,8 +89,8 @@
 
 
       ClosesideNavbar : function(){
-        query.$("#mySidenav").style.transform = "translateX(-100%)";
-        query.$("#sha-ray").style.opacity = "0";
+        document.getElementById("mySidenav").style.transform = "translateX(-100%)";
+        document.getElementById("sha-ray").style.opacity = "0";
       },
 
   };
@@ -107,23 +104,3 @@ window.addEventListener("load", function(event) {
   query.Waveliston();
   query.Nav();
 });
-
- //  window.clickwave = function(e){
- //    if($(this).find(".wave").length === 0){
- //        $(this).prepend("<span class='wave'></span>");
- //    }
- //     ink = $(this).find(".wave");
- //     ink.removeClass("animate");
- //
- //    if(!ink.height() && !ink.width()){
- //        d = Math.max($(this).outerWidth(), $(this).outerHeight());
- //        ink.css({height: d , width: d });
- //    }
- //    x = e.pageX - $(this).offset().left - ink.width()/2;
- //    y = e.pageY - $(this).offset().top - ink.height()/2;
- //    var agent = navigator.userAgent.toLowerCase();
- //    if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
- //      y = y + $(this).height() / 2;
- //    }
- //    ink.css({top: y+'px', left: x+'px'}).addClass("animate");
- // }
