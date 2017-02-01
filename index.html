@@ -4,23 +4,24 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <title></title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/sidenav.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="./js/waves.js" ></script>
-    <script type="text/javascript" src="./js/nativescript.js"></script>
+    <script type="text/javascript" src="./js/sidenav.js"></script>
   </head>
   <body>
 
 
     <div class="row">
 
-      <div id="mySidenav" class="sidenav">
+      <div id="tw-sideNav" tw-width="200" >
           <a id="closeNav" class="closebtn">&times;</a>
-          <a href="#" class="waves-effect waves-col-black">About</a>
+          <a href="#" class="waves-effect" wave-color="col-black" >About</a>
           <a href="#">Services</a>
           <a href="#">Clients</a>
           <a href="#">Contact</a>
@@ -69,7 +70,7 @@
     </div>
     <div class="card-action">
       <a href="sss" >링크1</a>
-      <a class="btn">button</a>
+      <a class="tw-btn">button</a>
     </div>
 
 
@@ -78,13 +79,14 @@
 </div>
 <!-- Use any element to open the sidenav -->
 <div class="col s2">
-  <button id="openNav" class="btn" >open nav</btn>
+  <button id="openNav" class="tw-btn" >open nav</btn>
   </div>
   <div class="col s12">
-      <a class="btn large waves-effect waves-white">button</a>
-      <a class="btn">button</a>
-      <a class="btn">button!</a>
-      <button class="btn">button!!!!!!!!!!!!!</button>
+      <a class="tw-btn-large waves-effect" waves-color="yellow" >button</a>
+      <a class="tw-btn-Round-large  waves-effect" waves-color="black"><i class="material-icons">add</i></a>
+      <a class="tw-btn"><i class="material-icons left">search</i>button</a>
+      <a class="tw-btn">button!</a>
+      <button class="tw-btn">button!!!!!!!!!!!!!</button>
   </div>
   </div>
   </body>

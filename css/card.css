@@ -51,7 +51,7 @@
   .card .card-action {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding: 1.5rem; }
-    .card .card-action a:not(.btn) {
+    .card .card-action a:not(.tw-btn) {
       margin-right: 20px;
       color: #ffb300;
       text-decoration: none;
@@ -60,6 +60,6 @@
       -o-transition: all 0.2s ease-in;
       -ms-transition: all 0.2s ease-in;
       transition: all 0.2s ease-in; }
-      .card .card-action a:not(.btn):hover {
+      .card .card-action a:not(.tw-btn):hover {
         color: #ff6f00;
         text-decoration: underline; }

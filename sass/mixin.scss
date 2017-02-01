@@ -23,11 +23,11 @@
   @keyframes #{$title} #{$value}
 };
 @mixin transform($value) {
-  -webkit-transform:scale($value);
-     -moz-transform:scale($value);
-       -o-transform:scale($value);
-      -ms-transform:scale($value);
-          transform:scale($value);
+  -webkit-transform:#{$value};
+     -moz-transform:#{$value};
+       -o-transform:#{$value};
+      -ms-transform:#{$value};
+          transform:#{$value};
 }
 
 //card mixin

@@ -6,10 +6,10 @@
   height: 120vh;
   z-index: 998;
   background: rgba(0, 0, 0, 0.5);
-  transition: all 0.2s;
+  transition: all 0.3s;
   opacity: 0; }
 
-.sidenav {
+#tw-sideNav {
   position: fixed;
   width: 300px;
   left: 0;
@@ -23,24 +23,23 @@
   background-color: white;
   z-index: 999;
   overflow-y: auto;
-  will-change: transform;
   backface-visibility: hidden;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out; }
-  .sidenav a {
+  #tw-sideNav a {
     padding: .5rem .5rem .5rem 2rem;
     text-decoration: none;
     color: #818181;
     display: block;
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-    -o-transition: all 0.3s ease-in;
-    -ms-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in; }
-  .sidenav .closebtn {
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    -ms-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in; }
+  #tw-sideNav .closebtn {
     position: absolute;
     top: 0;
     right: 0;
@@ -49,10 +48,6 @@
     cursor: pointer; }
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-main {
-  transition: margin-left .5s;
-  padding: 20px; }
-
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .sidenav {

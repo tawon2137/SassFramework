@@ -1,0 +1,22 @@
+@import "./mixin.scss";
+@import "./variable.scss";
+@import "./function.scss";
+
+.button{
+  border: none;
+  display: inline-block;
+  box-shadow: $button-shadow;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  position: relative;
+  // Gets rid of tap active state
+  -webkit-tap-highlight-color: transparent;
+  @include transition(all 0.2s ease-out);
+  background-color : green;
+  color : white;
+  outline: 0;
+  font-family: inherit;
+  font-size: inherit;
+}

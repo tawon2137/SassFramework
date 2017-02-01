@@ -1,6 +1,7 @@
 @import "./mixin.scss";
 @import "./variable.scss";
 @import "./function.scss";
+@import "./extend.scss";
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 
@@ -11,26 +12,70 @@ html{
 body {
   margin-top: 20px;
 }
-.btn{
-  border: none;
-  border-radius: $button-radius;
-  display: inline-block;
+.tw-btn{
+  @extend .button;
   height: $button-height-default;
   line-height: $button-height-default;
   padding: 0 2rem;
-  box-shadow: $button-shadow;
-  cursor: pointer;
-  text-align: center;
-  vertical-align: middle;
-  // Gets rid of tap active state
-  -webkit-tap-highlight-color: transparent;
-  @include transition(all 0.2s ease-out);
-  background-color : green;
-  color : white;
-  outline: 0;
-  font-family: inherit;
-  font-size: inherit;
-  &.large{
+  border-radius: $button-radius;
+  &-large{
+    @extend .button;
+    padding: 0 2rem;
+    border-radius: $button-radius;
+    height: $button-height-large;
+    line-height: $button-height-large;
+    & i {
+        font-size:1.6rem;
+        line-height: inherit;
+    }
+  }
+  & i {
+      font-size:1.6rem;
+      line-height: inherit;
+  }
+}
+
+.tw-btn-Round{
+  @extend .button;
+  border-radius: $button-radius-float;
+  width: $button-float-width;
+  height: $button-float-height;
+  line-height: $button-float-height;
+  @include transform("translate3d(0, 0, 0);");
+  &-large{
+    @extend .button;
+    border-radius: $button-radius-float;
+    width: $button-float-large-width;
+    height: $button-float-large-height;
+    line-height: $button-float-large-height;
+    @include transform("translate3d(0, 0, 0);");
+    & i {
+        font-size:1.3rem;
+        line-height: inherit;
+    }
+  }
+  & i {
+      font-size:1.3rem;
+      line-height: inherit;
+  }
+}
+
+i {
+    line-height: inherit;
+    &.left {
+        float: left;
+    }
+    &.right {
+        float: right;
+    }
+}
+
+.tw-btn-float {
+
+  height: $button-height-default;
+  line-height: $button-height-default;
+  &-large{
+    @extend .button;
     height: $button-height-large;
     line-height: $button-height-large;
   }
@@ -52,7 +97,7 @@ body {
    -ms-transition-property: -o-transform, opacity;
    -o-transition-property: -o-transform, opacity;
    transition-property: transform, opacity;
-  @include transform(0);
+  @include transform("scale(0)");
 
   &.wave-effect-white{
     @include wavebackground(waves-color-column-setting($button-color-white),waves-color-setting($button-color-white));
