@@ -1,6 +1,6 @@
 @import "./mixin.scss";
 @import "./variable.scss";
-
+@import "./function.scss";
 #sha-ray{
     position: fixed;
     left:0px;
@@ -12,7 +12,6 @@
     transition: all 0.3s;
     opacity: 0;
 }
-
 #tw-sideNav {
   position: fixed;
   width: 300px;
@@ -26,24 +25,80 @@
   padding-bottom: 60px;
   background-color: white;
   z-index: 999;
-  overflow-y: auto;
+  overflow: hidden;
   backface-visibility: hidden;
   @include transition(all 0.2s ease-in-out);
     & a {
-        padding: .5rem .5rem .5rem 2rem;
+        cursor: pointer;
+        padding: 0 1rem;
         text-decoration: none;
-        color:#818181;
+        height: $sidenav-col-height;
+        line-height: $sidenav-col-height;
         display: block;
         @include transition(all 0.2s ease-in);
+        & i.material-icons{
+          margin-right: .5rem;
+          line-height: $sidenav-col-height;
+          &.left {
+            float: left;
+          }
+          &.right {
+            float: right;
+          }
+        }
     }
-
-    & .closebtn {
-      position: absolute;
-      top: 0;
+    & #closeNav {
       right: 0;
-      padding: 0.5rem 1rem;
-      font-size: 36px;
-      cursor:pointer;
+      position: absolute;
+      text-align: right;
+      bottom:($sidenav-col-height + 20);
+      height: $sidenav-col-height;
+      border-radius: $button-radius;
+      & i.material-icons{
+        margin-right:0;
+        margin-left:0.3rem;
+
+      }
+      &:hover{
+          background: rgba(0,0,0, .2);
+      }
+    }
+    & .profile{
+        font-size : 14px;
+        position: relative;
+        padding: 2rem 2rem .5rem ;
+        margin-bottom: 5px;
+        color : white;
+        & .background{
+          z-index: -1;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left:0;
+          overflow: hidden;
+        }
+
+        & .avatar{
+            & img{
+              display: block;
+              width: 60px;
+              height: 60px;
+              border-radius:$sidenav-avatar-radius;
+            }
+        }
+        & .name{
+            padding: 0 .1rem .5rem .1em;
+            display: block;
+            margin-top: 1em;
+        }
+        & .title{
+            display: block;
+            font-size: .9em;
+            padding-bottom: 1em;
+        }
+
+
     }
 }
 

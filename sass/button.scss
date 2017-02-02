@@ -24,14 +24,15 @@ body {
     border-radius: $button-radius;
     height: $button-height-large;
     line-height: $button-height-large;
-    & i {
-        font-size:1.6rem;
-        line-height: inherit;
-    }
   }
-  & i {
-      font-size:1.6rem;
-      line-height: inherit;
+}
+i.material-icons{
+  line-height: inherit;
+  &.left{
+      float: left;
+  }
+  &.right{
+    float:right;
   }
 }
 
@@ -49,29 +50,12 @@ body {
     height: $button-float-large-height;
     line-height: $button-float-large-height;
     @include transform("translate3d(0, 0, 0);");
-    & i {
-        font-size:1.3rem;
-        line-height: inherit;
-    }
-  }
-  & i {
-      font-size:1.3rem;
-      line-height: inherit;
   }
 }
 
-i {
-    line-height: inherit;
-    &.left {
-        float: left;
-    }
-    &.right {
-        float: right;
-    }
-}
+
 
 .tw-btn-float {
-
   height: $button-height-default;
   line-height: $button-height-default;
   &-large{

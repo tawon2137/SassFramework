@@ -53,8 +53,7 @@ window.KtwFw = {};
       Waveliston : function () {
         var btn = document.getElementsByClassName("waves-effect");
         for (var i = 0; i < btn.length; i++) {
-          btn[i].onclick = KtwFw.waves.btnclick
-          btn[i].disabled = true;
+          btn[i].addEventListener("click",KtwFw.waves.btnclick);
         }
       },
   };

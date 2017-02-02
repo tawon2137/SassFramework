@@ -13,19 +13,31 @@
     <link rel="stylesheet" href="/css/sidenav.css">
     <script type="text/javascript" src="./js/waves.js" ></script>
     <script type="text/javascript" src="./js/sidenav.js"></script>
+    <script type="text/javascript">
+      KtwFw.sideNav.setOption ({});
+    </script>
   </head>
   <body>
 
 
     <div class="row">
-
-      <div id="tw-sideNav" tw-width="200" >
-          <a id="closeNav" class="closebtn">&times;</a>
-          <a href="#" class="waves-effect" wave-color="col-black" >About</a>
-          <a href="#">Services</a>
-          <a href="#">Clients</a>
-          <a href="#">Contact</a>
+      <div id="tw-sideNav">
+          <div class="profile">
+            <div class="background">
+              <img  src="https://cdn.pixabay.com/photo/2017/01/22/18/15/soap-bubble-2000443__340.jpg">
+            </div>
+            <span class="avatar"><img src="https://cdn.pixabay.com/photo/2017/01/15/08/21/the-old-man-1981062__340.jpg"></span>
+            <span class="name" > Kim tae woong </span>
+            <span class="title" > Kim tae woong Kim tae woong Kim tae woong Kim tae woong Kim tae woong </span>
+          </div>
+          <a class="waves-effect" waves-color="col-black">Services</a>
+          <a class="waves-effect" waves-color="col-black"><i class="material-icons left">exit_to_app</i>Clients</a>
+          <a class="waves-effect" waves-color="col-black">Contact</a>
+          <a id="closeNav" ><i class="material-icons right">exit_to_app</i>닫기</a>
         </div>
+
+
+
       <div class="col s2">
       <div class="card">
 
@@ -72,11 +84,11 @@
       <a href="sss" >링크1</a>
       <a class="tw-btn">button</a>
     </div>
-
-
   </div>
   </div>
 </div>
+
+
 <!-- Use any element to open the sidenav -->
 <div class="col s2">
   <button id="openNav" class="tw-btn" >open nav</btn>
@@ -84,7 +96,7 @@
   <div class="col s12">
       <a class="tw-btn-large waves-effect" waves-color="yellow" >button</a>
       <a class="tw-btn-Round-large  waves-effect" waves-color="black"><i class="material-icons">add</i></a>
-      <a class="tw-btn"><i class="material-icons left">search</i>button</a>
+      <a class="tw-btn waves-effect"><i class="material-icons left">search</i>button</a>
       <a class="tw-btn">button!</a>
       <button class="tw-btn">button!!!!!!!!!!!!!</button>
   </div>

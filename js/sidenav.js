@@ -1,8 +1,28 @@
 (function (win) {
   var sideNav = {
+    Option : {
+        width : "300", //sideNav width 250px
+        closeEvent : function(){
+
+        },
+        openEvent : function(){
+
+        }
+    },
+    setOption : function (Opt) {
+        if( typeof Opt === "object"){
+            this.Option.width = Opt.width || this.Option.width;
+            this.Option.openEvent = ( typeof Opt.openEvent === "function" ? Opt.openEvent : this.Option.openEvent);
+            this.Option.closeEvent = ( typeof Opt.closeEvent === "function" ? Opt.closeEvent : this.Option.closeEvent);
+
+        }else{
+            throw new Error("Option은 객체여야합니다.");
+        }
+    },
     sideNavInit : function(){
-        document.getElementById("openNav").onclick = KtwFw.sideNav.OpensideNavbar;
-        document.getElementById("closeNav").onclick = KtwFw.sideNav.ClosesideNavbar;
+        document.getElementById("openNav").addEventListener("click",KtwFw.sideNav.OpensideNavbar);
+        document.getElementById("closeNav").addEventListener("click",KtwFw.sideNav.ClosesideNavbar);
+        document.getElementById("tw-sideNav").style.width = this.Option.width + "px";
     },
 
     //sidenav open 함수
@@ -25,6 +45,10 @@
             if(shadowstyle.opacity === "0" && sidenavShadow){
                 var parent = sidenavShadow.parentElement;
                 parent.removeChild(sidenavShadow);
+                KtwFw.sideNav.Option.closeEvent();
+            }
+            if(shadowstyle.opacity === "1" && sidenavShadow){
+                KtwFw.sideNav.Option.openEvent();
             }
           });
     },
