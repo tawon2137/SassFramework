@@ -2,13 +2,13 @@
 @import "./variable.scss";
 @import "./function.scss";
 @import "./extend.scss";
-@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
-
-
-html{
-  font-family: 'Hanna', serif !important;
-  background-color: #f1f1f1;
-}
+// @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+//
+//
+// html{
+//   font-family: 'Hanna', serif !important;
+//   background-color: #f1f1f1;
+// }
 body {
   margin-top: 20px;
 }
@@ -35,6 +35,20 @@ i.material-icons{
     float:right;
   }
 }
+.tw-btn-clear{
+  @extend .button;
+  box-shadow: none;
+  height: $button-height-default;
+  line-height: $button-height-default;
+  padding: 0 2rem;
+  border-radius: $button-radius;
+  background-color : transparent;
+  &:hover{
+      background: rgba(0,0,0,0.1);
+  }
+}
+
+
 
 .tw-btn-Round{
   @extend .button;
@@ -95,6 +109,9 @@ i.material-icons{
   &.wave-effect-yellow{
     @include wavebackground(waves-color-column-setting($button-color-yellow),waves-color-setting($button-color-yellow));
   }
+  &.wave-effect-red{
+    @include wavebackground(waves-color-column-setting($button-color-red),waves-color-setting($button-color-red));
+  }
   &.wave-effect-column-white{
     background: #{waves-color-column-setting($button-color-white)};
   }
@@ -106,6 +123,9 @@ i.material-icons{
   }
   &.wave-effect-column-yellow{
     background: #{waves-color-column-setting($button-color-yellow)};
+  }
+  &.wave-effect-column-red{
+    background: #{waves-color-column-setting($button-color-red)};
   }
 }
 .animate {

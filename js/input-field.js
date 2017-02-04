@@ -1,6 +1,4 @@
 (function (win) {
-    console.log(win);
-
     var input = {
         inputInit : function(){
             var input_list = document.querySelectorAll("input:not([type]),input[type=text],input[type=password],input[type=email],input[type=url],input[type=time],input[type=date],input[type=datetime],input[type=datetime-local],input[type=tel],input[type=number],input[type=search]");
@@ -11,20 +9,18 @@
             }
         },
         input_focus : function(e){
-            this.classList.add("active");
+            tw_global.addClass(this , "active");
         },
         input_blur : function(e){
-            this.classList.remove("active");
-            ( this.value.length > 0 ? this.classList.add("valid") : ( this.classList.contains("valid") ? this.classList.remove("valid") : "" ) )
+            tw_global.removeClass(this,"active");
+            ( this.value.length > 0 ? tw_global.addClass(this,"valid") : ( tw_global.hasClass(this,"valid") ? tw_global.removeClass(this,"valid") : "" ) )
         }
+    };
 
-
-    }
-
-    if(!win.input){
-        win.input = input;
+    if(!win.tw_com.input){
+        win.tw_com.input = input;
     }
 })(window)
 window.addEventListener("load", function(){
-    window.input.inputInit();
+    tw_com.input.inputInit();
 });

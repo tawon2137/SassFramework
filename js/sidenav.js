@@ -14,14 +14,13 @@
             this.Option.width = Opt.width || this.Option.width;
             this.Option.openEvent = ( typeof Opt.openEvent === "function" ? Opt.openEvent : this.Option.openEvent);
             this.Option.closeEvent = ( typeof Opt.closeEvent === "function" ? Opt.closeEvent : this.Option.closeEvent);
-
         }else{
             throw new Error("Option은 객체여야합니다.");
         }
     },
     sideNavInit : function(){
-        document.getElementById("openNav").addEventListener("click",KtwFw.sideNav.OpensideNavbar);
-        document.getElementById("closeNav").addEventListener("click",KtwFw.sideNav.ClosesideNavbar);
+        document.getElementById("openNav").addEventListener("click",tw_com.sideNav.OpensideNavbar);
+        document.getElementById("closeNav").addEventListener("click",tw_com.sideNav.ClosesideNavbar);
         document.getElementById("tw-sideNav").style.width = this.Option.width + "px";
     },
 
@@ -32,7 +31,7 @@
           onclick 이벤트 : 그림자영역클릭시 닫기이벤트 등록*/
           var Shadowele = document.createElement("div");
           Shadowele.id="sha-ray";
-          Shadowele.onclick = KtwFw.sideNav.ClosesideNavbar;
+          Shadowele.onclick = tw_com.sideNav.ClosesideNavbar;
           document.body.appendChild(Shadowele);
           requestAnimationFrame(function () {
               Shadowele.style.opacity = "1";
@@ -45,10 +44,10 @@
             if(shadowstyle.opacity === "0" && sidenavShadow){
                 var parent = sidenavShadow.parentElement;
                 parent.removeChild(sidenavShadow);
-                KtwFw.sideNav.Option.closeEvent();
+                tw_com.sideNav.Option.closeEvent();
             }
             if(shadowstyle.opacity === "1" && sidenavShadow){
-                KtwFw.sideNav.Option.openEvent();
+                tw_com.sideNav.Option.openEvent();
             }
           });
     },
@@ -59,7 +58,7 @@
     },
   };
 
-if(!KtwFw.sideNav){
-    KtwFw.sideNav = sideNav;
+if(!win.tw_com.sideNav){
+    win.tw_com.sideNav = sideNav;
 }
 })(window);

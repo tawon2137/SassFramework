@@ -13,8 +13,6 @@
   -o-transition: all 0.2s ease-out;
   -ms-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-  background-color: green;
-  color: white;
   outline: 0;
   font-family: inherit;
   font-size: inherit; }

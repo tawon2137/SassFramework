@@ -33,6 +33,8 @@ input[type=search] {
 
 .tw-input-field{
     position: relative;
+    margin-top : 0.5rem;
+    margin-bottom: 0.5rem;
   & hr.focusline{
       position: absolute;
       background: grey;

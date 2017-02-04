@@ -14,8 +14,6 @@
   // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
   @include transition(all 0.2s ease-out);
-  background-color : green;
-  color : white;
   outline: 0;
   font-family: inherit;
   font-size: inherit;
