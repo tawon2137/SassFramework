@@ -2,7 +2,6 @@
     var input = {
         inputInit : function(){
             var input_list = document.querySelectorAll("input:not([type]),input[type=text],input[type=password],input[type=email],input[type=url],input[type=time],input[type=date],input[type=datetime],input[type=datetime-local],input[type=tel],input[type=number],input[type=search]");
-            console.log(input_list);
             for (var i = 0; i < input_list.length; i++) {
               input_list[i].addEventListener("focus",input.input_focus);
               input_list[i].addEventListener("blur",input.input_blur);
@@ -21,6 +20,3 @@
         win.tw_com.input = input;
     }
 })(window)
-window.addEventListener("load", function(){
-    tw_com.input.inputInit();
-});

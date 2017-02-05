@@ -26,24 +26,18 @@
 
     //sidenav open 함수
     OpensideNavbar : function(){
-          /*sidenav 그림자영역 엘리먼트
-          //생성 id : sha-ray
-          onclick 이벤트 : 그림자영역클릭시 닫기이벤트 등록*/
-          var Shadowele = document.createElement("div");
-          Shadowele.id="sha-ray";
-          Shadowele.onclick = tw_com.sideNav.ClosesideNavbar;
-          document.body.appendChild(Shadowele);
-          requestAnimationFrame(function () {
-              Shadowele.style.opacity = "1";
-          });
-          document.getElementById("tw-sideNav").style.transform = "translateX(0px)";
+
+          tw_global.createShadow("sha-ray", tw_com.sideNav.ClosesideNavbar);
           var sidenavShadow = document.getElementById("sha-ray");
+          requestAnimationFrame(function(){
+            document.getElementById("tw-sideNav").style.transform = "translateX(0px)";
+            sidenavShadow.style.opacity = "1";
+          });
           //그림자 영역 설정완료시 그림자가없으면 엘리먼트 제거
-          document.getElementById("sha-ray").addEventListener("transitionend",function(e){
+          sidenavShadow.addEventListener("transitionend",function(e){
             var shadowstyle = this.currentStyle || window.getComputedStyle(this);
             if(shadowstyle.opacity === "0" && sidenavShadow){
-                var parent = sidenavShadow.parentElement;
-                parent.removeChild(sidenavShadow);
+                tw_global.removeShadow("sha-ray");
                 tw_com.sideNav.Option.closeEvent();
             }
             if(shadowstyle.opacity === "1" && sidenavShadow){

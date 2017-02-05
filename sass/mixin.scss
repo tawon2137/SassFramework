@@ -37,11 +37,11 @@
 
 //card mixin
 @mixin transition($value){
-  -webkit-transition: $value;
-  -moz-transition: $value;
-  -o-transition: $value;
-  -ms-transition: $value;
-  transition: $value;
+  -webkit-transition: #{$value};
+  -moz-transition: #{$value};
+  -o-transition: #{$value};
+  -ms-transition: #{$value};
+  transition: #{$value};
 }
 @mixin display-flex{
     display: -webkit-flex;

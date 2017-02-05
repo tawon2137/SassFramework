@@ -4,18 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title></title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/card.css">
     <link rel="stylesheet" href="/css/button.css">
     <link rel="stylesheet" href="/css/sidenav.css">
     <link rel="stylesheet" href="/css/input-field.css">
+    <link rel="stylesheet" href="/css/modal.css">
     <script type="text/javascript" src="./js/global.js"></script>
     <script type="text/javascript" src="./js/waves.js" ></script>
     <script type="text/javascript" src="./js/sidenav.js"></script>
     <script type="text/javascript" src="./js/input-field.js"></script>
+    <script type="text/javascript" src="./js/modal.js"></script>
   </head>
   <body>
 
@@ -31,13 +32,13 @@
             <span class="title" > Kim tae woong Kim tae woong Kim tae woong Kim tae woong Kim tae woong </span>
           </div>
           <a class="waves-effect" waves-color="red">Services</a>
-          <a class="waves-effect" waves-color="col-black"><i class="material-icons left">exit_to_app</i>Clients</a>
+          <a class="waves-effect" waves-color="col-black">Clients</a>
           <a class="waves-effect" waves-color="col-yellow">Contact</a>
-          <a id="closeNav" ><i class="material-icons right">exit_to_app</i>닫기</a>
+          <a id="closeNav" ><i class="fa fa-sign-out"></i>닫기</a>
         </div>
 
 
-      <div class="col s2">
+    <div class="col s12 m6 l2">
       <div class="card">
 
         <div class="card-profile">
@@ -55,7 +56,7 @@
       </div>
     </div>
 
-    <div class="col s4">
+    <div class="col col s12 m6 l4">
     <div class="card">
        <div class="card-content">
           <p class="card-title">hi title.</p>
@@ -69,7 +70,7 @@
     </div>
   </div>
 
-  <div class="col s4">
+  <div class="col s12 m12 l6">
   <div class="card sidetemple">
      <div class="sideimg">
        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR3boeUqgWcbwJQSjt2O5fKp5G0gYasBQ5GnbH3wgVcU1rSkJjFPQ" >
@@ -88,14 +89,14 @@
 </div>
 
 
-<!-- Use any element to open the sidenav -->
 <div class="col s2">
   <button id="openNav" class="tw-btn" >open nav</btn>
   </div>
+
   <div class="col s12">
       <a class="tw-btn-large waves-effect" waves-color="yellow" >button</a>
-      <a class="tw-btn-Round  waves-effect" waves-color="black"><i class="material-icons">add</i></a>
-      <a class="tw-btn waves-effect"><i class="material-icons left">search</i>button</a>
+      <a class="tw-btn-Round  waves-effect" waves-color="black"><i class="fa fa-plus"></i></a>
+      <a class="tw-btn waves-effect"><i class="fa fa-search"></i>button</a>
       <a class="tw-btn">button!</a>
       <a class="tw-btn-clear waves-effect" waves-color="col-black">clear Button</a>
       <button class="tw-btn">button!!!!!!!!!!!!!</button>
@@ -105,7 +106,16 @@
 
 
 
-
+  <button class="tw-btn openModal" modal-target="modal1">open Modal</button>
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <p>Some text in the Modal Body</p>
+        <p>Some other text...</p>
+      </div>
+      <div class="modal-footer">
+        <a class="tw-btn-clear waves-effect closeModal" waves-color="col-black" >닫기</a>
+      </div>
+    </div>
 
 
 <div class="row">
@@ -124,35 +134,6 @@
         <input type="text" placeholder="Password" class="asdasd" >
         <hr class="focusline">
         <hr class="bottomline">
-      </label>
-      </div>
-  </div>
-
-  <div class="col s12">
-      <div class="tw-input-field">
-        <input type="text" placeholder="Password" class="asdasd" >
-        <hr class="focusline">
-        <hr class="bottomline">
-      </label>
-      </div>
-  </div>
-
-
-  <div class="col s12">
-      <div class="tw-input-field">
-        <input type="text" placeholder="Password" class="asdasd" >
-        <hr class="focusline">
-        <hr class="bottomline">
-      </label>
-      </div>
-  </div>
-
-  <div class="col s12">
-      <div class="tw-input-field">
-        <input type="text" placeholder="Password" class="asdasd" >
-        <hr class="focusline">
-        <hr class="bottomline">
-      </label>
       </div>
   </div>
 </div>
