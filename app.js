@@ -9,5 +9,5 @@ app.use("/" ,  express.static(path.join(__dirname)));
 
 
 http.createServer(app).listen(8000,function(){
-   console.log("서버 온");
+   console.log("server on");
 });

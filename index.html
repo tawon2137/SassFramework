@@ -2,15 +2,42 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <title></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/card.css">
+    <link rel="stylesheet" href="/css/button.css">
+    <link rel="stylesheet" href="/css/sidenav.css">
+    <link rel="stylesheet" href="/css/input-field.css">
+    <script type="text/javascript" src="./js/global.js"></script>
+    <script type="text/javascript" src="./js/waves.js" ></script>
+    <script type="text/javascript" src="./js/sidenav.js"></script>
+    <script type="text/javascript" src="./js/input-field.js"></script>
   </head>
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/card.css">
   <body>
+
+
     <div class="row">
+      <div id="tw-sideNav">
+          <div class="profile">
+            <div class="background">
+              <img  src="https://cdn.pixabay.com/photo/2017/01/22/18/15/soap-bubble-2000443__340.jpg">
+            </div>
+            <span class="avatar"><img src="https://cdn.pixabay.com/photo/2017/01/15/08/21/the-old-man-1981062__340.jpg"></span>
+            <span class="name" > Kim tae woong </span>
+            <span class="title" > Kim tae woong Kim tae woong Kim tae woong Kim tae woong Kim tae woong </span>
+          </div>
+          <a class="waves-effect" waves-color="red">Services</a>
+          <a class="waves-effect" waves-color="col-black"><i class="material-icons left">exit_to_app</i>Clients</a>
+          <a class="waves-effect" waves-color="col-yellow">Contact</a>
+          <a id="closeNav" ><i class="material-icons right">exit_to_app</i>닫기</a>
+        </div>
 
 
-      <div class="col s4">
+      <div class="col s2">
       <div class="card">
 
         <div class="card-profile">
@@ -38,7 +65,6 @@
           <a href="sss" >링크1</a>
           <a href="sss" >링크2</a>
           <a href="sss" >링크3</a>
-
       </div>
     </div>
   </div>
@@ -46,7 +72,7 @@
   <div class="col s4">
   <div class="card sidetemple">
      <div class="sideimg">
-       <img src="http://lorempixel.com/100/190/nature/6" >
+       <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR3boeUqgWcbwJQSjt2O5fKp5G0gYasBQ5GnbH3wgVcU1rSkJjFPQ" >
     </div>
   <div class="side-content">
     <div class="card-content">
@@ -55,15 +81,86 @@
     </div>
     <div class="card-action">
       <a href="sss" >링크1</a>
+      <a class="tw-btn">button</a>
     </div>
-
   </div>
+  </div>
+</div>
+
+
+<!-- Use any element to open the sidenav -->
+<div class="col s2">
+  <button id="openNav" class="tw-btn" >open nav</btn>
+  </div>
+  <div class="col s12">
+      <a class="tw-btn-large waves-effect" waves-color="yellow" >button</a>
+      <a class="tw-btn-Round  waves-effect" waves-color="black"><i class="material-icons">add</i></a>
+      <a class="tw-btn waves-effect"><i class="material-icons left">search</i>button</a>
+      <a class="tw-btn">button!</a>
+      <a class="tw-btn-clear waves-effect" waves-color="col-black">clear Button</a>
+      <button class="tw-btn">button!!!!!!!!!!!!!</button>
+  </div>
+  </div>
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col s12">
+      <div class="tw-input-field">
+        <input type="text" placeholder="ID" >
+        <hr class="focusline">
+        <hr class="bottomline">
+      </div>
+  </div>
+
+
+
+  <div class="col s12">
+      <div class="tw-input-field">
+        <input type="text" placeholder="Password" class="asdasd" >
+        <hr class="focusline">
+        <hr class="bottomline">
+      </label>
+      </div>
+  </div>
+
+  <div class="col s12">
+      <div class="tw-input-field">
+        <input type="text" placeholder="Password" class="asdasd" >
+        <hr class="focusline">
+        <hr class="bottomline">
+      </label>
+      </div>
+  </div>
+
+
+  <div class="col s12">
+      <div class="tw-input-field">
+        <input type="text" placeholder="Password" class="asdasd" >
+        <hr class="focusline">
+        <hr class="bottomline">
+      </label>
+      </div>
+  </div>
+
+  <div class="col s12">
+      <div class="tw-input-field">
+        <input type="text" placeholder="Password" class="asdasd" >
+        <hr class="focusline">
+        <hr class="bottomline">
+      </label>
+      </div>
   </div>
 </div>
 
 
 
 
-  </div>
+
+
   </body>
 </html>

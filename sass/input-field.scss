@@ -1,0 +1,101 @@
+@import "./mixin.scss";
+@import "./variable.scss";
+@import "./function.scss";
+@import "./extend.scss";
+
+::-webkit-input-placeholder {
+  color: $placeholder-text-color
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: $placeholder-text-color;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: $placeholder-text-color;
+}
+
+:-ms-input-placeholder {
+  color: $placeholder-text-color;
+}
+
+input[type=search] {
+  & :-ms-input-placeholder,
+  ::-moz-placeholder,
+  :-moz-placeholder,
+  ::-webkit-input-placeholder,{
+      font-family:'Material Icons';
+      font-style: normal;
+      font-weight: bold;
+      content: "&#xE87C";
+  }
+}
+
+.tw-input-field{
+    position: relative;
+    margin-top : 0.5rem;
+    margin-bottom: 0.5rem;
+  & hr.focusline{
+      position: absolute;
+      background: grey;
+      margin: 0;
+      left: 0;
+      bottom:0;
+      width: 100%;
+      height: $input-focusline-height;
+      @include transition(all 0.3s ease);
+      @include transform(scaleX(0));
+      z-index: 1;
+      border : 0;
+  }
+  & hr.bottomline{
+      margin: 0;
+      z-index: -1;
+      border-width: $input-bottomline-height;
+      border-style: inset;
+  }
+  // & i.material-icons {
+  //   position: relative;
+  //   height: $input-height;
+  //   line-height: $input-height;
+  //   top:$input-height;
+  //   color : $placeholder-text-color;
+  // }
+}
+
+
+
+input:not([type]),
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+input[type=search] {
+    width: 100%;
+    background-color: transparent;
+    box-shadow: none;
+    height: $input-height;
+    font-size: $input-font-size;
+    transition: all 0.3s;
+    border: 0;
+    padding: $input-padding;
+    &:focus{
+        outline: 0;
+    }
+    &:focus + hr.focusline{
+      @include transform(scaleX(1));
+    }
+    &.valid + hr.focusline{
+      background: blue;
+      @include transform(scaleX(1));
+    }
+    &disabled{
+
+    }
+}

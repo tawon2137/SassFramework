@@ -1,0 +1,135 @@
+@import "./mixin.scss";
+@import "./variable.scss";
+@import "./function.scss";
+@import "./extend.scss";
+// @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+//
+//
+// html{
+//   font-family: 'Hanna', serif !important;
+//   background-color: #f1f1f1;
+// }
+body {
+  margin-top: 20px;
+}
+.tw-btn{
+  @extend .button;
+  height: $button-height-default;
+  line-height: $button-height-default;
+  padding: 0 2rem;
+  border-radius: $button-radius;
+  &-large{
+    @extend .button;
+    padding: 0 2rem;
+    border-radius: $button-radius;
+    height: $button-height-large;
+    line-height: $button-height-large;
+  }
+}
+i.material-icons{
+  line-height: inherit;
+  &.left{
+      float: left;
+  }
+  &.right{
+    float:right;
+  }
+}
+.tw-btn-clear{
+  @extend .button;
+  box-shadow: none;
+  height: $button-height-default;
+  line-height: $button-height-default;
+  padding: 0 2rem;
+  border-radius: $button-radius;
+  background-color : transparent;
+  &:hover{
+      background: rgba(0,0,0,0.1);
+  }
+}
+
+
+
+.tw-btn-Round{
+  @extend .button;
+  border-radius: $button-radius-float;
+  width: $button-float-width;
+  height: $button-float-height;
+  line-height: $button-float-height;
+  @include transform("translate3d(0, 0, 0);");
+  &-large{
+    @extend .button;
+    border-radius: $button-radius-float;
+    width: $button-float-large-width;
+    height: $button-float-large-height;
+    line-height: $button-float-large-height;
+    @include transform("translate3d(0, 0, 0);");
+  }
+}
+
+
+
+.tw-btn-float {
+  height: $button-height-default;
+  line-height: $button-height-default;
+  &-large{
+    @extend .button;
+    height: $button-height-large;
+    line-height: $button-height-large;
+  }
+}
+
+
+.waves-effect {
+    overflow: hidden;
+    position: relative;
+}
+
+.wave {
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  @include transition(all 0.2s ease-out);
+   -webkit-transition-property: -webkit-transform, opacity;
+   -moz-transition-property: -moz-transform, opacity;
+   -ms-transition-property: -o-transform, opacity;
+   -o-transition-property: -o-transform, opacity;
+   transition-property: transform, opacity;
+  @include transform("scale(0)");
+
+  &.wave-effect-white{
+    @include wavebackground(waves-color-column-setting($button-color-white),waves-color-setting($button-color-white));
+  }
+  &.wave-effect-black{
+    @include wavebackground(waves-color-column-setting($button-color-black),waves-color-setting($button-color-black));
+  }
+  &.wave-effect-green{
+    @include wavebackground(waves-color-column-setting($button-color-green),waves-color-setting($button-color-green));
+  }
+  &.wave-effect-yellow{
+    @include wavebackground(waves-color-column-setting($button-color-yellow),waves-color-setting($button-color-yellow));
+  }
+  &.wave-effect-red{
+    @include wavebackground(waves-color-column-setting($button-color-red),waves-color-setting($button-color-red));
+  }
+  &.wave-effect-column-white{
+    background: #{waves-color-column-setting($button-color-white)};
+  }
+  &.wave-effect-column-black{
+    background: #{waves-color-column-setting($button-color-black)};
+  }
+  &.wave-effect-column-green{
+    background: #{waves-color-column-setting($button-color-green)};
+  }
+  &.wave-effect-column-yellow{
+    background: #{waves-color-column-setting($button-color-yellow)};
+  }
+  &.wave-effect-column-red{
+    background: #{waves-color-column-setting($button-color-red)};
+  }
+}
+.animate {
+  @include animate("ripple 0.5s linear");
+}
+
+@include keyframesubfix("ripple","{100% {opacity: 0; transform: scale(2.5);}}");
