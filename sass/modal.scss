@@ -15,17 +15,19 @@
     opacity: 0;
 }
 .modal{
+    display: none;
     position: fixed;
     margin: auto;
-    top: 10%;
+    top: 30%;
     left: 0;
     right: 0;
     max-height: $modal-maxheight;
     width: $modal-width;
     box-shadow: $modal-shadow;
     will-change : transform;
-    @include transition ("all 0.45s ease-in-out");
-    @include transform("translateY(-300%)");
+    opacity: 0;
+    @include transition ("top 0.45s ease-in-out,opacity 0.45s ease-in-out,transform 0.45s ease-in-out");
+    @include transform(scaleX(0.7));
     z-index: 999;
     background-color: white;
     border-radius: $modal-radius;

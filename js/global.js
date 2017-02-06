@@ -1,5 +1,4 @@
 (function(win){
-
     var tw_global = {
       addClass : function(Ele , ClassName){
           if(Ele.classList && typeof ClassName === "string"){
@@ -30,14 +29,22 @@
       },
       removeShadow : function(id){
         var Shadowele = document.getElementById(id);
-        var parent = Shadowele.parentElement;
-        parent.removeChild(Shadowele);
+        return Shadowele.parentElement.removeChild(Shadowele);
       },
       createShadow : function(id, clickfn){
         var Shadowele = document.createElement("div");
         Shadowele.id=id;
         Shadowele.onclick = clickfn;
-        document.body.appendChild(Shadowele);
+        return document.body.appendChild(Shadowele);
+      },
+      extends : function(obj1 , obj2 , command) {
+          for(var ob in obj2){
+              if(obj1.hasOwnProperty(ob)){
+                  obj1[ob] = obj2[ob];
+              }
+          }
+
+        return obj1;
       }
     };
 

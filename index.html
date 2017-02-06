@@ -17,9 +17,20 @@
     <script type="text/javascript" src="./js/sidenav.js"></script>
     <script type="text/javascript" src="./js/input-field.js"></script>
     <script type="text/javascript" src="./js/modal.js"></script>
+    <script type="text/javascript">
+      tw_com.sideNav.setOption({
+            width : "350",
+            subfix : "px",
+            openEvent : function(e){
+                console.log("변경 이벤트 oepn");
+            },
+            closeEvent : function(e){
+                console.log("변경 이벤트 close");
+            }
+      });
+    </script>
   </head>
   <body>
-
 
     <div class="row">
       <div id="tw-sideNav">
@@ -35,7 +46,7 @@
           <a class="waves-effect" waves-color="col-black">Clients</a>
           <a class="waves-effect" waves-color="col-yellow">Contact</a>
           <a id="closeNav" ><i class="fa fa-sign-out"></i>닫기</a>
-        </div>
+      </div>
 
 
     <div class="col s12 m6 l2">
@@ -106,11 +117,21 @@
 
 
 
-  <button class="tw-btn openModal" modal-target="modal1">open Modal</button>
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <p>Some text in the Modal Body</p>
-        <p>Some other text...</p>
+  <button class="tw-btn openModal" modal-target="logmodal">open Modal</button>
+    <div id="logmodal" class="modal">
+      <div class="modal-content row">
+
+        <div class="tw-input-field">
+          <input type="text" placeholder="ID" class="asdasd" >
+          <hr class="focusline">
+          <hr class="bottomline">
+        </div>
+
+        <div class="tw-input-field ">
+          <input type="text" placeholder="Password" class="asdasd" >
+          <hr class="focusline">
+          <hr class="bottomline">
+        </div>
       </div>
       <div class="modal-footer">
         <a class="tw-btn-clear waves-effect closeModal" waves-color="col-black" >닫기</a>

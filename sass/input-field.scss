@@ -31,17 +31,42 @@ input[type=search] {
   }
 }
 
+html{
+  font-size: 12px;
+}
+#logmodal{
+    width: 95%;
+}
+
+@media only screen and (min-width : 720px) {
+  html{
+      font-size: 14px;
+  }
+  #logmodal{
+      width: 55%;
+  }
+}
+
+
+@media only screen and (min-width : 1024px) {
+  html{
+      font-size: 16px;
+  }
+  #logmodal{
+      width: 30%;
+  }
+}
+
 .tw-input-field{
     position: relative;
-    margin-top : 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: .5rem 0;
   & hr.focusline{
       position: absolute;
       background: grey;
       margin: 0;
       left: 0;
       bottom:0;
-      width: 100%;
+      width: calc(100%);
       height: $input-focusline-height;
       @include transition(all 0.3s ease);
       @include transform(scaleX(0));
