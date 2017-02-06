@@ -9,9 +9,9 @@
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
+  text-decoration: none;
   overflow: hidden;
   position: relative;
-  // Gets rid of tap active state
   -webkit-tap-highlight-color: transparent;
   @include transition(all 0.2s ease-out);
   outline: 0;
