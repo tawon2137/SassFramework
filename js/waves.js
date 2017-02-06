@@ -16,7 +16,6 @@ window.tw_com = {};
             "col-red" : "wave-effect-column-red",
         }
       },
-
       offset : function (elem) {
           var docElem, win,
               box = {top: 0, left: 0},
@@ -64,6 +63,8 @@ window.tw_com = {};
         animation.style.top =  y + 'px';
         tw_global.addClass(animation, "animate");
       },
+
+
       Waveliston : function () {
         var btn = document.getElementsByClassName("waves-effect");
         for (var i = 0; i < btn.length; i++) {
@@ -76,9 +77,7 @@ window.tw_com = {};
       win.tw_com.waves = waves;
   }
 })(window);
-window.addEventListener("DOMContentLoaded", function(event) {
+window.addEventListener("load", function(event) {
   tw_com.waves.Waveliston();
   tw_com.sideNav.sideNavInit();
-  tw_com.Modal.init();
-  tw_com.input.inputInit();
 });

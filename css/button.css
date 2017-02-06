@@ -5,7 +5,6 @@
   cursor: pointer;
   text-align: center;
   vertical-align: middle;
-  text-decoration: none;
   overflow: hidden;
   position: relative;
   -webkit-tap-highlight-color: transparent;
@@ -32,6 +31,13 @@ body {
     height: 54px;
     line-height: 54px; }
 
+i.material-icons {
+  line-height: inherit; }
+  i.material-icons.left {
+    float: left; }
+  i.material-icons.right {
+    float: right; }
+
 .tw-btn-clear {
   box-shadow: none;
   height: 36px;
@@ -41,9 +47,6 @@ body {
   background-color: transparent; }
   .tw-btn-clear:hover {
     background: rgba(0, 0, 0, 0.1); }
-
-i.fa::before {
-  padding: .1rem; }
 
 .tw-btn-Round {
   border-radius: 50%;
@@ -81,7 +84,16 @@ i.fa::before {
   display: block;
   position: absolute;
   border-radius: 50%;
-  will-change: transform ,opacity;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  -ms-transition-property: -o-transform, opacity;
+  -o-transition-property: -o-transform, opacity;
+  transition-property: transform, opacity;
   -webkit-transform: scale(0);
   -moz-transform: scale(0);
   -o-transform: scale(0);
@@ -134,11 +146,11 @@ i.fa::before {
     background: rgba(255, 0, 0, 0.3); }
 
 .animate {
-  -webkit-animation: ripple 0.45s linear;
-  -moz-animation: ripple 0.45s linear;
-  -ms-animation: ripple 0.45s linear;
-  -o-animation: ripple 0.45s linear;
-  animation: ripple 0.45s linear; }
+  -webkit-animation: ripple 0.5s linear;
+  -moz-animation: ripple 0.5s linear;
+  -ms-animation: ripple 0.5s linear;
+  -o-animation: ripple 0.5s linear;
+  animation: ripple 0.5s linear; }
 
 @-webkit-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}
   @-moz-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}

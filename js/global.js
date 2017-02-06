@@ -27,17 +27,6 @@
           }else{
               throw new Error("hasClass의 인자는 (Element객체,'넣을클래스명') 으로 정의해야합니다.");
           }
-      },
-      removeShadow : function(id){
-        var Shadowele = document.getElementById(id);
-        var parent = Shadowele.parentElement;
-        parent.removeChild(Shadowele);
-      },
-      createShadow : function(id, clickfn){
-        var Shadowele = document.createElement("div");
-        Shadowele.id=id;
-        Shadowele.onclick = clickfn;
-        document.body.appendChild(Shadowele);
       }
     };
 

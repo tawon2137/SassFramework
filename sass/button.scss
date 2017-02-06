@@ -26,6 +26,15 @@ body {
     line-height: $button-height-large;
   }
 }
+i.material-icons{
+  line-height: inherit;
+  &.left{
+      float: left;
+  }
+  &.right{
+    float:right;
+  }
+}
 .tw-btn-clear{
   @extend .button;
   box-shadow: none;
@@ -39,9 +48,7 @@ body {
   }
 }
 
-i.fa::before{
-    padding: .1rem;
-}
+
 
 .tw-btn-Round{
   @extend .button;
@@ -82,8 +89,14 @@ i.fa::before{
   display: block;
   position: absolute;
   border-radius: 50%;
-  will-change : transform ,opacity;
+  @include transition(all 0.2s ease-out);
+   -webkit-transition-property: -webkit-transform, opacity;
+   -moz-transition-property: -moz-transform, opacity;
+   -ms-transition-property: -o-transform, opacity;
+   -o-transition-property: -o-transform, opacity;
+   transition-property: transform, opacity;
   @include transform("scale(0)");
+
   &.wave-effect-white{
     @include wavebackground(waves-color-column-setting($button-color-white),waves-color-setting($button-color-white));
   }
@@ -116,7 +129,7 @@ i.fa::before{
   }
 }
 .animate {
-  @include animate("ripple 0.45s linear");
+  @include animate("ripple 0.5s linear");
 }
 
 @include keyframesubfix("ripple","{100% {opacity: 0; transform: scale(2.5);}}");
