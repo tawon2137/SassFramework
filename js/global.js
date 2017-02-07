@@ -1,5 +1,4 @@
 (function(win){
-
     var tw_global = {
       addClass : function(Ele , ClassName){
           if(Ele.classList && typeof ClassName === "string"){
@@ -27,6 +26,25 @@
           }else{
               throw new Error("hasClass의 인자는 (Element객체,'넣을클래스명') 으로 정의해야합니다.");
           }
+      },
+      removeShadow : function(id){
+        var Shadowele = document.getElementById(id);
+        return Shadowele.parentElement.removeChild(Shadowele);
+      },
+      createShadow : function(id, clickfn, Callback){
+        var Shadowele = document.createElement("div");
+        Shadowele.id=id;
+        Shadowele.addEventListener("click",clickfn);
+        return document.body.appendChild(Shadowele);
+      },
+      extends : function(obj1 , obj2 , command) {
+          for(var ob in obj2){
+              if(obj1.hasOwnProperty(ob)){
+                  obj1[ob] = obj2[ob];
+              }
+          }
+
+        return obj1;
       }
     };
 
