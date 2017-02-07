@@ -31,10 +31,10 @@
         var Shadowele = document.getElementById(id);
         return Shadowele.parentElement.removeChild(Shadowele);
       },
-      createShadow : function(id, clickfn){
+      createShadow : function(id, clickfn, Callback){
         var Shadowele = document.createElement("div");
         Shadowele.id=id;
-        Shadowele.onclick = clickfn;
+        Shadowele.addEventListener("click",clickfn);
         return document.body.appendChild(Shadowele);
       },
       extends : function(obj1 , obj2 , command) {

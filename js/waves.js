@@ -79,6 +79,5 @@ window.tw_com = {};
 window.addEventListener("DOMContentLoaded", function(event) {
   tw_com.waves.Waveliston();
   tw_com.sideNav.sideNavInit();
-  tw_com.Modal.init();
   tw_com.input.inputInit();
 });

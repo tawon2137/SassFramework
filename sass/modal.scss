@@ -2,14 +2,14 @@
 @import "./variable.scss";
 @import "./function.scss";
 @import "./extend.scss";
-#modal-sha{
+#modal-shadow{
     position: fixed;
     left:0px;
     top:0px;
     width: 100%;
     height: 120vh;
     z-index: 998;
-    background: rgba(0,0,0,0.5);
+    background-color: black;
     will-change: opacity;
     @include transition("opacity 0.45s ease-in-out");
     opacity: 0;
