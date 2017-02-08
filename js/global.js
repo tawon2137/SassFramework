@@ -38,13 +38,16 @@
         return document.body.appendChild(Shadowele);
       },
       extends : function(obj1 , obj2 , command) {
-          for(var ob in obj2){
-              if(obj1.hasOwnProperty(ob)){
-                  obj1[ob] = obj2[ob];
-              }
-          }
-
-        return obj1;
+        var newObj = {};
+        for(var prop in obj1){
+            newObj[prop] = obj1[prop];
+        }
+        for(var ob in obj2){
+            if(newObj.hasOwnProperty(ob)){
+                newObj[ob] = obj2[ob];
+            }
+        }
+        return newObj;
       }
     };
 

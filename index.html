@@ -12,25 +12,33 @@
     <link rel="stylesheet" href="/css/sidenav.css">
     <link rel="stylesheet" href="/css/input-field.css">
     <link rel="stylesheet" href="/css/modal.css">
+    <link rel="stylesheet" href="/css/nav-bar.css">
     <script type="text/javascript" src="./js/global.js"></script>
     <script type="text/javascript" src="./js/waves.js" ></script>
     <script type="text/javascript" src="./js/sidenav.js"></script>
     <script type="text/javascript" src="./js/input-field.js"></script>
     <script type="text/javascript" src="./js/modal.js"></script>
+    <script type="text/javascript" src="./js/nav-bar.js"></script>
     <script type="text/javascript">
       tw_com.sideNav.setOption({
             width : "350",
             subfix : "px",
             openEvent : function(e){
-                console.log("변경 이벤트 oepn");
+                console.log("sidenav Open");
             },
             closeEvent : function(e){
-                console.log("변경 이벤트 close");
+                console.log("sidenav Close");
             }
       });
     </script>
   </head>
   <body>
+    <header>
+      <div class="tw-navbar fixed-nav">
+          <div class="logoTitle center">타이틀</div>
+      </div>
+    </header>
+    <main>
 
     <div class="row">
       <div id="tw-sideNav">
@@ -180,7 +188,36 @@
         <hr class="bottomline">
       </div>
   </div>
+
+  <div class="col s12">
+      <div class="tw-input-field">
+        <input type="text" placeholder="Password" class="asdasd" >
+        <hr class="focusline">
+        <hr class="bottomline">
+      </div>
+  </div>
+
+
+
+  <div class="col s12">
+      <div class="tw-input-field">
+        <input type="text" placeholder="Password" class="asdasd" >
+        <hr class="focusline">
+        <hr class="bottomline">
+      </div>
+  </div>
+
+
+
+  <div class="col s12">
+      <div class="tw-input-field">
+        <input type="text" placeholder="Password" class="asdasd" >
+        <hr class="focusline">
+        <hr class="bottomline">
+      </div>
+  </div>
 </div>
+</main>
 
 
 
