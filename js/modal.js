@@ -8,7 +8,7 @@ var ModalConstruct = (function(){
 
     var defaultOption = {
       shadow_opacity : .6, //default 0.5 최소 0 , 최대 1
-      start_top : "60",
+      start_top : "40",
       start_top_subfix : "%",
       end_top : "20",
       end_top_subfix : "%",
@@ -21,12 +21,6 @@ var ModalConstruct = (function(){
     };
 
 
-    Modal.prototype.Init = function(userOption){
-       this.Option = tw_global.extends(defaultOption,userOption);
-       this.Css().setModal("top",(this.Option.start_top+this.Option.start_top_subfix));
-       this.OpenbtnSetting(this.Element.id);
-       this.ClosebtnSetting();
-    };
 
 
 
@@ -109,7 +103,6 @@ var ModalConstruct = (function(){
           });
     };
 
-
     Modal.prototype.Css = function(){
         var Ele = this.Element;
         return {
@@ -138,6 +131,12 @@ var ModalConstruct = (function(){
         return document.body.appendChild(Shadowele);
     };
 
+    Modal.prototype.Init = function(userOption){
+      this.Option = tw_global.extends(defaultOption,userOption);
+      this.Css().setModal("top",(this.Option.start_top+this.Option.start_top_subfix));
+      this.OpenbtnSetting(this.Element.id);
+      this.ClosebtnSetting();
+    };
 
 
     return function(Element_,userOption, command){
