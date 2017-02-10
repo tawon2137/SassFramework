@@ -6,23 +6,48 @@ var ModalConstruct = (function(){
         this.Init(userOption);
     };
 
-    var defaultOption = {
-      shadow_opacity : .6, //default 0.5 최소 0 , 최대 1
-      start_top : "40",
-      start_top_subfix : "%",
-      end_top : "20",
-      end_top_subfix : "%",
-      modalOpen : function(){
+    var DefaultOption = function(){
+      this.shadow_opacity = 0.6;  //default 0.5 최소 0 , 최대 1
+      this.start_top = "60";
+      this.start_top_subfix = "%";
+      this.end_top = "20";
+      this.end_top_subfix = "%";
+      this.modalOpen = function(){
           console.log("open");
-      },
-      modalClose : function(){
+      };
+      this.modalClose = function(){
           console.log("close");
-      }
+      };
+    };
+    DefaultOption.prototype.setOption = function(newOption){
+        var myOption = this;
+        for( var prop in newOption ){
+            if( myOption.hasOwnProperty(prop) ){
+                myOption[prop] = newOption[prop];
+            }
+        }
+        return myOption;
+    };
+
+    Modal.prototype.Init = function(userOption){
+       this.Option = new DefaultOption();
+       this.Css().setModal("top",(this.Option.start_top+this.Option.start_top_subfix));
+       this.OpenbtnSetting(this.Element.id);
+       this.ClosebtnSetting();
+       this.Eventset();
     };
 
 
-
-
+    Modal.prototype.Eventset = function(){
+        var Ele = this.Element;
+        var Ele_css = this.Css();
+        var Option = this.Option;
+        Ele.addEventListener("transitionend",function (e) {
+            if(e.propertyName === "opacity"){
+              Ele_css.getModal("opacity") === "1" ? Option.modalOpen() : Option.modalClose()
+            }
+        });
+    };
 
     Modal.prototype.OpenbtnSetting = function(){
       var id = this.Element.id;
@@ -55,7 +80,6 @@ var ModalConstruct = (function(){
         if(modal){
           modal.createShadow(target);
           modal.OpenAnimation();
-          modal.Option.modalOpen();
         }else{
           throw new Error("Error asd");
         }
@@ -67,7 +91,6 @@ var ModalConstruct = (function(){
 
       if(modal){
           modal.closeAnimation();
-          modal.Option.modalClose();
       }else{
         throw new Error("Error asd");
       }
@@ -115,7 +138,13 @@ var ModalConstruct = (function(){
           }
         };
     };
-
+    Modal.prototype.setOption = function(Option){
+        if( typeof Option === "object"){
+            this.Option = this.Option.setOption(Option);
+        }else{
+            throw new Error("setOption의 인자는 Object");
+        }
+    };
     Modal.prototype.createShadow = function(id){
         var Shadowele = document.createElement("div");
         Shadowele.id = "modal-shadow";
@@ -131,22 +160,15 @@ var ModalConstruct = (function(){
         return document.body.appendChild(Shadowele);
     };
 
-    Modal.prototype.Init = function(userOption){
-      this.Option = tw_global.extends(defaultOption,userOption);
-      this.Css().setModal("top",(this.Option.start_top+this.Option.start_top_subfix));
-      this.OpenbtnSetting(this.Element.id);
-      this.ClosebtnSetting();
-    };
-
-
     return function(Element_,userOption, command){
         return new Modal(Element_,userOption, command);
     };
+
 })();
 
 window.tw_com.Modal = {};
 window.tw_com.Modal.init = ModalConstruct;
-window.addEventListener("load",function(){
+window.addEventListener("DOMContentLoaded",function(){
     var modallist = document.getElementsByClassName("modal");
     for(var i = 0 ; i < modallist.length; i++){
         if(modallist[i].id && !window.tw_com.Modal[modallist[i].id]){
@@ -154,73 +176,18 @@ window.addEventListener("load",function(){
         }
     }
 });
-
-
-// var Modal = {
-//   Option : {
-//
-//   },
-//   init: function(){
-//     var modal_triggers = document.getElementsByClassName("openModal");
-//     for(var i = 0; i < modal_triggers.length; i++){
-//       modal_triggers[i].addEventListener("click", tw_com.Modal.modalOpen);
-//       var modal = document.getElementById(modal_triggers[i].getAttribute("modal-target"));
-//
-//       if(modal){
-//         var modalclosebtn =  modal.getElementsByClassName("closeModal");
-//
-//         for(var j = 0; j < modalclosebtn.length; j++){
-//           modalclosebtn[j].setAttribute("modal-target", modal.getAttribute("id"));
-//           modalclosebtn[j].addEventListener("click", tw_com.Modal.modalClose);
-//         }
-//       }
-//     }
-//   },
-//   modalOpen : function(e){
-//
-//     var modal = document.getElementById(this.getAttribute("modal-target"));
-//
-//
-//     if (this.getAttribute("modal-target") && modal){
-//
-//       modal.getElementsByClassName("closeModal");
-//
-//       var shadowEle = tw_global.createShadow("modal-sha" , tw_com.Modal.modalClose);
-//       shadowEle.setAttribute("modal-target", modal.getAttribute("id"));
-//       shadowEle.addEventListener("transitionend", tw_com.Modal.eventCatch);
-//
-//
-//       modal.style.display = "block";
-//       shadowEle.style.opacity = "1";
-//       requestAnimationFrame(function(){
-//         modal.style.top = "15%";
-//         modal.style.opacity = "1";
-//         modal.style.transform = "scaleX(1)";
-//       });
-//
-//
-//     }else{
-//       throw new Error("타겟이 정의되지 않았습니다. ( modal-target  속성의 값 : ModalOpen함수를 수행 할 대상의 Id)");
-//     }
-//   },
-//   modalClose : function(e){
-//     var closeTarget = document.getElementById(this.getAttribute("modal-target"));
-//
-//
-//     this.getAttribute("id") === "modal-sha" ? this.style.opacity = "0" : document.getElementById("modal-sha").style.opacity = "0";
-//     requestAnimationFrame(function(){
-//       closeTarget.style.opacity = "0";
-//       setTimeout(function(){
-//         closeTarget.style.display = "none";
-//       },500);
-//     });
-//   },
-//   eventCatch : function(e){
-//     var shadowstyle = this.currentStyle || window.getComputedStyle(this);
-//     if(shadowstyle.opacity === "0" && this){
-//       tw_global.removeShadow(this.getAttribute("id"));
-//     }
-//     if(shadowstyle.opacity === "1" && this){
-//     }
-//   }
-// };
+window.addEventListener("load",function(){
+    window.tw_com.Modal["logmodal"].setOption({
+      shadow_opacity : .5, //default 0.5 최소 0 , 최대 1
+      start_top : "50",
+      start_top_subfix : "%",
+      end_top : "10",
+      end_top_subfix : "%",
+      modalOpen : function(){
+          console.log("modalOpen event");
+      },
+      modalClose : function(){
+          console.log("modalClose event");
+      },
+    });
+});

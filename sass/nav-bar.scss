@@ -1,0 +1,45 @@
+@import "./mixin.scss";
+@import "./variable.scss";
+@import "./function.scss";
+header{
+  margin-bottom: 20px;
+}
+  .tw-navbar{
+      height: $nav-height;
+      line-height: $nav-height;
+      border-radius: $nav-radius;
+      position: relative;
+      top : 0px;
+      width: 100%;
+      box-shadow: $nav-shadow;
+      will-change : opacity;
+      @include transition(all .2s ease-in);
+      background: white;
+      z-index: 100;
+      & .left{
+        float: left;
+      }
+      & .right{
+        float: right;
+      }
+      & .center{
+          display: inline-block;
+          padding: 0;
+          position: absolute;
+          left : 50%;
+          @include transform(translateX(-50%));
+      }
+
+      &.fixed-nav{
+          // position: fixed;
+          // width: 100%;
+          // top:0;
+          // z-index: 100;
+          // background-color: rgba(0,0,0,.5);
+      }
+      & .logoTitle{
+        font-size: 2rem;
+        color:black;
+        // transform: translate(-50%, -50%);
+      }
+  }
