@@ -89,7 +89,7 @@ html{
 }
 
 
-
+//input type 입력태그
 input:not([type]),
 input[type=text],
 input[type=password],
@@ -107,7 +107,7 @@ input[type=search] {
     box-shadow: none;
     height: $input-height;
     font-size: $input-font-size;
-    transition: all 0.3s;
+    @include transition(all 0.3s ease);
     border: 0;
     padding: $input-padding;
     &:focus{
@@ -121,6 +121,5 @@ input[type=search] {
       @include transform(scaleX(1));
     }
     &disabled{
-
     }
 }
