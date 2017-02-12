@@ -21,15 +21,45 @@
         (this.value.length > 0 ? tw_global.addClass(this,"valid") : ( tw_global.hasClass(this,"valid") ? tw_global.removeClass(this,"valid") : "" ));
       };
       var select = function(){
-          this.Elements = document.getElementsByTagName("select");
+          this.Elements = document.getElementsByClassName("tw-select-box");
           this.Init();
       };
       select.prototype.Init = function(){
         var Elements = this.Elements;
         for(var i = 0; i < Elements.length; i++){
-            // Elements[i].outerHTML = 
+            var select_input = Elements[i].getElementsByClassName("select-input")[0];
+            var select_dropdown = Elements[i].getElementsByClassName("select-dropdown")[0];
+            console.log(select_dropdown);
+            select_input.addEventListener("focus",this.select_Open);
+            select_input.addEventListener("blur",this.select_Close);
+            select_dropdown.addEventListener("click", function(e){
+                var selectedElement = this.getElementsByClassName("selected")[0];
+                // if( )
+                if( selectedElement ){
+                  tw_global.removeClass(selectedElement, "selected");
+                }
+                tw_global.addClass(e.target, "selected");
+            });
         }
-      }
+      };
+      select.prototype.select_Open = function(e){
+         var select_element = this.parentElement;
+         var select_dropdown = select_element.getElementsByClassName("select-dropdown")[0];
+         var select_options = select_dropdown.getElementsByTagName("li");
+         select_dropdown.style.display = "block";
+         setTimeout(function(){
+           select_dropdown.style.opacity = "1";
+         });
+      };
+      select.prototype.select_Close = function(e){
+        var select_element = this.parentElement;
+        var select_dropdown = select_element.getElementsByClassName("select-dropdown")[0];
+        select_dropdown.style.opacity = "0";
+        setTimeout(function(){
+           select_dropdown.style.display = "none";
+        },300);
+
+      };
       var Construct = function(ClassObj){
           return new ClassObj();
       };
@@ -44,4 +74,4 @@
 window.addEventListener("DOMContentLoaded",function(){
     tw_com.input.text_field = tw_com.input.Construct(tw_com.input.Text_field_class);
     tw_com.input.select = tw_com.input.Construct(tw_com.input.select_class);
-})
+});
