@@ -9,9 +9,9 @@ var ModalConstruct = (function(){
     var DefaultOption = function(){
       this.shadow_opacity = 0.6;  //default 0.5 최소 0 , 최대 1
       this.start_top = "60";
-      this.start_top_subfix = "%";
+      this.start_top_suffix = "%";
       this.end_top = "20";
-      this.end_top_subfix = "%";
+      this.end_top_suffix = "%";
       this.modalOpen = function(){
           console.log("open");
       };
@@ -31,14 +31,14 @@ var ModalConstruct = (function(){
 
     Modal.prototype.Init = function(userOption){
        this.Option = new DefaultOption();
-       this.Css().setModal("top",(this.Option.start_top+this.Option.start_top_subfix));
+       this.Css().setModal("top",(this.Option.start_top+this.Option.start_top_suffix));
        this.OpenbtnSetting(this.Element.id);
        this.ClosebtnSetting();
-       this.Eventset();
+       this.setEvent();
     };
 
 
-    Modal.prototype.Eventset = function(){
+    Modal.prototype.setEvent = function(){
         var Ele = this.Element;
         var Ele_css = this.Css();
         var Option = this.Option;
@@ -102,7 +102,7 @@ var ModalConstruct = (function(){
          var css_option = this.Option;
           Ele_css.setModal("display" , "block");
           requestAnimationFrame(function(){
-            Ele_css.setModal("top" , (css_option.end_top+css_option.end_top_subfix));
+            Ele_css.setModal("top" , (css_option.end_top+css_option.end_top_suffix));
             Ele_css.setModal("opacity" , "1");
             Ele_css.setModal("transform" , "scaleX(1)");
             Shadow_css.opacity = css_option.shadow_opacity;
@@ -113,10 +113,10 @@ var ModalConstruct = (function(){
          var Ele_css = this.Css();
          var Shadow_css = this.shadowEle.style;
          var css_option = this.Option;
-         var delay = this.Css().getModal("transitionDuration").split("s,")[0] * 1000;
+         var delay = this.Css().getModal("transitionDuration").split("s,")[0] * 500;
 
           requestAnimationFrame(function(){
-            Ele_css.setModal("top" , (css_option.start_top+css_option.start_top_subfix));
+            Ele_css.setModal("top" , (css_option.start_top+css_option.start_top_suffix));
             Ele_css.setModal("opacity" , "0");
             Ele_css.setModal("transform" , "scaleX(.7)");
             Shadow_css.opacity = "0";
@@ -180,9 +180,9 @@ window.addEventListener("load",function(){
     window.tw_com.Modal["logmodal"].setOption({
       shadow_opacity : .5, //default 0.5 최소 0 , 최대 1
       start_top : "50",
-      start_top_subfix : "%",
+      start_top_suffix : "%",
       end_top : "10",
-      end_top_subfix : "%",
+      end_top_suffix : "%",
       modalOpen : function(){
           console.log("modalOpen event");
       },

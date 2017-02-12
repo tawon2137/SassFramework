@@ -16,7 +16,6 @@ window.tw_com = {};
             "col-red" : "wave-effect-column-red",
         }
       },
-
       offset : function (elem) {
           var docElem, win,
               box = {top: 0, left: 0},
@@ -79,5 +78,4 @@ window.tw_com = {};
 window.addEventListener("DOMContentLoaded", function(event) {
   tw_com.waves.Waveliston();
   tw_com.sideNav.sideNavInit();
-  tw_com.input.inputInit();
 });

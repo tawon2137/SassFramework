@@ -2,7 +2,7 @@
 @import "./variable.scss";
 @import "./function.scss";
 @import "./extend.scss";
-
+//input
 ::-webkit-input-placeholder {
   color: $placeholder-text-color
 }
@@ -89,7 +89,7 @@ html{
 }
 
 
-
+//input type 입력태그
 input:not([type]),
 input[type=text],
 input[type=password],
@@ -107,7 +107,7 @@ input[type=search] {
     box-shadow: none;
     height: $input-height;
     font-size: $input-font-size;
-    transition: all 0.3s;
+    @include transition(all 0.3s ease);
     border: 0;
     padding: $input-padding;
     &:focus{
@@ -121,6 +121,69 @@ input[type=search] {
       @include transform(scaleX(1));
     }
     &disabled{
-
     }
+}
+
+//select box
+
+.tw-select-box{
+    display: block;
+    & .select-input {
+      cursor: pointer;
+    }
+    & .select-dropdown {
+       top:0px;
+       left:0px;
+       & li.selected{
+          background: grey;
+       }
+       & li[disabled]{
+         color : grey;
+       }
+    }
+    & .select-caret-down{
+        position: absolute;
+        margin: auto 0;
+        right: 0;
+        top:0;
+        bottom: 0;
+        height: 15px;
+        font-size: 15px;
+        z-index: -1;
+    }
+}
+
+.tw-dropdown{
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  @include transition("max-height 0.2s ease,opacity 0.2s ease");
+  will-change : max-height,opacity;
+  overflow-y:auto;
+  width: 100%;
+  z-index: 999;
+  box-shadow : $dropdown-box-shadow;
+  background-color: white;
+  max-height: 500px;
+  display: none;
+  opacity: 0;
+  & li{
+      list-style-type: none;
+      min-height: 2.5rem;
+      line-height: 2.5rem;
+      text-align: left;
+      cursor: pointer;
+      &:hover{
+        background: #f1f1f1;
+      }
+      &[disabled]{
+          &:hover{
+            background: none;
+          }
+      }
+      & span{
+        font-weight: bold;
+        padding: 0.5rem 1rem;
+      }
+  }
 }
