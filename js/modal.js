@@ -13,11 +13,11 @@ var ModalConstruct = (function(){
       this.end_top = "20";
       this.end_top_suffix = "%";
       this.modalOpen = function(){
-          console.log("open");
       };
       this.modalClose = function(){
-          console.log("close");
       };
+      this.delay = 0.45;
+      this.shadow_onclick_close = false;
     };
     DefaultOption.prototype.setOption = function(newOption){
         var myOption = this;
@@ -34,20 +34,10 @@ var ModalConstruct = (function(){
        this.Css().setModal("top",(this.Option.start_top+this.Option.start_top_suffix));
        this.OpenbtnSetting(this.Element.id);
        this.ClosebtnSetting();
-       this.setEvent();
     };
 
 
-    Modal.prototype.setEvent = function(){
-        var Ele = this.Element;
-        var Ele_css = this.Css();
-        var Option = this.Option;
-        Ele.addEventListener("transitionend",function (e) {
-            if(e.propertyName === "opacity"){
-              Ele_css.getModal("opacity") === "1" ? Option.modalOpen() : Option.modalClose()
-            }
-        });
-    };
+
 
     Modal.prototype.OpenbtnSetting = function(){
       var id = this.Element.id;
@@ -81,7 +71,7 @@ var ModalConstruct = (function(){
           modal.createShadow(target);
           modal.OpenAnimation();
         }else{
-          throw new Error("Error asd");
+          throw new Error("Error Modal Open Error");
         }
     };
     Modal.prototype.closeModal = function(e){
@@ -92,40 +82,44 @@ var ModalConstruct = (function(){
       if(modal){
           modal.closeAnimation();
       }else{
-        throw new Error("Error asd");
+        throw new Error("Error Modal Close Error");
       }
     };
 
     Modal.prototype.OpenAnimation = function(){
          var Ele_css = this.Css();
-         var Shadow_css = this.shadowEle.style;
+         var Shadow_css = this.shadowEle;
          var css_option = this.Option;
-          Ele_css.setModal("display" , "block");
-          requestAnimationFrame(function(){
-            Ele_css.setModal("top" , (css_option.end_top+css_option.end_top_suffix));
-            Ele_css.setModal("opacity" , "1");
-            Ele_css.setModal("transform" , "scaleX(1)");
-            Shadow_css.opacity = css_option.shadow_opacity;
+         var Ele = this.Element;
+         TweenLite.to( Shadow_css, css_option.delay, { opacity : css_option.shadow_opacity } );
+         TweenLite.to( Ele, css_option.delay, {
+           display:"block",
+           top: (css_option.end_top+css_option.end_top_suffix),
+           scaleX : 1 ,
+           opacity : 1,
+           ease: Power3.easeOut,
+           onComplete:this.Option.modalOpen
           });
     };
 
     Modal.prototype.closeAnimation = function(){
-         var Ele_css = this.Css();
-         var Shadow_css = this.shadowEle.style;
+         var Shadow_css = this.shadowEle;
          var css_option = this.Option;
-         var delay = this.Css().getModal("transitionDuration").split("s,")[0] * 500;
-
-          requestAnimationFrame(function(){
-            Ele_css.setModal("top" , (css_option.start_top+css_option.start_top_suffix));
-            Ele_css.setModal("opacity" , "0");
-            Ele_css.setModal("transform" , "scaleX(.7)");
-            Shadow_css.opacity = "0";
-            setTimeout(function(){
-                Ele_css.setModal("display", "none");
-            },delay);
-          });
+         var Ele = this.Element;
+        TweenLite.to( Shadow_css, css_option.delay, { opacity : 0 } );
+        TweenLite.to(Ele, css_option.delay,
+          {
+          display:"none",
+          top: (css_option.start_top+css_option.start_top_suffix),
+          scaleX : 0.7,
+          opacity : 0,
+          ease: Power3.easeOut,
+          onComplete:function(){
+          Shadow_css.parentElement.removeChild(Shadow_css);
+          css_option.modalClose();
+          }
+      });
     };
-
     Modal.prototype.Css = function(){
         var Ele = this.Element;
         return {
@@ -147,15 +141,11 @@ var ModalConstruct = (function(){
     };
     Modal.prototype.createShadow = function(id){
         var Shadowele = document.createElement("div");
+        var Option = this.Option;
         Shadowele.id = "modal-shadow";
         Shadowele.setAttribute("modal-target",id);
-        Shadowele.addEventListener("click",this.closeModal);
-        Shadowele.addEventListener("transitionend",function(e){
-           var css = this.currentStyle || window.getComputedStyle(this);
-             if(css.opacity === "0"){
-                this.parentElement.removeChild(this);
-             }
-        });
+        //옵션에서 준 Shadow_onclick_close  값에 따라 true면 그림자영역 클릭시 모달 close / false 이면 그림자영역 클릭이벤트를 설정하지않음.
+        ( Option.shadow_onclick_close ? Shadowele.addEventListener("click",this.closeModal) : "" );
         this.shadowEle = Shadowele;
         return document.body.appendChild(Shadowele);
     };

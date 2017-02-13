@@ -1,6 +1,6 @@
 //button waves color fn
 @function waves-color-setting($colorhex) {
-  @return "rgba("+$colorhex+", 0.3) 0, rgba("+$colorhex+", 0.35) 40%, rgba("+$colorhex+", 0.40) 50%, rgba("+$colorhex+", 0.5) 60%, rgba(0, 0, 0, 0) 70%";
+  @return "rgba("+$colorhex+", 0.3) 0, rgba("+$colorhex+", 0.40) 40%, rgba("+$colorhex+", 0.65) 50%, rgba("+$colorhex+", 0.80) 60%, rgba(0, 0, 0, 0) 70%";
 }
 @function waves-color-column-setting($colorhex) {
   @return "rgba("+$colorhex+", 0.3)";

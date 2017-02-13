@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="./css/modal.css">
     <link rel="stylesheet" href="./css/nav-bar.css">
     <link rel="stylesheet" href="./css/drop-down.css">
+
+    <script type="text/javascript" src="./js/lib/CSSPlugin.min.js"></script>
+    <script type="text/javascript" src="./js/lib/EasePack.min.js"></script>
+    <script type="text/javascript" src="./js/lib/TweenLite.min.js"></script>
+
     <script type="text/javascript" src="./js/global.js"></script>
     <script type="text/javascript" src="./js/drop-down.js"></script>
     <script type="text/javascript" src="./js/waves.js" ></script>
@@ -168,9 +173,12 @@
 
 
 <div class="row">
+
+  <form method="GET" action="/asd">
+
   <div class="col s12">
       <div class="tw-input-field">
-        <input type="text" placeholder="ID" >
+        <input type="text" placeholder="ID"  name="id">
         <hr class="focusline">
         <hr class="bottomline">
       </div>
@@ -180,58 +188,28 @@
 
   <div class="col s12">
       <div class="tw-input-field">
-        <input type="text" placeholder="Password" class="asdasd" >
+        <input type="text" placeholder="Password" class="asdasd" name="pwd">
         <hr class="focusline">
         <hr class="bottomline">
       </div>
   </div>
 
-  <div class="col s12">
-      <div class="tw-input-field">
-        <input type="text" placeholder="Password" class="asdasd" >
-        <hr class="focusline">
-        <hr class="bottomline">
-      </div>
+  <div class="col s6 m3 l6">
+    <select class="qwdq qwdwqd" id="myselect" name="myselected">
+      <option  value="">Volvo</option>
+      <option  value="saab">Saab</option>
+      <option  value="asdasd" disabled>Opel</option>
+      <option  value="audi">Audi</option>
+    </select>
   </div>
 
 
 
-  <div class="col s12">
-      <div class="tw-input-field">
-        <input type="text" placeholder="Password" class="asdasd" >
-        <hr class="focusline">
-        <hr class="bottomline">
-      </div>
-  </div>
+  <button type="submit" class="tw-btn waves-effect" waves-color="green">전송</button>
+</form>
 
-
-
-  <div class="col s6 m3">
-    <!-- <select>
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="opel">Opel</option>
-      <option value="audi">Audi</option>
-    </select> -->
-    <div class="tw-select-box tw-input-field">
-        <i class="fa fa-caret-down select-caret-down" ></i>
-        <input type="text" readonly=true class="select-input">
-        <hr class="bottomline">
-        <ul class="tw-dropdown select-dropdown">
-          <li class="active" disabled><span>Volvo</span></li>
-          <li><span>Saab</span></li>
-          <li><span>Opel</span></li>
-          <li><span>Audi</span></li>
-        </ul>
-    </div>
-  </div>
 </div>
 </main>
-
-
-
-
-
 
   </body>
 </html>
