@@ -1,6 +1,8 @@
-window.tw_com = {};
+window.twCom = {};
 
 (function(win){
+    "use strict";
+
   var waves = {
       config : {
         waves_color_list : {
@@ -33,12 +35,12 @@ window.tw_com = {};
       },
       btnclick : function (e, element) {
         var ele = element || this;
-        var offset = tw_com.waves.offset(ele);
+        var offset = twCom.waves.offset(ele);
         //웨이브 이펙트를 실행할 엘리먼트가 있는지 먼저확인하고 없으면 생성
         if( ele.getElementsByClassName("wave").length === 0 ){
             var effect = document.createElement("span");
             tw_global.addClass(effect , "wave");
-            var waves_list = tw_com.waves.config.waves_color_list;
+            var waves_list = twCom.waves.config.waves_color_list;
             var wavecolor = (waves_list[ele.getAttribute("waves-color")] ? waves_list[ele.getAttribute("waves-color")] : waves_list['white']);
             tw_global.addClass(effect , wavecolor);
             ele.insertBefore(effect , ele.firstChild);
@@ -66,16 +68,16 @@ window.tw_com = {};
       Waveliston : function () {
         var btn = document.getElementsByClassName("waves-effect");
         for (var i = 0; i < btn.length; i++) {
-          btn[i].addEventListener("click",tw_com.waves.btnclick);
+          btn[i].addEventListener("click",twCom.waves.btnclick);
         }
       },
   };
 
-  if(!win.tw_com.waves) {
-      win.tw_com.waves = waves;
+  if(!win.twCom.waves) {
+      win.twCom.waves = waves;
   }
 })(window);
 window.addEventListener("DOMContentLoaded", function(event) {
-  tw_com.waves.Waveliston();
-  tw_com.sideNav.sideNavInit();
+  twCom.waves.Waveliston();
+  twCom.sideNav.sideNavInit();
 });

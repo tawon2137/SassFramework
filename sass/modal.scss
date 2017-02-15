@@ -11,7 +11,7 @@
     z-index: 998;
     background-color: black;
     will-change: opacity;
-    @include transition("opacity 0.45s ease-in-out");
+    // @include transition("opacity 0.45s ease-in-out");
     opacity: 0;
 }
 .modal{
@@ -26,8 +26,7 @@
     box-shadow: $modal-shadow;
     will-change : transform;
     opacity: 0;
-    @include transition ("top 0.45s ease-in-out,opacity 0.45s ease-in-out,transform 0.45s ease-in-out");
-    @include transform(scaleX(0.7));
+    // @include transform(scaleX(0.7));
     z-index: 999;
     background-color: white;
     border-radius: $modal-radius;
@@ -41,6 +40,6 @@
         border-top: 1px solid rgba(0,0,0,.1);
         padding: 0.2rem;
         text-align: right;
-          margin: 0 1.2rem;
+        margin: 0 1.2rem;
     }
 }
