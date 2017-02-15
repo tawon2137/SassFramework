@@ -2,55 +2,83 @@
    "use strict";
 
   var sideNav = {
-    Option : {
-        width : "300", //sideNav width 250px
+    option : {
+        width : "350", //sideNav width 250px
         suffix : "px",
         closeEvent : function(){
+          console.log("Close Event !");
         },
         openEvent : function(){
-        }
+            console.log("Open Event !");
+        },
+        delay : 0.25,
+        easing : Power3.easeOut,
     },
-    setOption : function (Opt) {
+    setoption : function (Opt) {
         if( typeof Opt === "object"){
-            this.Option = tw_global.extends(this.Option , Opt);
+            this.option = tw_global.extends(this.option , Opt);
         }else{
-            throw new Error("Option은 객체여야합니다.");
+            throw new Error("option은 객체여야합니다.");
         }
     },
     sideNavInit : function(){
-        this.Element = document.getElementById("tw-sideNav");
-        this.openTrigger = document.getElementById("openNav");
-        this.closeTrigger = this.Element.querySelector("#closeNav");
+        var self = this;
+        var option = this.option; //side-nav option을 가진 객체
+        self.Element = document.getElementById("tw-sideNav");
+        self.openTrigger = document.getElementById("openNav");
+        self.closeTrigger = self.Element.querySelector("#closeNav");
 
+        //sidenav Open 함수를 bind를 통해 this를 sidenav 객체로 바꿈
+        self.openSideNav = self.opensSideNavfn.bind(self);
+        self.closeSideNav = self.closeSideNavfn.bind(self);
 
-        this.Element = this.Option.width + this.Option.suffix;
-        this.closeTrigger.addEventListener("click",twCom.sideNav.ClosesideNavbar);
-        this.openTrigger.addEventListener("click",twCom.sideNav.OpensideNavbar);
+        self.Element.style.width = option.width + option.suffix;
+        console.log(self.Element);
+        console.log(option.width);
+
+        self.closeTrigger.addEventListener("click",self.closeSideNav);
+        self.openTrigger.addEventListener("click",self.openSideNav);
     },
     //sidenav open 함수
-    OpensideNavbar : function(){
-          tw_global.createShadow("sha-ray", twCom.sideNav.ClosesideNavbar);
-          var sidenavShadow = document.getElementById("sha-ray");
-          requestAnimationFrame(function(){
-            sidenavShadow.style.opacity = 1;
-            document.getElementById("tw-sideNav").style.transform = "translateX(0px)";
+    opensSideNavfn : function(e){
+          var self = this;
+          var sideNav = self.Element;
+          var option = self.option;
+          var sidenavShadow =  self.createShadow("sha-ray", self.closeSideNav);
+          TweenLite.to(sidenavShadow, option.delay ,{
+              opacity : 1,
+              ease : option.easing,
           });
-          //그림자 영역 설정완료시 그림자가없으면 엘리먼트 제거
-          sidenavShadow.addEventListener("transitionend",twCom.sideNav.eventCatch);
+          TweenLite.to( sideNav, option.delay, {
+            x : 0,
+            onComplete : option.openEvent,
+            ease : option.easing,
+           });
     },
-    ClosesideNavbar : function(){
-        document.getElementById("sha-ray").style.opacity = "0";
-        document.getElementById("tw-sideNav").style.transform = "translateX(-100%)";
+    closeSideNavfn : function(e){
+      var self = this;
+      var sideNav = self.Element;
+      var option = self.option;
+      var sidenavShadow = self.shadowEle;
+      TweenLite.to(sidenavShadow, option.delay ,{
+          opacity : 0,
+          ease : option.easing,
+          onComplete: function(){
+              sidenavShadow.parentElement.removeChild(sidenavShadow);
+          }
+      });
+      TweenLite.to( sideNav, option.delay, {
+        x : (option.width * -1),
+        ease : option.easing,
+        onComplete : option.closeEvent,
+       });
     },
-    eventCatch : function(e){
-      var shadowstyle = this.currentStyle || window.getComputedStyle(this);
-      if(shadowstyle.opacity === "0" && this){
-          tw_global.removeShadow(this.getAttribute("id"));
-          twCom.sideNav.Option.closeEvent();
-      }
-      if(shadowstyle.opacity === "1" && this){
-          twCom.sideNav.Option.openEvent();
-      }
+    createShadow : function(id, clickfn){
+      var Shadowele = document.createElement("div");
+      Shadowele.id=id;
+      Shadowele.addEventListener("click",clickfn);
+      this.shadowEle = Shadowele;
+      return document.body.appendChild(Shadowele);
     }
   };
 

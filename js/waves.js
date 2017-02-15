@@ -66,9 +66,11 @@ window.twCom = {};
         tw_global.addClass(animation, "animate");
       },
       Waveliston : function () {
+        var self = this;
         var btn = document.getElementsByClassName("waves-effect");
+        self.btns = btn;
         for (var i = 0; i < btn.length; i++) {
-          btn[i].addEventListener("click",twCom.waves.btnclick);
+          btn[i].addEventListener("click",self.btnclick);
         }
       },
   };
