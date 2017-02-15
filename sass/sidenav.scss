@@ -10,7 +10,6 @@
     z-index: 998;
     background: rgba(0,0,0,0.5);
     will-change: opacity;
-    transition: all 0.2s;
     opacity: 0;
 }
 #tw-sideNav {
@@ -28,7 +27,6 @@
   z-index: 999;
   overflow: auto;
   backface-visibility: hidden;
-  @include transition(transform 0.2s ease-in-out);
     & a {
         cursor: pointer;
         padding: 0 1rem;
@@ -41,7 +39,10 @@
     & #closeNav {
       right: 0;
       position: absolute;
-      text-align: right;
+      width: 100%;
+      text-align: center;
+      font-size: 1.3rem;
+      box-shadow: $sidenav-closebtn-shadow;
       bottom:($sidenav-col-height + 20);
       height: $sidenav-col-height;
       border-radius: $button-radius;

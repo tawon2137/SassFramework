@@ -1,9 +1,6 @@
 (function (win) {
     "use strict";
 
-
-
-
       var Text_field = function () {
           // input field 생성자
           this.Elements = document.querySelectorAll("input:not([type]),input[type=text],input[type=password],input[type=email],input[type=url],input[type=time],input[type=date],input[type=datetime],input[type=datetime-local],input[type=tel],input[type=number],input[type=search]");
