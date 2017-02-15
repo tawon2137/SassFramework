@@ -1,4 +1,5 @@
 (function(win){
+    "use strict";
     var tw_global = {
       addClass : function(Ele , ClassName){
           if(Ele.classList && typeof ClassName === "string"){
@@ -40,7 +41,9 @@
       extends : function(obj1 , obj2 , command) {
         var newObj = {};
         for(var prop in obj1){
-            newObj[prop] = obj1[prop];
+          if(obj1.hasOwnProperty(prop)){
+              newObj[prop] = obj1[prop];
+          }
         }
         for(var ob in obj2){
             if(newObj.hasOwnProperty(ob)){
@@ -54,6 +57,4 @@
 if(!win.tw_global){
     win.tw_global = tw_global;
 }
-
-
 })(window);

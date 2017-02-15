@@ -1,8 +1,10 @@
 (function (win) {
+   "use strict";
+
   var sideNav = {
     Option : {
         width : "300", //sideNav width 250px
-        subfix : "px",
+        suffix : "px",
         closeEvent : function(){
         },
         openEvent : function(){
@@ -16,20 +18,25 @@
         }
     },
     sideNavInit : function(){
-        document.getElementById("openNav").addEventListener("click",tw_com.sideNav.OpensideNavbar);
-        document.getElementById("closeNav").addEventListener("click",tw_com.sideNav.ClosesideNavbar);
-        document.getElementById("tw-sideNav").style.width = this.Option.width + this.Option.subfix;
+        this.Element = document.getElementById("tw-sideNav");
+        this.openTrigger = document.getElementById("openNav");
+        this.closeTrigger = this.Element.querySelector("#closeNav");
+
+
+        this.Element = this.Option.width + this.Option.suffix;
+        this.closeTrigger.addEventListener("click",twCom.sideNav.ClosesideNavbar);
+        this.openTrigger.addEventListener("click",twCom.sideNav.OpensideNavbar);
     },
     //sidenav open 함수
     OpensideNavbar : function(){
-          tw_global.createShadow("sha-ray", tw_com.sideNav.ClosesideNavbar);
+          tw_global.createShadow("sha-ray", twCom.sideNav.ClosesideNavbar);
           var sidenavShadow = document.getElementById("sha-ray");
           requestAnimationFrame(function(){
             sidenavShadow.style.opacity = 1;
             document.getElementById("tw-sideNav").style.transform = "translateX(0px)";
           });
           //그림자 영역 설정완료시 그림자가없으면 엘리먼트 제거
-          sidenavShadow.addEventListener("transitionend",tw_com.sideNav.eventCatch);
+          sidenavShadow.addEventListener("transitionend",twCom.sideNav.eventCatch);
     },
     ClosesideNavbar : function(){
         document.getElementById("sha-ray").style.opacity = "0";
@@ -39,15 +46,15 @@
       var shadowstyle = this.currentStyle || window.getComputedStyle(this);
       if(shadowstyle.opacity === "0" && this){
           tw_global.removeShadow(this.getAttribute("id"));
-          tw_com.sideNav.Option.closeEvent();
+          twCom.sideNav.Option.closeEvent();
       }
       if(shadowstyle.opacity === "1" && this){
-          tw_com.sideNav.Option.openEvent();
+          twCom.sideNav.Option.openEvent();
       }
     }
   };
 
-if(!win.tw_com.sideNav){
-    win.tw_com.sideNav = sideNav;
+if(!win.twCom.sideNav){
+    win.twCom.sideNav = sideNav;
 }
 })(window);

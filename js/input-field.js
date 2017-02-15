@@ -1,4 +1,9 @@
 (function (win) {
+    "use strict";
+
+
+
+
       var Text_field = function () {
           // input field 생성자
           this.Elements = document.querySelectorAll("input:not([type]),input[type=text],input[type=password],input[type=email],input[type=url],input[type=time],input[type=date],input[type=datetime],input[type=datetime-local],input[type=tel],input[type=number],input[type=search]");
@@ -168,15 +173,15 @@
       var Construct = function(ClassObj){
           return new ClassObj();
       };
-      if(!win.tw_com.input){
-          win.tw_com.input = {};
-          win.tw_com.input.Construct = Construct;
-          win.tw_com.input.Text_field_class = Text_field;
-          win.tw_com.input.select_class = select;
+      if(!win.twCom.input){
+          win.twCom.input = {};
+          win.twCom.input.Construct = Construct;
+          win.twCom.input.Text_field_class = Text_field;
+          win.twCom.input.select_class = select;
       }
 })(window);
 
 window.addEventListener("DOMContentLoaded",function(){
-    tw_com.input.text_field = tw_com.input.Construct(tw_com.input.Text_field_class);
-    tw_com.input.select = tw_com.input.Construct(tw_com.input.select_class);
+    twCom.input.text_field = twCom.input.Construct(twCom.input.Text_field_class);
+    twCom.input.select = twCom.input.Construct(twCom.input.select_class);
 });
