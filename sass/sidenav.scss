@@ -37,18 +37,13 @@
         @include transition(color 0.2s ease-in);
     }
     & #closeNav {
-      right: 0;
+      left:0;
       position: absolute;
       width: 100%;
       text-align: center;
-      font-size: 1.3rem;
-      box-shadow: $sidenav-closebtn-shadow;
-      bottom:($sidenav-col-height + 20);
-      height: $sidenav-col-height;
-      border-radius: $button-radius;
-      &:hover{
-          background: rgba(0,0,0, .2);
-      }
+      bottom:($sidenav-closebtn-height + 34);
+      height: $sidenav-closebtn-height;
+      line-height: $sidenav-closebtn-height;
     }
     & .profile{
         font-size : 14px;

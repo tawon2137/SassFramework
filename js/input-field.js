@@ -22,12 +22,18 @@
         //즉 text_field 내에 입력값이 존재하면 valid 라는 class를 추가하고 없으면 field 내에 valid 라는 클래스를 찾아서 있으면 제거함
         (this.value.length > 0 ? tw_global.addClass(this,"valid") : ( tw_global.hasClass(this,"valid") ? tw_global.removeClass(this,"valid") : "" ));
       };
+
+
+
+
       var select = function(){
           this.selects = document.querySelectorAll("select:not(.browser-default)");
           this.Elements = document.getElementsByClassName("tw-select-box");
           this.selectInit();
           this.selectSet();
       };
+
+
       select.prototype.selectInit = function(){
           var select_Ele_list = this.selects;
           var self = this;
@@ -92,6 +98,7 @@
             var select_input = Elements[i].getElementsByClassName("select-input")[0];
             var select_dropdown = Elements[i].getElementsByClassName("select-dropdown")[0];
             select_input.addEventListener("focus",self.select_Open);
+
             if ( "ontouchstart" in window ){
               select_dropdown.addEventListener("touchstart", self.seleted);
             }
@@ -106,15 +113,8 @@
          var select_options = select_dropdown.getElementsByTagName("li");
          var target = e.target || e.srcElement;
          var listyle = select_options[0].currentStyle || window.getComputedStyle(select_options[0]);
+      
 
-        //  var userbottom = e.target.getBoundingClientRect();
-        //  var bodybottom = document.body.getBoundingClientRect();
-        //  var interval = bodybottom.bottom - userbottom.top;
-        //  var height = parseInt(listyle.minHeight.split("px")[0]) * select_options.length ;
-         var topheight = 0;
-        //  if(interval - height < 0){
-        //     topheight = height * -1;
-        //  }
 
          TweenLite.to( select_dropdown, 0.3, {
              opacity : 1,
@@ -155,18 +155,6 @@
       };
 
 
-
-      select.prototype.select_Close = function(){
-        var select_element = this.parentElement;
-        var select_dropdown = select_element.getElementsByClassName("select-dropdown")[0];
-        var css = select_dropdown.currentStyle || window.getComputedStyle(select_dropdown);
-        var delay = css["transitionDuration"].split("s,")[0] * 1000;
-        select_dropdown.style.opacity = "0";
-        setTimeout(function(){
-           select_dropdown.style.display = "none";
-        },delay);
-
-      };
       var Construct = function(ClassObj){
           return new ClassObj();
       };
