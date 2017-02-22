@@ -113,13 +113,12 @@
          var select_options = select_dropdown.getElementsByTagName("li");
          var target = e.target || e.srcElement;
          var listyle = select_options[0].currentStyle || window.getComputedStyle(select_options[0]);
-      
+
 
 
          TweenLite.to( select_dropdown, 0.3, {
              opacity : 1,
              display : "block",
-             top : topheight,
           });
       };
 

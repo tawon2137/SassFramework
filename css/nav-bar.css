@@ -16,6 +16,29 @@ header {
   transition: all 0.2s ease-in;
   background: white;
   z-index: 100; }
+  .tw-navbar.clear {
+    box-shadow: none;
+    background-color: transparent; }
+  .tw-navbar ul {
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0; }
+    .tw-navbar ul .right {
+      float: right; }
+    .tw-navbar ul .right {
+      float: left; }
+    .tw-navbar ul li {
+      display: block;
+      float: left;
+      position: relative;
+      padding: 0 2rem;
+      text-align: center;
+      background-color: transparent; }
+      .tw-navbar ul li a {
+        cursor: pointer; }
+        .tw-navbar ul li a:hover {
+          background: rgba(0, 0, 0, 0.1); }
   .tw-navbar .left {
     float: left; }
   .tw-navbar .right {

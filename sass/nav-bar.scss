@@ -15,6 +15,37 @@ header{
       @include transition(all .2s ease-in);
       background: white;
       z-index: 100;
+      &.clear{
+          box-shadow: none;
+          background-color: transparent;
+      }
+      & ul{
+        padding: 0;
+        position: relative;
+        top:0;
+        left:0;
+        & .right{
+          float: right;
+        }
+        & .right{
+          float: left;
+        }
+        & li{
+          display: block;
+          float: left;
+          position: relative;
+          padding: 0 2rem;
+          text-align: center;
+          background-color: transparent;
+          & a{
+            cursor: pointer;
+            &:hover{
+              background: rgba(0,0,0,0.1);
+            }
+          }
+
+        }
+      }
       & .left{
         float: left;
       }
