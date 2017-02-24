@@ -1,22 +1,27 @@
 (function (win) {
     "use strict";
 
-      var Text_field = function () {
+      function TextField() {
           // input field 생성자
-          this.Elements = document.querySelectorAll("input:not([type]),input[type=text],input[type=password],input[type=email],input[type=url],input[type=time],input[type=date],input[type=datetime],input[type=datetime-local],input[type=tel],input[type=number],input[type=search]");
-          this.Init();
-      };
-      Text_field.prototype.Init = function(){
+          if ( this instanceof TextField ){
+            this.Elements = document.querySelectorAll("input:not([type]),input[type=text],input[type=password],input[type=email],input[type=url],input[type=time],input[type=date],input[type=datetime],input[type=datetime-local],input[type=tel],input[type=number],input[type=search]");
+            this.Init();
+
+          }else{
+            return new TextField();
+          }
+      }
+      TextField.prototype.Init = function(){
           var text_fields = this.Elements;
           for (var i = 0; i < text_fields.length; i++) {
             text_fields[i].addEventListener("focus", this.field_focus);
             text_fields[i].addEventListener("blur", this.field_blur);
           }
       };
-      Text_field.prototype.field_focus = function(){
+      TextField.prototype.field_focus = function(){
           tw_global.addClass(this , "active");
       };
-      Text_field.prototype.field_blur = function(){
+      TextField.prototype.field_blur = function(){
         tw_global.removeClass(this,"active");
         //중첩 3항 연산자 text_field안에 value가 존재하면 valid라는 class 를 추가하고 value가 존재하지않으면 valid 클래스를 제거해야함
         //즉 text_field 내에 입력값이 존재하면 valid 라는 class를 추가하고 없으면 field 내에 valid 라는 클래스를 찾아서 있으면 제거함
@@ -26,15 +31,19 @@
 
 
 
-      var select = function(){
+      function SelectBox(){
+        if ( this instanceof SelectBox ){
           this.selects = document.querySelectorAll("select:not(.browser-default)");
           this.Elements = document.getElementsByClassName("tw-select-box");
           this.selectInit();
           this.selectSet();
-      };
+        } else {
+            return new SelectBox();
+        }
+      }
 
 
-      select.prototype.selectInit = function(){
+      SelectBox.prototype.selectInit = function(){
           var select_Ele_list = this.selects;
           var self = this;
           for (var i = 0; i < select_Ele_list.length; i++) {
@@ -66,7 +75,9 @@
               select_Ele_list[i].outerHTML = tw_select_box.outerHTML;
           }
       };
-      select.prototype.optionExtend = function(litag,  Option, input){
+
+
+      SelectBox.prototype.optionExtend = function(litag,  Option, input){
           var span = document.createElement("span");
           var value = Option.getAttribute("value") || Option.innerText;
 
@@ -83,38 +94,54 @@
            }
            litag.appendChild(span);
 
-
-
       };
-      select.prototype.attrExtends = function(childEle, parentEle){
+
+      SelectBox.prototype.attrExtends = function(childEle, parentEle){
           childEle.id = parentEle.id;
           childEle.className = parentEle.className + " select-input";
           childEle.name = parentEle.name;
       };
-      select.prototype.selectSet = function(){
+      SelectBox.prototype.selectSet = function(){
         var Elements = this.Elements;
         var self = this;
+
         for(var i = 0; i < Elements.length; i++){
             var select_input = Elements[i].getElementsByClassName("select-input")[0];
             var select_dropdown = Elements[i].getElementsByClassName("select-dropdown")[0];
-            select_input.addEventListener("focus",self.select_Open);
+            Elements[i].addEventListener("focusin", self.selectOpen);
+            Elements[i].addEventListener("focusout", self.selectClose);
 
             if ( "ontouchstart" in window ){
               select_dropdown.addEventListener("touchstart", self.seleted);
             }
             select_dropdown.addEventListener("mousedown", self.seleted);
-        }
+         }
       };
 
 
-      select.prototype.select_Open = function(e){
-         var select_element = this.parentElement;
+      SelectBox.prototype.selectOpen = function(e){
+         var select_element = this;
          var select_dropdown = select_element.getElementsByClassName("select-dropdown")[0];
-         var select_options = select_dropdown.getElementsByTagName("li");
-         var target = e.target || e.srcElement;
-         var listyle = select_options[0].currentStyle || window.getComputedStyle(select_options[0]);
+         var select_column = select_dropdown.getElementsByTagName("li");
+         var css = select_column[0].currentStyle || window.getComputedStyle(select_column[0]);
+         var regExp = new RegExp("px|rem");
+         var unit = regExp.exec(css.minHeight);
+         var height= css.minHeight.replace(regExp, "") * select_column.length;
+         var htmlCss, htmlElement, scrollBottom, elOffset;
 
 
+         if( unit[0] === "rem" ){
+             htmlElement = document.getElementsByTagName("html")[0];
+             htmlCss = htmlElement.currentStyle || window.getComputedStyle(htmlElement);
+             height = Number(height) * htmlCss.fontSize.replace(regExp , "");
+         }
+
+         elOffset = select_element.getBoundingClientRect();
+
+         scrollBottom =
+      (document.documentElement.clientHeight - document.body.getBoundingClientRect().top) - (this.offsetTop - this.getBoundingClientRect().height / 2);
+
+          scrollBottom <= height ?  select_dropdown.style.top = -(height - elOffset.height) + "px" : select_dropdown.style.top = 0 + "px";
 
          TweenLite.to( select_dropdown, 0.3, {
              opacity : 1,
@@ -122,20 +149,34 @@
           });
       };
 
+      SelectBox.prototype.selectClose = function(e){
+         var select_element = this;
+         var select_dropdown = select_element.getElementsByClassName("select-dropdown")[0];
+         var select_options = select_dropdown.getElementsByTagName("li");
 
 
-      select.prototype.seleted = function(e){
+
+         TweenLite.to( select_dropdown, 0.3, {
+             opacity : 0,
+             display : "none",
+          });
+      };
+
+
+
+
+      SelectBox.prototype.seleted = function(e){
         var targetEle = e.target || e.srcElement;
         var self = this;
-        var dropdown_box = self.parentElement;
-        var select_input = dropdown_box.getElementsByTagName("input")[0];
+        var select_dropdown = self.parentElement;
+        var select_input = select_dropdown.getElementsByTagName("input")[0];
 
-        if(tw_global.hasClass(targetEle,"disabled")){
+        if(tw_global.hasClass(targetEle,"disabled") || tw_global.hasClass(targetEle.parentElement,"disabled")){
              return false;
         }
 
 
-        var selectedElement = this.getElementsByClassName("selected")[0];
+        var selectedElement = self.getElementsByClassName("selected")[0];
 
         if( selectedElement ){
           tw_global.removeClass(selectedElement, "selected");
@@ -145,27 +186,15 @@
         select_input.value = value;
         tw_global.addClass(targetEle, "selected");
 
-
-
         TweenLite.to( self, 0.3, {
             opacity : 0,
-            display : "none"
+            display : "none",
          });
       };
 
 
-      var Construct = function(ClassObj){
-          return new ClassObj();
-      };
-      if(!win.twCom.input){
-          win.twCom.input = {};
-          win.twCom.input.Construct = Construct;
-          win.twCom.input.Text_field_class = Text_field;
-          win.twCom.input.select_class = select;
-      }
-})(window);
 
-window.addEventListener("DOMContentLoaded",function(){
-    twCom.input.text_field = twCom.input.Construct(twCom.input.Text_field_class);
-    twCom.input.select = twCom.input.Construct(twCom.input.select_class);
-});
+      window.addEventListener("DOMContentLoaded",function(){
+            twCom.form = {textField : TextField() , select : SelectBox()};
+      });
+})(window);
