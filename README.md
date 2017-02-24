@@ -8,3 +8,13 @@
   - Jquery의 의존하지않은 __native javascript__ 기반의 Css 프레임워크 만들기
   - 완성 된 후에는 __Reactjs or AngularJs__ 까지 지원하도록 지속적으로 개선
   - 일부 Metarial Design 적용
+  - 프로젝트 목표기간은 존재하지않습니다. 지속적으로 자기계발하면서 저의 개발 skill에 따른 개선과 개발을 해나아갈 예정입니다.
+
+
+---
+### 개발도구
+  - text Editor : __Atom Editor__
+  - Markup Language : __HTML__
+  - style Sheet : __Sass, css 표준문법__
+  - javascript : ES5
+  - 참고한 오픈소스 및 사이트 :  [Metarialize Css Framework](http://materializecss.com/), [W3cSchool](https://www.w3schools.com/) , [TweenLite.js](https://greensock.com/tweenlite)
