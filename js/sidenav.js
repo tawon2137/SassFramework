@@ -33,8 +33,6 @@
         self.closeSideNav = self.closeSideNavfn.bind(self);
 
         self.Element.style.width = option.width + option.suffix;
-        console.log(self.Element);
-        console.log(option.width);
 
         self.closeTrigger.addEventListener("click",self.closeSideNav);
         self.openTrigger.addEventListener("click",self.openSideNav);
@@ -45,6 +43,9 @@
           var sideNav = self.Element;
           var option = self.option;
           var sidenavShadow =  self.createShadow("sha-ray", self.closeSideNav);
+
+
+          //open Animation
           TweenLite.to(sidenavShadow, option.delay ,{
               opacity : 1,
               ease : option.easing,
@@ -60,6 +61,10 @@
       var sideNav = self.Element;
       var option = self.option;
       var sidenavShadow = self.shadowEle;
+
+
+
+      //close Animation
       TweenLite.to(sidenavShadow, option.delay ,{
           opacity : 0,
           ease : option.easing,
