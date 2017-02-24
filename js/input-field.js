@@ -127,6 +127,7 @@
          var regExp = new RegExp("px|rem");
          var unit = regExp.exec(css.minHeight);
          var height= css.minHeight.replace(regExp, "") * select_column.length;
+
          var htmlCss, htmlElement, scrollBottom, elOffset;
 
 
