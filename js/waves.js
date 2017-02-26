@@ -1,6 +1,4 @@
-window.twCom = {};
-
-(function(win){
+(function(){
     "use strict";
 
   var waves = {
@@ -24,7 +22,7 @@ window.twCom = {};
               doc = elem && elem.ownerDocument;
 
           docElem = doc.documentElement;
-          if (typeof elem.getBoundingClientRect !== typeof undefined) {
+          if ( typeof elem.getBoundingClientRect !== typeof undefined ) {
               box = elem.getBoundingClientRect();
           }
           win = window;
@@ -39,16 +37,16 @@ window.twCom = {};
         //웨이브 이펙트를 실행할 엘리먼트가 있는지 먼저확인하고 없으면 생성
         if( ele.getElementsByClassName("wave").length === 0 ){
             var effect = document.createElement("span");
-            tw_global.addClass(effect , "wave");
+            twCom.fn.addClass(effect , "wave");
             var waves_list = twCom.waves.config.waves_color_list;
             var wavecolor = (waves_list[ele.getAttribute("waves-color")] ? waves_list[ele.getAttribute("waves-color")] : waves_list['white']);
-            tw_global.addClass(effect , wavecolor);
+            twCom.fn.addClass(effect , wavecolor);
             ele.insertBefore(effect , ele.firstChild);
         }
 
         //애니메이션 추가
         var animation = ele.getElementsByClassName("wave")[0];
-        tw_global.removeClass(animation , "animate");
+        twCom.fn.removeClass(animation , "animate");
 
 
         //애니메이션 크기 지정전에 값이 있는지 확인
@@ -57,13 +55,12 @@ window.twCom = {};
             animation.style.width = max+"px";
             animation.style.height = max+"px";
         }
-        // var html = document.getElementsByTagName("html")[0];
-        // var style = html.currentStyle || window.getComputedStyle(html);
+
         var x = e.pageX - offset.left - animation.offsetWidth / 2;
         var y = e.pageY - offset.top  - animation.offsetHeight / 2;
         animation.style.left = x +'px';
         animation.style.top =  y + 'px';
-        tw_global.addClass(animation, "animate");
+        twCom.fn.addClass(animation, "animate");
       },
       Waveliston : function () {
         var self = this;
@@ -75,10 +72,10 @@ window.twCom = {};
       },
   };
 
-  if(!win.twCom.waves) {
-      win.twCom.waves = waves;
-  }
-})(window);
+
+window.twCom.waves = waves;
+
+})();
 window.addEventListener("DOMContentLoaded", function(event) {
   twCom.waves.Waveliston();
   twCom.sideNav.sideNavInit();

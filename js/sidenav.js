@@ -16,7 +16,7 @@
     },
     setoption : function (Opt) {
         if( typeof Opt === "object"){
-            this.option = tw_global.extends(this.option , Opt);
+            this.option = twCom.fn.extends(this.option , Opt);
         }else{
             throw new Error("option은 객체여야합니다.");
         }
@@ -43,7 +43,6 @@
           var sideNav = self.Element;
           var option = self.option;
           var sidenavShadow =  self.createShadow("sha-ray", self.closeSideNav);
-
 
           //open Animation
           TweenLite.to(sidenavShadow, option.delay ,{
@@ -87,7 +86,7 @@
     }
   };
 
-if(!win.twCom.sideNav){
+
     win.twCom.sideNav = sideNav;
-}
+
 })(window);

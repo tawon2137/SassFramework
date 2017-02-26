@@ -3,11 +3,14 @@ var ModalConstruct = (function(){
 
 
 
-    var Modal = function Construct(Element_, userOption){
-        this.Element = document.getElementById(Element_) || Element_;
-
-        this.Init(userOption);
-    };
+    function Modal(Element_, userOption){
+        if( this instanceof Modal ){
+          this.Element = document.getElementById(Element_) || Element_;
+          this.Init(userOption);
+        } else {
+          return new Modal(Element_, userOption);
+        }
+    }
 
     var DefaultOption = function(){
       this.shadow_opacity = 0.6;  //default 0.5 최소 0 , 최대 1
@@ -21,8 +24,26 @@ var ModalConstruct = (function(){
       };
       this.delay = 0.45;
       this.shadow_onclick_close = true;
-    };
 
+
+      this.openOption = {
+        display:"block",
+        top: (this.end_top+this.end_top_suffix),
+        scaleX : 1,
+        opacity : 1,
+        ease: Power3.easeOut,
+        onComplete:this.modalOpen
+      };
+
+      this.closeOption = {
+        display:"none",
+        top: (this.start_top + this.start_top_suffix),
+        scaleX : 0.7,
+        opacity : 0,
+        ease: Power3.easeOut,
+      };
+
+    };
 
     DefaultOption.prototype.setOption = function(newOption){
         var myOption = this;
@@ -35,9 +56,11 @@ var ModalConstruct = (function(){
     };
 
     Modal.prototype.Init = function(userOption){
-       this.Option = new DefaultOption();
-       this.Css().setModal("top",(this.Option.start_top+this.Option.start_top_suffix));
-       this.OpenbtnSetting(this.Element.id);
+       var self = this;
+       var ele = this.Element;
+       var option = this.Option = new DefaultOption();
+       twCom.fn.cssObject(ele).setCss("top",(option.start_top + option.start_top_suffix));
+       this.OpenbtnSetting(ele.id);
        this.ClosebtnSetting();
     };
 
@@ -74,8 +97,12 @@ var ModalConstruct = (function(){
         var modal = ( this === twCom.Modal[target] ? this : twCom.Modal[target] );
 
         if(modal){
-          modal.createShadow(target);
-          modal.OpenAnimation();
+          var modalElement = modal.Element;
+          var shadowElement = modal.createShadow(target);
+          var modalOption = modal.Option;
+
+          TweenLite.to( shadowElement, modalOption.delay, { opacity : modalOption.shadow_opacity } );
+          TweenLite.to( modalElement, modalOption.delay, modalOption.openOption);
         }else{
           throw new Error("Error Modal Open Error");
         }
@@ -88,61 +115,32 @@ var ModalConstruct = (function(){
       var target = Ele.getAttribute("modal-target") || Ele.id;
       var modal = ( this === twCom.Modal[target] ? this : twCom.Modal[target] );
 
+
       if(modal){
-          modal.closeAnimation();
+          var modalElement = modal.Element;
+          var shadowElement = modal.shadowEle;
+          var modalOption = modal.Option;
+          modalOption.closeOption.onComplete = function(){
+              shadowElement.parentElement.removeChild(shadowElement);
+          };
+
+          TweenLite.to( shadowElement, modalOption.delay, { opacity : 0 } );
+          TweenLite.to(modalElement, modalOption.delay, modalOption.closeOption);
       }else{
         throw new Error("Error Modal Close Error");
       }
     };
 
-    Modal.prototype.OpenAnimation = function(){
-         var Ele_css = this.Css();
-         var Shadow_css = this.shadowEle;
-         var css_option = this.Option;
-         var Ele = this.Element;
-         TweenLite.to( Shadow_css, css_option.delay, { opacity : css_option.shadow_opacity } );
-         TweenLite.to( Ele, css_option.delay, {
-           display:"block",
-           top: (css_option.end_top+css_option.end_top_suffix),
-           scaleX : 1 ,
-           opacity : 1,
-           ease: Power3.easeOut,
-           onComplete:this.Option.modalOpen
-          });
-    };
+
 
     Modal.prototype.closeAnimation = function(){
-         var Shadow_css = this.shadowEle;
-         var css_option = this.Option;
+         var shadowElement = this.shadowEle;
+         var modalOption = this.Option;
          var Ele = this.Element;
-        TweenLite.to( Shadow_css, css_option.delay, { opacity : 0 } );
-        TweenLite.to(Ele, css_option.delay,
-          {
-          display:"none",
-          top: (css_option.start_top+css_option.start_top_suffix),
-          scaleX : 0.7,
-          opacity : 0,
-          ease: Power3.easeOut,
-          onComplete:function(){
-          Shadow_css.parentElement.removeChild(Shadow_css);
-          css_option.modalClose();
-          }
-      });
     };
 
 
-    Modal.prototype.Css = function(){
-        var Ele = this.Element;
-        return {
-          getModal : function(prop){
-            var css = Ele.currentStyle || window.getComputedStyle(Ele);
-            return css[prop];
-          },
-          setModal : function(prop , value){
-              Ele.style[prop] = value;
-          }
-        };
-    };
+
     Modal.prototype.setOption = function(Option){
         if( typeof Option === "object"){
             this.Option = this.Option.setOption(Option);
@@ -165,10 +163,7 @@ var ModalConstruct = (function(){
         return document.body.appendChild(Shadowele);
     };
 
-    return function(Element_,userOption, command){
-        return new Modal(Element_,userOption, command);
-    };
-
+    return Modal;
 })();
 
 window.twCom.Modal = {};
@@ -183,7 +178,7 @@ window.addEventListener("DOMContentLoaded",function(){
 });
 window.addEventListener("load",function(){
     window.twCom.Modal["logmodal"].setOption({
-      shadow_opacity : .5, //default 0.5 최소 0 , 최대 1
+      shadow_opacity : 0.5, //default 0.5 최소 0 , 최대 1
       start_top : "50",
       start_top_suffix : "%",
       end_top : "10",
