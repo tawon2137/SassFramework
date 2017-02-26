@@ -1,9 +1,17 @@
-(function(win){
+if( typeof window.twCom === "undefined"){
+    window.twCom = {};
+}
+
+
+(function(){
     "use strict";
-    var tw_global = {
 
 
-      addClass : function(Ele , ClassName){
+      function Global (){
+
+      }
+
+      Global.prototype.addClass = function(Ele , ClassName) {
           if(Ele.classList && typeof ClassName === "string"){
               Ele.classList.add(ClassName);
           }else if (Ele.className && typeof ClassName === "string" ){
@@ -11,10 +19,10 @@
           }else{
               throw new Error("addClass의 인자는 (Element객체,'넣을클래스명') 으로 정의해야합니다.");
           }
-      },
+      };
 
 
-      removeClass : function(Ele, ClassName){
+      Global.prototype.removeClass = function(Ele, ClassName) {
             if(Ele.classList && typeof ClassName === "string"){
                 Ele.classList.remove(ClassName);
             }else if (Ele.className && typeof ClassName === "string" ){
@@ -22,10 +30,10 @@
             }else{
                 throw new Error("removeClass의 인자는 (Element객체,'넣을클래스명 [구분자 공백]') 으로 정의해야합니다.");
             }
-      },
+      };
 
 
-      hasClass : function(Ele , ClassName){
+      Global.prototype.hasClass = function(Ele , ClassName) {
           if(Ele.classList && typeof ClassName === "string"){
               return Ele.classList.contains(ClassName);
           }else if (Ele.className && typeof ClassName === "string" ){
@@ -33,24 +41,11 @@
           }else{
               throw new Error("hasClass의 인자는 (Element객체,'넣을클래스명') 으로 정의해야합니다.");
           }
-      },
+      };
 
 
-      removeShadow : function(id){
-        var Shadowele = document.getElementById(id);
-        return Shadowele.parentElement.removeChild(Shadowele);
-      },
 
-
-      createShadow : function(id, clickfn, Callback){
-        var Shadowele = document.createElement("div");
-        Shadowele.id=id;
-        Shadowele.addEventListener("click",clickfn);
-        return document.body.appendChild(Shadowele);
-      },
-
-
-      extends : function(obj1 , obj2 , command) {
+      Global.prototype.extends = function(obj1 , obj2 , command) {
         var newObj = {};
         for(var prop in obj1){
           if(obj1.hasOwnProperty(prop)){
@@ -63,10 +58,24 @@
             }
         }
         return newObj;
-      }
-    };
+      };
+      
+      Global.prototype.cssObject = function(element){
+          var Ele = element;
+          var css = Ele.currentStyle || window.getComputedStyle(Ele);
+          return {
+            getCss : function(prop){
+              if( typeof prop === "string" ){
+                return css[prop];
+              } else {
+                throw new Error("Css propertyName은 String 으로 정의해주세요.");
+              }
+            },
+            setCss : function(prop , value){
+                Ele.style[prop] = value;
+            }
+          };
+      };
 
-if(!win.tw_global){
-    win.tw_global = tw_global;
-}
-})(window);
+    twCom.fn = new Global();
+})();
