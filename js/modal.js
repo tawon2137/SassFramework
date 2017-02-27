@@ -41,6 +41,7 @@ var ModalConstruct = (function(){
         scaleX : 0.7,
         opacity : 0,
         ease: Power3.easeOut,
+        onComplete:this.modalClose
       };
 
     };
@@ -120,11 +121,16 @@ var ModalConstruct = (function(){
           var modalElement = modal.Element;
           var shadowElement = modal.shadowEle;
           var modalOption = modal.Option;
-          modalOption.closeOption.onComplete = function(){
-              shadowElement.parentElement.removeChild(shadowElement);
-          };
 
-          TweenLite.to( shadowElement, modalOption.delay, { opacity : 0 } );
+
+          TweenLite.to( shadowElement, modalOption.delay, {
+            opacity : 0,
+            onComplete: function(){
+              if ( shadowElement ){
+                 shadowElement.parentElement.removeChild(shadowElement);
+              }
+            }
+        });
           TweenLite.to(modalElement, modalOption.delay, modalOption.closeOption);
       }else{
         throw new Error("Error Modal Close Error");

@@ -68,7 +68,9 @@
           opacity : 0,
           ease : option.easing,
           onComplete: function(){
-              sidenavShadow.parentElement.removeChild(sidenavShadow);
+              if ( sidenavShadow ){
+                sidenavShadow.parentElement.removeChild(sidenavShadow);
+              }
           }
       });
       TweenLite.to( sideNav, option.delay, {
