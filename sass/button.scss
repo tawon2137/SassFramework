@@ -78,47 +78,33 @@ i.fa::before{
     overflow: hidden;
     position: relative;
     -webkit-tap-highlight-color:transparent;
+    z-index: 1;
 }
 
 .wave {
   display: block;
   position: absolute;
   border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top : -10px;
+  margin-left: -10px;
+  z-index: -1;
   will-change : transform ,opacity;
-  @include transform("scale(0)");
-  &.wave-effect-white{
-    @include wavebackground(waves-color-column-setting($button-color-white),waves-color-setting($button-color-white));
+  opacity: 0;
+  &.wave-color-white{
+    background: white;
   }
-  &.wave-effect-black{
-    @include wavebackground(waves-color-column-setting($button-color-black),waves-color-setting($button-color-black));
-  }
-  &.wave-effect-green{
-    @include wavebackground(waves-color-column-setting($button-color-green),waves-color-setting($button-color-green));
-  }
-  &.wave-effect-yellow{
-    @include wavebackground(waves-color-column-setting($button-color-yellow),waves-color-setting($button-color-yellow));
-  }
-  &.wave-effect-red{
-    @include wavebackground(waves-color-column-setting($button-color-red),waves-color-setting($button-color-red));
-  }
-  &.wave-effect-column-white{
-    background: #{waves-color-column-setting($button-color-white)};
-  }
-  &.wave-effect-column-black{
+  &.wave-color-black{
     background: #{waves-color-column-setting($button-color-black)};
   }
-  &.wave-effect-column-green{
+  &.wave-color-green{
     background: #{waves-color-column-setting($button-color-green)};
   }
-  &.wave-effect-column-yellow{
+  &.wave-color-yellow{
     background: #{waves-color-column-setting($button-color-yellow)};
   }
-  &.wave-effect-column-red{
+  &.wave-color-red{
     background: #{waves-color-column-setting($button-color-red)};
   }
 }
-.animate {
-  @include animate("ripple 0.45s linear");
-}
-
-@include keyframesubfix("ripple","{100% {opacity: 0; transform: scale(2.5);}}");

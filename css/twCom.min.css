@@ -881,73 +881,27 @@ i.fa::before {
 .waves-effect {
   overflow: hidden;
   position: relative;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+  z-index: 1; }
 
 .wave {
   display: block;
   position: absolute;
   border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  z-index: -1;
   will-change: transform ,opacity;
-  -webkit-transform: scale(0);
-  -moz-transform: scale(0);
-  -o-transform: scale(0);
-  -ms-transform: scale(0);
-  transform: scale(0); }
-  .wave.wave-effect-white {
-    background: rgba(255,255,255, 0.3);
-    background: -webkit-radial-gradient(rgba(255,255,255, 0.2) 0,rgba(255,255,255, 0.3) 10%,rgba(255,255,255, 0.4) 20%,rgba(255,255,255, 0.5) 30%, rgba(255,255,255, 0.6) 40%, rgba(255,255,255, 0.7) 50%, rgba(255,255,255, 0.5) 60%, rgba(255,255,255, 0.4) 70%, rgba(255,255,255, 0.3) 80%, rgba(255,255,255, 0.2) 90%,rgba(255,255,255, 0.1) 100%);
-    background: -o-radial-gradient(rgba(255,255,255, 0.2) 0,rgba(255,255,255, 0.3) 10%,rgba(255,255,255, 0.4) 20%,rgba(255,255,255, 0.5) 30%, rgba(255,255,255, 0.6) 40%, rgba(255,255,255, 0.7) 50%, rgba(255,255,255, 0.5) 60%, rgba(255,255,255, 0.4) 70%, rgba(255,255,255, 0.3) 80%, rgba(255,255,255, 0.2) 90%,rgba(255,255,255, 0.1) 100%);
-    background: -ms-radial-gradient(rgba(255,255,255, 0.2) 0,rgba(255,255,255, 0.3) 10%,rgba(255,255,255, 0.4) 20%,rgba(255,255,255, 0.5) 30%, rgba(255,255,255, 0.6) 40%, rgba(255,255,255, 0.7) 50%, rgba(255,255,255, 0.5) 60%, rgba(255,255,255, 0.4) 70%, rgba(255,255,255, 0.3) 80%, rgba(255,255,255, 0.2) 90%,rgba(255,255,255, 0.1) 100%);
-    background: -moz-radial-gradient(rgba(255,255,255, 0.2) 0,rgba(255,255,255, 0.3) 10%,rgba(255,255,255, 0.4) 20%,rgba(255,255,255, 0.5) 30%, rgba(255,255,255, 0.6) 40%, rgba(255,255,255, 0.7) 50%, rgba(255,255,255, 0.5) 60%, rgba(255,255,255, 0.4) 70%, rgba(255,255,255, 0.3) 80%, rgba(255,255,255, 0.2) 90%,rgba(255,255,255, 0.1) 100%);
-    background: radial-gradient(rgba(255,255,255, 0.2) 0,rgba(255,255,255, 0.3) 10%,rgba(255,255,255, 0.4) 20%,rgba(255,255,255, 0.5) 30%, rgba(255,255,255, 0.6) 40%, rgba(255,255,255, 0.7) 50%, rgba(255,255,255, 0.5) 60%, rgba(255,255,255, 0.4) 70%, rgba(255,255,255, 0.3) 80%, rgba(255,255,255, 0.2) 90%,rgba(255,255,255, 0.1) 100%); }
-  .wave.wave-effect-black {
-    background: rgba(0,0,0, 0.3);
-    background: -webkit-radial-gradient(rgba(0,0,0, 0.2) 0,rgba(0,0,0, 0.3) 10%,rgba(0,0,0, 0.4) 20%,rgba(0,0,0, 0.5) 30%, rgba(0,0,0, 0.6) 40%, rgba(0,0,0, 0.7) 50%, rgba(0,0,0, 0.5) 60%, rgba(0,0,0, 0.4) 70%, rgba(0,0,0, 0.3) 80%, rgba(0,0,0, 0.2) 90%,rgba(0,0,0, 0.1) 100%);
-    background: -o-radial-gradient(rgba(0,0,0, 0.2) 0,rgba(0,0,0, 0.3) 10%,rgba(0,0,0, 0.4) 20%,rgba(0,0,0, 0.5) 30%, rgba(0,0,0, 0.6) 40%, rgba(0,0,0, 0.7) 50%, rgba(0,0,0, 0.5) 60%, rgba(0,0,0, 0.4) 70%, rgba(0,0,0, 0.3) 80%, rgba(0,0,0, 0.2) 90%,rgba(0,0,0, 0.1) 100%);
-    background: -ms-radial-gradient(rgba(0,0,0, 0.2) 0,rgba(0,0,0, 0.3) 10%,rgba(0,0,0, 0.4) 20%,rgba(0,0,0, 0.5) 30%, rgba(0,0,0, 0.6) 40%, rgba(0,0,0, 0.7) 50%, rgba(0,0,0, 0.5) 60%, rgba(0,0,0, 0.4) 70%, rgba(0,0,0, 0.3) 80%, rgba(0,0,0, 0.2) 90%,rgba(0,0,0, 0.1) 100%);
-    background: -moz-radial-gradient(rgba(0,0,0, 0.2) 0,rgba(0,0,0, 0.3) 10%,rgba(0,0,0, 0.4) 20%,rgba(0,0,0, 0.5) 30%, rgba(0,0,0, 0.6) 40%, rgba(0,0,0, 0.7) 50%, rgba(0,0,0, 0.5) 60%, rgba(0,0,0, 0.4) 70%, rgba(0,0,0, 0.3) 80%, rgba(0,0,0, 0.2) 90%,rgba(0,0,0, 0.1) 100%);
-    background: radial-gradient(rgba(0,0,0, 0.2) 0,rgba(0,0,0, 0.3) 10%,rgba(0,0,0, 0.4) 20%,rgba(0,0,0, 0.5) 30%, rgba(0,0,0, 0.6) 40%, rgba(0,0,0, 0.7) 50%, rgba(0,0,0, 0.5) 60%, rgba(0,0,0, 0.4) 70%, rgba(0,0,0, 0.3) 80%, rgba(0,0,0, 0.2) 90%,rgba(0,0,0, 0.1) 100%); }
-  .wave.wave-effect-green {
-    background: rgba(76, 175, 80, 0.3);
-    background: -webkit-radial-gradient(rgba(76, 175, 80, 0.2) 0,rgba(76, 175, 80, 0.3) 10%,rgba(76, 175, 80, 0.4) 20%,rgba(76, 175, 80, 0.5) 30%, rgba(76, 175, 80, 0.6) 40%, rgba(76, 175, 80, 0.7) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(76, 175, 80, 0.4) 70%, rgba(76, 175, 80, 0.3) 80%, rgba(76, 175, 80, 0.2) 90%,rgba(76, 175, 80, 0.1) 100%);
-    background: -o-radial-gradient(rgba(76, 175, 80, 0.2) 0,rgba(76, 175, 80, 0.3) 10%,rgba(76, 175, 80, 0.4) 20%,rgba(76, 175, 80, 0.5) 30%, rgba(76, 175, 80, 0.6) 40%, rgba(76, 175, 80, 0.7) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(76, 175, 80, 0.4) 70%, rgba(76, 175, 80, 0.3) 80%, rgba(76, 175, 80, 0.2) 90%,rgba(76, 175, 80, 0.1) 100%);
-    background: -ms-radial-gradient(rgba(76, 175, 80, 0.2) 0,rgba(76, 175, 80, 0.3) 10%,rgba(76, 175, 80, 0.4) 20%,rgba(76, 175, 80, 0.5) 30%, rgba(76, 175, 80, 0.6) 40%, rgba(76, 175, 80, 0.7) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(76, 175, 80, 0.4) 70%, rgba(76, 175, 80, 0.3) 80%, rgba(76, 175, 80, 0.2) 90%,rgba(76, 175, 80, 0.1) 100%);
-    background: -moz-radial-gradient(rgba(76, 175, 80, 0.2) 0,rgba(76, 175, 80, 0.3) 10%,rgba(76, 175, 80, 0.4) 20%,rgba(76, 175, 80, 0.5) 30%, rgba(76, 175, 80, 0.6) 40%, rgba(76, 175, 80, 0.7) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(76, 175, 80, 0.4) 70%, rgba(76, 175, 80, 0.3) 80%, rgba(76, 175, 80, 0.2) 90%,rgba(76, 175, 80, 0.1) 100%);
-    background: radial-gradient(rgba(76, 175, 80, 0.2) 0,rgba(76, 175, 80, 0.3) 10%,rgba(76, 175, 80, 0.4) 20%,rgba(76, 175, 80, 0.5) 30%, rgba(76, 175, 80, 0.6) 40%, rgba(76, 175, 80, 0.7) 50%, rgba(76, 175, 80, 0.5) 60%, rgba(76, 175, 80, 0.4) 70%, rgba(76, 175, 80, 0.3) 80%, rgba(76, 175, 80, 0.2) 90%,rgba(76, 175, 80, 0.1) 100%); }
-  .wave.wave-effect-yellow {
-    background: rgba(255, 235, 59, 0.3);
-    background: -webkit-radial-gradient(rgba(255, 235, 59, 0.2) 0,rgba(255, 235, 59, 0.3) 10%,rgba(255, 235, 59, 0.4) 20%,rgba(255, 235, 59, 0.5) 30%, rgba(255, 235, 59, 0.6) 40%, rgba(255, 235, 59, 0.7) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(255, 235, 59, 0.4) 70%, rgba(255, 235, 59, 0.3) 80%, rgba(255, 235, 59, 0.2) 90%,rgba(255, 235, 59, 0.1) 100%);
-    background: -o-radial-gradient(rgba(255, 235, 59, 0.2) 0,rgba(255, 235, 59, 0.3) 10%,rgba(255, 235, 59, 0.4) 20%,rgba(255, 235, 59, 0.5) 30%, rgba(255, 235, 59, 0.6) 40%, rgba(255, 235, 59, 0.7) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(255, 235, 59, 0.4) 70%, rgba(255, 235, 59, 0.3) 80%, rgba(255, 235, 59, 0.2) 90%,rgba(255, 235, 59, 0.1) 100%);
-    background: -ms-radial-gradient(rgba(255, 235, 59, 0.2) 0,rgba(255, 235, 59, 0.3) 10%,rgba(255, 235, 59, 0.4) 20%,rgba(255, 235, 59, 0.5) 30%, rgba(255, 235, 59, 0.6) 40%, rgba(255, 235, 59, 0.7) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(255, 235, 59, 0.4) 70%, rgba(255, 235, 59, 0.3) 80%, rgba(255, 235, 59, 0.2) 90%,rgba(255, 235, 59, 0.1) 100%);
-    background: -moz-radial-gradient(rgba(255, 235, 59, 0.2) 0,rgba(255, 235, 59, 0.3) 10%,rgba(255, 235, 59, 0.4) 20%,rgba(255, 235, 59, 0.5) 30%, rgba(255, 235, 59, 0.6) 40%, rgba(255, 235, 59, 0.7) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(255, 235, 59, 0.4) 70%, rgba(255, 235, 59, 0.3) 80%, rgba(255, 235, 59, 0.2) 90%,rgba(255, 235, 59, 0.1) 100%);
-    background: radial-gradient(rgba(255, 235, 59, 0.2) 0,rgba(255, 235, 59, 0.3) 10%,rgba(255, 235, 59, 0.4) 20%,rgba(255, 235, 59, 0.5) 30%, rgba(255, 235, 59, 0.6) 40%, rgba(255, 235, 59, 0.7) 50%, rgba(255, 235, 59, 0.5) 60%, rgba(255, 235, 59, 0.4) 70%, rgba(255, 235, 59, 0.3) 80%, rgba(255, 235, 59, 0.2) 90%,rgba(255, 235, 59, 0.1) 100%); }
-  .wave.wave-effect-red {
-    background: rgba(255, 0, 0, 0.3);
-    background: -webkit-radial-gradient(rgba(255, 0, 0, 0.2) 0,rgba(255, 0, 0, 0.3) 10%,rgba(255, 0, 0, 0.4) 20%,rgba(255, 0, 0, 0.5) 30%, rgba(255, 0, 0, 0.6) 40%, rgba(255, 0, 0, 0.7) 50%, rgba(255, 0, 0, 0.5) 60%, rgba(255, 0, 0, 0.4) 70%, rgba(255, 0, 0, 0.3) 80%, rgba(255, 0, 0, 0.2) 90%,rgba(255, 0, 0, 0.1) 100%);
-    background: -o-radial-gradient(rgba(255, 0, 0, 0.2) 0,rgba(255, 0, 0, 0.3) 10%,rgba(255, 0, 0, 0.4) 20%,rgba(255, 0, 0, 0.5) 30%, rgba(255, 0, 0, 0.6) 40%, rgba(255, 0, 0, 0.7) 50%, rgba(255, 0, 0, 0.5) 60%, rgba(255, 0, 0, 0.4) 70%, rgba(255, 0, 0, 0.3) 80%, rgba(255, 0, 0, 0.2) 90%,rgba(255, 0, 0, 0.1) 100%);
-    background: -ms-radial-gradient(rgba(255, 0, 0, 0.2) 0,rgba(255, 0, 0, 0.3) 10%,rgba(255, 0, 0, 0.4) 20%,rgba(255, 0, 0, 0.5) 30%, rgba(255, 0, 0, 0.6) 40%, rgba(255, 0, 0, 0.7) 50%, rgba(255, 0, 0, 0.5) 60%, rgba(255, 0, 0, 0.4) 70%, rgba(255, 0, 0, 0.3) 80%, rgba(255, 0, 0, 0.2) 90%,rgba(255, 0, 0, 0.1) 100%);
-    background: -moz-radial-gradient(rgba(255, 0, 0, 0.2) 0,rgba(255, 0, 0, 0.3) 10%,rgba(255, 0, 0, 0.4) 20%,rgba(255, 0, 0, 0.5) 30%, rgba(255, 0, 0, 0.6) 40%, rgba(255, 0, 0, 0.7) 50%, rgba(255, 0, 0, 0.5) 60%, rgba(255, 0, 0, 0.4) 70%, rgba(255, 0, 0, 0.3) 80%, rgba(255, 0, 0, 0.2) 90%,rgba(255, 0, 0, 0.1) 100%);
-    background: radial-gradient(rgba(255, 0, 0, 0.2) 0,rgba(255, 0, 0, 0.3) 10%,rgba(255, 0, 0, 0.4) 20%,rgba(255, 0, 0, 0.5) 30%, rgba(255, 0, 0, 0.6) 40%, rgba(255, 0, 0, 0.7) 50%, rgba(255, 0, 0, 0.5) 60%, rgba(255, 0, 0, 0.4) 70%, rgba(255, 0, 0, 0.3) 80%, rgba(255, 0, 0, 0.2) 90%,rgba(255, 0, 0, 0.1) 100%); }
-  .wave.wave-effect-column-white {
-    background: rgba(255,255,255, 0.3); }
-  .wave.wave-effect-column-black {
-    background: rgba(0,0,0, 0.3); }
-  .wave.wave-effect-column-green {
-    background: rgba(76, 175, 80, 0.3); }
-  .wave.wave-effect-column-yellow {
-    background: rgba(255, 235, 59, 0.3); }
-  .wave.wave-effect-column-red {
-    background: rgba(255, 0, 0, 0.3); }
-
-.animate {
-  -webkit-animation: ripple 0.45s linear;
-  -moz-animation: ripple 0.45s linear;
-  -ms-animation: ripple 0.45s linear;
-  -o-animation: ripple 0.45s linear;
-  animation: ripple 0.45s linear; }
-
-@-webkit-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}
-  @-moz-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}
-  @-o-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}
-  @-ms-keyframes ripple {100% {opacity: 0; transform: scale(2.5);}}
-  @keyframes ripple {100% {opacity: 0; transform: scale(2.5);}};
+  opacity: 0; }
+  .wave.wave-color-white {
+    background: white; }
+  .wave.wave-color-black {
+    background: rgba(0,0,0, 0.7); }
+  .wave.wave-color-green {
+    background: rgba(76, 175, 80, 0.7); }
+  .wave.wave-color-yellow {
+    background: rgba(255, 235, 59, 0.7); }
+  .wave.wave-color-red {
+    background: rgba(255, 0, 0, 0.7); }

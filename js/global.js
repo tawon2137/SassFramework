@@ -5,8 +5,6 @@ if( typeof window.twCom === "undefined"){
 
 (function(){
     "use strict";
-
-
       function Global (){
 
       }
@@ -59,7 +57,7 @@ if( typeof window.twCom === "undefined"){
         }
         return newObj;
       };
-      
+
       Global.prototype.cssObject = function(element){
           var Ele = element;
           var css = Ele.currentStyle || window.getComputedStyle(Ele);
@@ -76,6 +74,18 @@ if( typeof window.twCom === "undefined"){
             }
           };
       };
+      Global.prototype.convertStyle = function (obj) {
+          var style = '';
 
+          for (var a in obj) {
+              if (obj.hasOwnProperty(a)) {
+                  style += (a + ':' + obj[a] + ';');
+              }
+          }
+
+          return style;
+      };
+
+      
     twCom.fn = new Global();
 })();
