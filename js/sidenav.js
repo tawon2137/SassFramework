@@ -1,13 +1,12 @@
 (function () {
    "use strict";
 
-    function getSidenavElement(e) {
+    function getSidenavtrigger(e) {
 
         var element = e.target || e.srcElement;
         var target = null;
-
         while( element.parentElement !== null ) {
-            if ( element.getAttribute("data-sideNav-open") ){
+            if ( element.getAttribute("data-sidenav") ){
                 target = element;
                 break;
             }
@@ -16,22 +15,44 @@
 
         return target;
     }
+
+    function getSidenavElement(e, element){
+        var sidenav_id;
+        if ( typeof e === "object" && typeof element === "object" ) {
+            sidenav_id = element.getAttribute("data-sidenav");
+            return document.getElementById(sidenav_id);
+        }else{
+            sidenav_id = e || element;
+            return document.getElementById(sidenav_id);
+        }
+    }
     var sideNav = {
-        show : function (e) {
-            var sideNav_trigger = getSidenavElement(e);
-            if ( sideNav_trigger !== null ){
-                sideNav_trigger
+        open : function (e, element) {
+            var sidenavElement = getSidenavElement(e, element);
+
+
+            if ( sidenavElement === null ){
+                return false;
             }
-        },
-        hide : function (e) {
+
+            var sidenav_css = twCom.fn.cssObject(sidenavElement);
+            
 
         }
     };
+
+    function triggerCheck(e){
+        var sideNav_trigger = getSidenavtrigger(e);
+        if ( sideNav_trigger !== null ){
+          var trigger_type = sideNav_trigger.getAttribute("data-trigger") || "open";
+          sideNav[trigger_type](e, sideNav_trigger);
+        }
+    }
     window.addEventListener("DOMContentLoaded", function (e) {
         if ('ontouchstart' in window) {
-            document.body.addEventListener('touchend', sideNav.show, false);
+            document.body.addEventListener('touchend', triggerCheck, false);
         }else{
-            document.body.addEventListener('click', sideNav.show, false);
+            document.body.addEventListener('click', triggerCheck, false);
         }
     });
 })();

@@ -71,6 +71,15 @@ if( typeof window.twCom === "undefined"){
             },
             setCss : function(prop , value){
                 Ele.style[prop] = value;
+            },
+            cssEach : function(cssobj){
+
+                for (var key in cssobj){
+                  if(cssobj.hasOwnProperty(key)){
+                      Ele.style[key] = cssobj[key];
+                  }
+                }
+
             }
           };
       };
@@ -86,6 +95,6 @@ if( typeof window.twCom === "undefined"){
           return style;
       };
 
-      
+
     twCom.fn = new Global();
 })();

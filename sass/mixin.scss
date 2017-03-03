@@ -22,6 +22,16 @@
   @-ms-keyframes #{$title} #{$value}
   @keyframes #{$title} #{$value}
 };
+
+
+@mixin transform($value) {
+  -webkit-transform:#{$value};
+     -moz-transform:#{$value};
+       -o-transform:#{$value};
+      -ms-transform:#{$value};
+          transform:#{$value};
+}
+
 @mixin transform($value) {
   -webkit-transform:#{$value};
      -moz-transform:#{$value};

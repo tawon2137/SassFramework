@@ -127,6 +127,19 @@
          }
       };
 
+      var selectOption = {
+          duration : 200,
+          closeOption : {
+            opacity : 0,
+            scaleY : 0.7,
+            display : "none",
+          },
+          openOption : {
+            opacity : 1,
+            scaleY : 1,
+            display : "block",
+          }
+      };
 
       SelectBox.prototype.selectOpen = function(e){
          var select_element = this;
@@ -139,6 +152,8 @@
          var height= column_css.getCss("min-height").replace(regExp, "") * select_column.length;
 
          var htmlCss, htmlElement, scrollBottom, elOffset;
+         var dropdown_style = {top : 0};
+         var transOrigin = "0px 0px";
 
 
          if( unit[0] === "rem" ){
@@ -154,16 +169,23 @@
                           - (this.offsetTop - this.getBoundingClientRect().height / 2);
 
           if ( scrollBottom <= height ){
-              dropdown_css.setCss("top", "-" + (height - elOffset.height) + "px");
-          } else {
-              dropdown_css.setCss("top",  "0px");
+
+              dropdown_style.top = height - elOffset.height;
+              transOrigin = "100% 100%";
+
           }
 
+          dropdown_style.top = "-" + dropdown_style.top + "px";
+          dropdown_style["-webkit-transform-origin"] = transOrigin;
+          dropdown_style["-moz-transform-origin"] = transOrigin;
+          dropdown_style["-o-transform-origin"] = transOrigin;
+          dropdown_style["transform-origin"] = transOrigin;
+          dropdown_style["-webkit-transform-origin"] = transOrigin;
 
-         TweenLite.to( select_dropdown, 0.3, {
-             opacity : 1,
-             display : "block",
-          });
+
+          dropdown_css.cssEach(dropdown_style);
+
+          TweenLite.to( select_dropdown, (selectOption.duration / 1000), selectOption.openOption);
       };
 
       SelectBox.prototype.selectClose = function(e){
@@ -171,11 +193,7 @@
          var select_dropdown = select_element.getElementsByClassName("select-dropdown")[0];
          var select_options = select_dropdown.getElementsByTagName("li");
 
-
-         TweenLite.to( select_dropdown, 0.3, {
-             opacity : 0,
-             display : "none",
-          });
+         TweenLite.to( select_dropdown, (selectOption.duration / 1000), selectOption.closeOption);
       };
 
 
@@ -184,8 +202,9 @@
       SelectBox.prototype.seleted = function(e){
         var targetEle = e.target || e.srcElement;
         var self = this;
-        var select_dropdown = self.parentElement;
-        var select_input = select_dropdown.getElementsByTagName("input")[0];
+        var select_dropdown = self;
+        var select_box = self.parentElement;
+        var select_input = select_box.getElementsByTagName("input")[0];
 
         if(twCom.fn.hasClass(targetEle,"disabled") || twCom.fn.hasClass(targetEle.parentElement,"disabled")){
              return false;
@@ -202,10 +221,8 @@
         select_input.setAttribute("value", value);
         twCom.fn.addClass(targetEle, "selected");
 
-        TweenLite.to( self, 0.3, {
-            opacity : 0,
-            display : "none",
-         });
+
+        TweenLite.to( select_dropdown, (selectOption.duration / 1000), selectOption.closeOption);
       };
 
 

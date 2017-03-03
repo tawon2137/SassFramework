@@ -175,20 +175,5 @@
 window.addEventListener("DOMContentLoaded",function(){
     twCom.Modal.list = document.getElementsByClassName("modal");
     twCom.Modal["logmodal"] = twCom.Modal.init(document.getElementById("logmodal"));
+    twCom.Modal["logmodal2"] = twCom.Modal.init(document.getElementById("logmodal2"));
 });
-// window.addEventListener("load",function(){
-//     window.twCom.Modal["logmodal"].setOption({
-//       shadow_opacity : 0.5, //default 0.5 최소 0 , 최대 1
-//       start_top : "50",
-//       start_top_suffix : "%",
-//       end_top : "10",
-//       end_top_suffix : "%",
-//       modalOpen : function(){
-//           console.log("modalOpen event");
-//       },
-//       modalClose : function(){
-//           console.log("modalClose event");
-//       },
-//       shadow_onclick_close : false
-//     });
-// });

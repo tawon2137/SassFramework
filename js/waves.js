@@ -7,11 +7,16 @@
     "green" : "wave-color-green",
     "yellow" : "wave-color-yellow",
     "red" : "wave-color-red",
+    "white2" : "wave-color-white2",
+    "black2" : "wave-color-black2",
+    "green2" : "wave-color-green2",
+    "yellow2" : "wave-color-yellow2",
+    "red2" : "wave-color-red2",
   };
 
 
   function offset(elem){
-    var docElem, win,
+    var docElem,
         box = {top: 0, left: 0},
         doc = elem && elem.ownerDocument;
 
@@ -19,10 +24,10 @@
     if ( typeof elem.getBoundingClientRect !== typeof undefined ) {
         box = elem.getBoundingClientRect();
     }
-    win = window;
+
     return {
-        top: box.top + win.pageYOffset - docElem.clientTop,
-        left: box.left + win.pageXOffset - docElem.clientLeft
+        top: box.top + window.pageYOffset - docElem.clientTop,
+        left: box.left + window.pageXOffset - docElem.clientLeft
     };
   }
 
@@ -43,14 +48,14 @@
 
         element.appendChild(effectElement);
         // wave color 설정
-        var color = element.getAttribute("data-waveColor") || "white";
-
+        var color = element.getAttribute("data-waveColor") || "white2";
 
         twCom.fn.addClass(effectElement , waves_colorList[color]);
 
         var eleOffset  = offset(element);
         var ElementX = 0;
         var ElementY = 0;
+        var scaleWidth = Math.max(element.clientWidth, element.clientHeight);
         if ( "changedTouches" in e ){
           ElementY   = (e.changedTouches[0].pageY - eleOffset.top);
           ElementX   = (e.changedTouches[0].pageX  - eleOffset.left);
@@ -58,7 +63,7 @@
           ElementY   = (e.pageY - eleOffset.top);
           ElementX   = (e.pageX - eleOffset.left);
         }
-        var scale       = 'scale('+((element.clientWidth / 100) * 10)+')';
+        var scale       = 'scale('+((scaleWidth / 100) * 10)+')';
 
 
 
@@ -114,16 +119,23 @@
            removeTime = 0;
         }
 
+        var ripplestyle = {
+          "opacity" : "0",
+        };
+
+        var element_removeDelay = Effect.duration - removeTime;
+
+
 
         setTimeout(function(){
-            ripple.style.opacity = 0;
+          ripple.style.opacity = 0;
             setTimeout(function () {
                 try {
                   ele.removeChild(ripple);
                 } catch (exception){
                   return;
                 }
-            }, Effect.duration);
+            }, element_removeDelay);
         },removeTime);
     }
   };
