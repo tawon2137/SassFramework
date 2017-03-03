@@ -195,6 +195,11 @@ input[type=search] {
   max-height: 500px;
   display: none;
   opacity: 0;
+  -webkit-transform: scaleY(0.7);
+  -moz-transform: scaleY(0.7);
+  -o-transform: scaleY(0.7);
+  -ms-transform: scaleY(0.7);
+  transform: scaleY(0.7);
   border-radius: 5px;
   -webkit-tap-highlight-color: transparent; }
   .tw-dropdown li {

@@ -1,16 +1,8 @@
-var ModalConstruct = (function(){
+(function(){
     "use strict";
 
 
 
-    function Modal(Element_, userOption){
-        if( this instanceof Modal ){
-          this.Element = document.getElementById(Element_) || Element_;
-          this.Init(userOption);
-        } else {
-          return new Modal(Element_, userOption);
-        }
-    }
 
     var DefaultOption = function(){
       this.shadow_opacity = 0.6;  //default 0.5 최소 0 , 최대 1
@@ -18,13 +10,10 @@ var ModalConstruct = (function(){
       this.start_top_suffix = "%";
       this.end_top = "20";
       this.end_top_suffix = "%";
-      this.modalOpen = function(){
-      };
-      this.modalClose = function(){
-      };
-      this.delay = 0.45;
+      this.modalOpen = function(){};
+      this.modalClose = function(){};
+      this.delay = 0.50;
       this.shadow_onclick_close = true;
-
 
       this.openOption = {
         display:"block",
@@ -46,17 +35,28 @@ var ModalConstruct = (function(){
 
     };
 
+
     DefaultOption.prototype.setOption = function(newOption){
-        var myOption = this;
-        for( var prop in newOption ){
-            if( myOption.hasOwnProperty(prop) ){
-                myOption[prop] = newOption[prop];
-            }
+      var myOption = this;
+      for( var prop in newOption ){
+        if( myOption.hasOwnProperty(prop) ){
+          myOption[prop] = newOption[prop];
         }
-        return myOption;
+      }
+      return myOption;
     };
 
-    Modal.prototype.Init = function(userOption){
+    function Modal(modalElement){
+      if( this instanceof Modal ){
+        this.Element = document.getElementById(modalElement) || modalElement;
+        this.Init();
+      } else {
+        return new Modal(modalElement);
+      }
+    }
+
+
+    Modal.prototype.Init = function(){
        var self = this;
        var ele = this.Element;
        var option = this.Option = new DefaultOption();
@@ -70,7 +70,7 @@ var ModalConstruct = (function(){
 
     Modal.prototype.OpenbtnSetting = function(){
       var id = this.Element.id;
-      var buttons = document.querySelectorAll("[modal-target="+id+"]"); // querySelectorAll의 반환값은 Array임 무조건
+      var buttons = document.querySelectorAll("[data-target="+id+"]"); // querySelectorAll의 반환값은 Array임 무조건
       if(buttons.length > 0){
           for(var index = 0; index < buttons.length; index++){
               buttons[index].addEventListener("click" , this.openModal);
@@ -85,7 +85,7 @@ var ModalConstruct = (function(){
 
       if(buttons.length > 0){
           for(var index = 0; index < buttons.length; index++){
-              buttons[index].setAttribute("modal-target", this.Element.id);
+              buttons[index].setAttribute("data-target", this.Element.id);
               buttons[index].addEventListener("click" , this.closeModal);
           }
       }
@@ -94,7 +94,7 @@ var ModalConstruct = (function(){
 
     Modal.prototype.openModal = function(){
         var Ele = this.Element || this;
-        var target = Ele.getAttribute("modal-target") || Ele.id;
+        var target = Ele.getAttribute("data-target") || Ele.id;
         var modal = ( this === twCom.Modal[target] ? this : twCom.Modal[target] );
 
         if(modal){
@@ -113,7 +113,7 @@ var ModalConstruct = (function(){
 
     Modal.prototype.closeModal = function(e){
       var Ele = this.Element || this;
-      var target = Ele.getAttribute("modal-target") || Ele.id;
+      var target = Ele.getAttribute("data-target") || Ele.id;
       var modal = ( this === twCom.Modal[target] ? this : twCom.Modal[target] );
 
 
@@ -160,7 +160,7 @@ var ModalConstruct = (function(){
         var Shadowele = document.createElement("div");
         var Option = this.Option;
         Shadowele.id = "modal-shadow";
-        Shadowele.setAttribute("modal-target",id);
+        Shadowele.setAttribute("data-target",id);
         if( Option.shadow_onclick_close ){
             Shadowele.addEventListener("click",this.closeModal);
         }
@@ -169,32 +169,11 @@ var ModalConstruct = (function(){
         return document.body.appendChild(Shadowele);
     };
 
-    return Modal;
+    window.twCom.Modal = { init : Modal };
 })();
 
-window.twCom.Modal = {};
-window.twCom.Modal.init = ModalConstruct;
 window.addEventListener("DOMContentLoaded",function(){
-    var modallist = document.getElementsByClassName("modal");
-    for(var i = 0 ; i < modallist.length; i++){
-        if(modallist[i].id && !window.twCom.Modal[modallist[i].id]){
-          window.twCom.Modal[modallist[i].id] = window.twCom.Modal.init(modallist[i].id);
-        }
-    }
-});
-window.addEventListener("load",function(){
-    window.twCom.Modal["logmodal"].setOption({
-      shadow_opacity : 0.5, //default 0.5 최소 0 , 최대 1
-      start_top : "50",
-      start_top_suffix : "%",
-      end_top : "10",
-      end_top_suffix : "%",
-      modalOpen : function(){
-          console.log("modalOpen event");
-      },
-      modalClose : function(){
-          console.log("modalClose event");
-      },
-      shadow_onclick_close:false
-    });
+    twCom.Modal.list = document.getElementsByClassName("modal");
+    twCom.Modal["logmodal"] = twCom.Modal.init(document.getElementById("logmodal"));
+    twCom.Modal["logmodal2"] = twCom.Modal.init(document.getElementById("logmodal2"));
 });

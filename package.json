@@ -12,7 +12,7 @@
   "scripts": {
     "start": "nodemon ./app.js",
     "sass": "node-sass -w ./sass/ -o ./css/",
-    "build" : "webpack -w entry.js --config webpack.config.js"
+    "build": "webpack -w entry.js --config webpack.config.js"
   },
   "repository": {
     "type": "git",

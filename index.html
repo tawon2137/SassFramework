@@ -17,7 +17,7 @@
 
   </head>
   <body>
-     <header>
+     <!-- <header>
       <div class="tw-navbar fixed-nav clear">
           <div class="logoTitle center">top nav bar</div>
           <ul >
@@ -26,14 +26,14 @@
               <li>asd</li>
           </ul>
       </div>
-    </header>
+    </header> -->
     <main>
       <h1>Card Test</h1>
     <div class="row">
       <div id="tw-sideNav">
           <div class="profile">
             <div class="background">
-              <img src="http://cfile7.uf.tistory.com/image/263C1A345533D9D6011FF8">
+              <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTDpY5mK6LF_lyUdQADAKcmsDls9k9SXZOYPBdkW310bVvO_G_NPw">
             </div>
             <span class="name" > Kim tae woong </span>
             <span class="title" > Kim tae woong Kim tae woong Kim tae woong Kim tae woong Kim tae woong </span>
@@ -41,21 +41,21 @@
           <a class="waves-effect" waves-color="red">Services</a>
           <a class="waves-effect" waves-color="col-black">Clients</a>
           <a class="waves-effect" waves-color="col-yellow">Contact</a>
-          <a id="closeNav" class="tw-btn-clear waves-effect" waves-color="col-black">닫기<i class="fa fa-sign-out"></i></a>
+          <a id="closeNav" class="tw-btn-clear waves-effect" data-waveColor="black">닫기<i class="fa fa-sign-out"></i></a>
       </div>
 
 
     <div class="col s12 m6 l2">
-      <div class="card waves-effect" waves-color="black">
+      <div class="card waves-effect">
 
-        <div class="card-profile">
+        <div class="card-profile" >
           <img
-           src="/image/img_avatar2.png">
+           src="/image/backimge2.png" >
        </div>
 
          <div class="card-content">
-            <h4><b>John Doe</b></h4>
-            <p>Architect & Engineer</p>
+            <h3>프로필~</h3>
+            <p>javascript full-stack Engineer</p>
         </div>
         <div class="card-action">
             <a href="sss" >링크1</a>
@@ -106,22 +106,22 @@
 
   <h1>sideNav Test</h1>
   <div class="row">
-      <button id="openNav" class="col s12 tw-btn waves-effect" waves-color="col-black">open nav</button>
+      <button id="openNav" class="col s12 tw-btn waves-effect" data-waveColor="black"  data-sidenav="tw-sideNav" data-trigger="open">open nav</button>
   </div>
 
 
   <h1>Button and Waves Effect Test</h1>
 <div class="row">
   <div class="col s10">
-      <a class="tw-btn-large waves-effect" waves-color="yellow" >button</a>
+      <a class="tw-btn-large waves-effect" data-waveColor="yellow2" >button</a>
 
-      <a class="tw-btn-Round  waves-effect" waves-color="black"><i class="fa fa-plus"></i></a>
+      <a class="tw-btn-Round  waves-effect" data-waveColor="black"><i class="fa fa-plus"></i></a>
 
-      <a class="tw-btn waves-effect" waves-color="red"><i class="fa fa-search"></i>button</a>
+      <a class="tw-btn waves-effect" data-waveColor="red"><i class="fa fa-search"></i>button</a>
 
-      <a class="tw-btn waves-effect" waves-color="green">button!</a>
+      <a class="tw-btn waves-effect" data-waveColor="green">button!</a>
 
-      <a class="tw-btn-clear waves-effect" waves-color="col-black">clear Button</a>
+      <a class="tw-btn-clear waves-effect"  data-waveColor="black" disabled>clear Button</a>
 
       <button class="tw-btn">button!!!!!!!!!!!!!</button>
     </div>
@@ -159,7 +159,7 @@
 
 
   <div class="col s6">
-      <div class="tw-input-field">
+      <div class="tw-input-field waves-effect"  data-waveColor="yellow2">
         <input type="text" placeholder="텍스트" class="asdasd" name="pwd">
         <hr class="focusline">
         <hr class="bottomline">
@@ -169,7 +169,7 @@
 
 
 
-  <button type="submit" class="col s12 tw-btn waves-effect" waves-color="green">submit Button</button>
+  <button type="submit" class="col s12 tw-btn waves-effect" waves-color="col-black">submit Button</button>
 </form>
 
 </div>
@@ -192,7 +192,7 @@
 
 <h1>Modal Test</h1>
 <div class="row">
-  <button class="col s6 tw-btn openModal" modal-target="logmodal">open logModal</button>
+  <button class="col s6 tw-btn openModal" data-target="logmodal">open logModal</button>
   <div id="logmodal" class="modal">
     <div class="modal-content row">
 
@@ -209,13 +209,13 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a class="tw-btn-clear waves-effect closeModal" waves-color="col-black" >닫기</a>
+      <a class="tw-btn-clear waves-effect">닫기</a>
     </div>
   </div>
 
 
 
-      <button class="col s6 tw-btn openModal" modal-target="logmodal2">open Modal2</button>
+    <button class="col s6 tw-btn openModal" data-target="logmodal2">open Modal2</button>
     <div id="logmodal2" class="modal">
       <div class="modal-content row">
 
@@ -232,7 +232,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a class="tw-btn-clear waves-effect closeModal" waves-color="col-black" >닫기</a>
+        <a class="tw-btn-clear waves-effect closeModal" >닫기</a>
       </div>
     </div>
 </div>
