@@ -35,7 +35,6 @@
 
     };
 
-
     DefaultOption.prototype.setOption = function(newOption){
       var myOption = this;
       for( var prop in newOption ){
@@ -45,6 +44,7 @@
       }
       return myOption;
     };
+
 
     function Modal(modalElement){
       if( this instanceof Modal ){
