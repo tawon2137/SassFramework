@@ -1,17 +1,26 @@
 @import "./mixin.scss";
 @import "./variable.scss";
 @import "./function.scss";
-#sha-ray{
+#shadow-area{
     position: fixed;
     left:0px;
     top:0px;
     width: 100%;
     height: 120vh;
-    z-index: 998;
+    z-index: 997;
     background: rgba(0,0,0,0.5);
     will-change: opacity;
     opacity: 0;
 }
+
+.drag-target{
+   position:fixed;
+   left: 0;
+   top : 0;
+   width: 20px;
+   height: 100%;
+}
+
 #tw-sideNav {
   position: fixed;
   width: 300px;
@@ -27,6 +36,7 @@
   z-index: 999;
   overflow: auto;
   backface-visibility: hidden;
+  box-shadow: $sidenav-shadow;
     & a {
         cursor: pointer;
         padding: 0 1rem;

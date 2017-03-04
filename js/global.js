@@ -83,6 +83,7 @@ if( typeof window.twCom === "undefined"){
             }
           };
       };
+
       Global.prototype.convertStyle = function (obj) {
           var style = '';
 
