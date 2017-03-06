@@ -224,7 +224,7 @@
 
         var sideEle_css = twCom.fn.cssObject(sidenav_element);
         var width = sidenav_element.getAttribute("data-width") || 300;
-
+        width = Number(width);
         var x = (e.center.x - width);
 
 
@@ -237,6 +237,7 @@
         var opacity = (10000  / width);
         opacity = opacity / (opacity * width);
         opacity = opacity * (width + x);
+
         shadowELement.setAttribute("style", "opacity :" + opacity + ";");
 
         var cssObject = {};
@@ -256,7 +257,9 @@
         var sideEle_css = twCom.fn.cssObject(sidenav_element);
         var width = sidenav_element.getAttribute("data-width") || 300;
         var tx =  sideEle_css.getCss("transform").split(",")[4];
-        var currentX = width + Number(tx);
+        var currentX = Number(width) + Number(tx);
+        console.log(currentX);
+        console.log((width / 2));
         if ( currentX >= (width / 2) ){
             sideNav.open(e, element);
         }else{
@@ -283,6 +286,6 @@
             }
           });
         }
-        
+
     });
 })();

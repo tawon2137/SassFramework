@@ -347,7 +347,7 @@ body {
 #drag-target {
   position: fixed;
   top: 0;
-  width: 20px;
+  width: 10px;
   height: 100%;
   z-index: 998; }
 
