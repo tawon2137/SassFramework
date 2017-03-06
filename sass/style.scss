@@ -70,7 +70,7 @@ body{
     }
 
 
-    @media only screen and (min-width : 1024px) {
+    @media only screen and (min-width : 1366px) {
         @for $i from 1 through $maxcol {
           $colwidth : (100% / ($maxcol /$i));
           &.l#{$i}{

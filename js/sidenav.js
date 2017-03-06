@@ -33,13 +33,17 @@
         if (!shadow_bool){
             return false;
         }
+        var element = document.getElementById("shadow-area");
+        if ( element === null ){
+          var shadow_ele = document.createElement("div");
+          shadow_ele.setAttribute("id", "shadow-area");
+          shadow_ele.setAttribute("data-sidenav", sidenavElement.getAttribute("id"));
+          shadow_ele.setAttribute("data-trigger", "close");
 
-        var shadow_ele = document.createElement("div");
-        shadow_ele.setAttribute("id", "shadow-area");
-        shadow_ele.setAttribute("data-sidenav", sidenavElement.getAttribute("id"));
-        shadow_ele.setAttribute("data-trigger", "close");
-
-        return document.body.appendChild(shadow_ele);
+          return document.body.appendChild(shadow_ele);
+        } else {
+            return element;
+        }
     }
 
     function getShadowElement(element){
@@ -50,12 +54,12 @@
         }
     }
 
-
     var sideNav = {
         duration : 150,
+
         open : function (e, element) {
             var sidenavElement = getSidenavElement(e, element);
-            var cssObject = {}, cssObject2 = {};
+            var cssObject = {}, cssObject2 = {}, cssObject3 = {};
 
             if ( sidenavElement === null ){
                 return false;
@@ -106,9 +110,18 @@
             cssObject2['-o-transition-timing-function']      = easing;
             cssObject2['transition-timing-function']         = easing;
 
+            //drag target CSS 변경
+            var dragTarget = document.getElementById("drag-target");
+            var dragTarget_css = twCom.fn.cssObject(dragTarget);
+            cssObject3 = {
+                right : 0,
+                width : "90%",
+            };
+
             requestAnimationFrame(function(){
               sidenav_css.cssEach(cssObject);
               shadow_css.cssEach(cssObject2);
+              dragTarget_css.cssEach(cssObject3);
               document.body.style.overflow = "hidden";
             });
         },
@@ -123,7 +136,7 @@
             var sidenav_element = getSidenavElement(e, shadow_element);
             var sidenav_css = twCom.fn.cssObject(sidenav_element), shadow_css = twCom.fn.cssObject(shadow_element);
             var sidenav_width = sidenav_css.getCss("width");
-            var cssObject = {}, cssObject2 = {};
+            var cssObject = {}, cssObject2 = {}, cssObject3 = {};
 
 
             var translateX = "translateX(" + ("-" + sidenav_width) + ")";
@@ -135,10 +148,44 @@
             cssObject.transform = translateX;
 
 
+
+            //animation 시간
+            cssObject['-webkit-transition-duration'] = sideNav.duration + 'ms';
+            cssObject['-moz-transition-duration']    = sideNav.duration + 'ms';
+            cssObject['-o-transition-duration']      = sideNav.duration + 'ms';
+            cssObject['transition-duration']         = sideNav.duration + 'ms';
+
+            //easing
+            var easing = "cubic-bezier(0.17, 0.67, 0.79, 1)";
+            cssObject['-webkit-transition-timing-function'] = easing;
+            cssObject['-moz-transition-timing-function']    = easing;
+            cssObject['-o-transition-timing-function']      = easing;
+            cssObject['transition-timing-function']         = easing;
+
+
             cssObject2["opacity"] = 0;
+            //animation 시간
+            cssObject2['-webkit-transition-duration'] = sideNav.duration + 'ms';
+            cssObject2['-moz-transition-duration']    = sideNav.duration + 'ms';
+            cssObject2['-o-transition-duration']      = sideNav.duration + 'ms';
+            cssObject2['transition-duration']         = sideNav.duration + 'ms';
+
+            cssObject2['-webkit-transition-timing-function'] = easing;
+            cssObject2['-moz-transition-timing-function']    = easing;
+            cssObject2['-o-transition-timing-function']      = easing;
+            cssObject2['transition-timing-function']         = easing;
+
+            //drag target CSS 변경
+            var dragTarget = document.getElementById("drag-target");
+            var dragTarget_css = twCom.fn.cssObject(dragTarget);
+            cssObject3 = {
+                right : "",
+                width : "",
+            };
 
             sidenav_css.cssEach(cssObject);
             shadow_css.cssEach(cssObject2);
+            dragTarget_css.cssEach(cssObject3);
             document.body.style.overflow = "";
             setTimeout(function(){
                 try{
@@ -153,23 +200,89 @@
     };
 
     function triggerCheck(e){
+
         var sideNav_trigger = getSidenavtrigger(e);
-        if ( sideNav_trigger !== null ){
-          var trigger_type = sideNav_trigger.getAttribute("data-trigger") || "open";
-          sideNav[trigger_type](e, sideNav_trigger);
+        if ( e instanceof TouchEvent && sideNav_trigger.getAttribute("id") === "drag-target") {
+            return false;
+        }
+        var trigger_type = sideNav_trigger.getAttribute("data-trigger") || "open";
+
+
+          if ( sideNav_trigger !== null ){
+
+            sideNav[trigger_type](e, sideNav_trigger);
+
+          }
+    }
+
+
+    function swipe(e, element){
+
+
+        var sidenav_element = getSidenavElement(e, element);
+        var shadowELement = createShadow(sidenav_element);
+
+        var sideEle_css = twCom.fn.cssObject(sidenav_element);
+        var width = sidenav_element.getAttribute("data-width") || 300;
+
+        var x = (e.center.x - width);
+
+
+        if( x > 0 ){
+            x = 0;
+        }
+        if ( x < -width ){
+            x = -width;
+        }
+        var opacity = (10000  / width);
+        opacity = opacity / (opacity * width);
+        opacity = opacity * (width + x);
+        shadowELement.setAttribute("style", "opacity :" + opacity + ";");
+
+        var cssObject = {};
+        var translateX = "translateX("+x+"px)";
+
+        cssObject['width'] = width + "px";
+        cssObject['-webkit-transform'] = translateX;
+        cssObject['-moz-transform'] = translateX;
+        cssObject['-ms-transform'] = translateX;
+        cssObject['-o-transform'] = translateX;
+        cssObject.transform = translateX;
+        sidenav_element.setAttribute("style" , twCom.fn.convertStyle(cssObject));
+    }
+
+    function swipeEnd(e, element){
+        var sidenav_element = getSidenavElement(e, element);
+        var sideEle_css = twCom.fn.cssObject(sidenav_element);
+        var width = sidenav_element.getAttribute("data-width") || 300;
+        var tx =  sideEle_css.getCss("transform").split(",")[4];
+        var currentX = width + Number(tx);
+        if ( currentX >= (width / 2) ){
+            sideNav.open(e, element);
+        }else{
+            sideNav.close(e, element);
         }
     }
 
-    function touchCheck(e){
-        console.log(e);
-    }
     window.addEventListener("DOMContentLoaded", function (e) {
         if ('ontouchstart' in window) {
             document.body.addEventListener('touchend', triggerCheck, false);
-            document.body.addEventListener('touchmove', touchCheck, false);
-
         }else{
             document.body.addEventListener('click', triggerCheck, false);
         }
+
+        var drag_element = document.getElementById("drag-target");
+        if( drag_element !== null ){
+          var mc = new Hammer(drag_element);
+
+          mc.on("panleft panright panend pancancel", function(e){
+            if( e.type === "panright" || e.type === "panleft"   ){
+              swipe(e, drag_element);
+            }else{
+              swipeEnd(e, drag_element);
+            }
+          });
+        }
+        
     });
 })();
