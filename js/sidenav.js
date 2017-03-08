@@ -202,14 +202,14 @@
     function triggerCheck(e){
 
         var sideNav_trigger = getSidenavtrigger(e);
-        if ( e instanceof TouchEvent && sideNav_trigger.getAttribute("id") === "drag-target") {
-            return false;
-        }
-        var trigger_type = sideNav_trigger.getAttribute("data-trigger") || "open";
 
 
           if ( sideNav_trigger !== null ){
+            var trigger_type = sideNav_trigger.getAttribute("data-trigger") || "open";
 
+            if ( e instanceof TouchEvent && sideNav_trigger.getAttribute("id") === "drag-target" ) {
+              return false;
+            }
             sideNav[trigger_type](e, sideNav_trigger);
 
           }
@@ -258,11 +258,24 @@
         var width = sidenav_element.getAttribute("data-width") || 300;
         var tx =  sideEle_css.getCss("transform").split(",")[4];
         var currentX = Number(width) + Number(tx);
-        console.log(currentX);
-        console.log((width / 2));
+
+
         if ( currentX >= (width / 2) ){
             sideNav.open(e, element);
         }else{
+            sideNav.close(e, element);
+        }
+    }
+
+    function tap(e, element){
+        var sidenav_element = getSidenavElement(e, element);
+        var sideEle_css = twCom.fn.cssObject(sidenav_element);
+        var width = sidenav_element.getAttribute("data-width") || 300;
+
+        var shadowElement = document.getElementById("shadow-area");
+        if ( shadowElement === null ){
+            sideNav.open(e, element);
+        } else {
             sideNav.close(e, element);
         }
     }
@@ -278,10 +291,14 @@
         if( drag_element !== null ){
           var mc = new Hammer(drag_element);
 
-          mc.on("panleft panright panend pancancel", function(e){
-            if( e.type === "panright" || e.type === "panleft"   ){
+          mc.on("panleft panright panend pancancel tap", function(e){
+            if ( e.pointerType !== "touch" ) { return false; }
+
+            if( e.type === "panright" || e.type === "panleft" ){
               swipe(e, drag_element);
-            }else{
+            }else if( e.type ==="tap" ){
+              tap(e, drag_element);
+            } else {
               swipeEnd(e, drag_element);
             }
           });
