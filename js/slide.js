@@ -88,7 +88,7 @@
 
     slide.prototype.setSliding = function(element){
         var slides = this._slides;
-        var index = element.getAttribute("data-index");
+        var index = parseInt(element.getAttribute("data-index"));
         var width = this._Element.clientWidth;
 
 
@@ -97,6 +97,11 @@
             indexWidth = (i - index) * width;
             slide_css = twCom.fn.cssObject(slides[i]);
             translateX = "translateX("+indexWidth+"px)";
+            if ( i === index ) {
+              slide_css.setCss("z-index", 0);
+            } else {
+              slide_css.setCss("z-index", -1);
+            }
             slide_css.setCss("-o-transform", translateX);
             slide_css.setCss("-webkit-transform", translateX);
             slide_css.setCss("-ms-transform", translateX);
@@ -160,6 +165,11 @@
           cssObject['-ms-transform'] = translateX;
           cssObject['-o-transform'] = translateX;
           cssObject.transform = translateX;
+          if( i === 0 ){
+            cssObject["z-index"] = 0;
+          }else{
+            cssObject["z-index"] = -1;
+          }
           twCom.fn.cssObject(slideList[i]).cssEach(cssObject);
 
         }
