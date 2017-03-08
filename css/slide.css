@@ -3,7 +3,7 @@
   margin: auto;
   width: 100%;
   will-change: transform, opacity;
-  height: 200px;
+  height: 20rem;
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
@@ -32,6 +32,27 @@
       transition: background 0.3s ease-out; }
       .slide-container .displayList .display-item.active {
         background-color: white; }
+  .slide-container .trigger, .slide-container .prev, .slide-container .next {
+    position: absolute;
+    z-index: 2;
+    font-size: 3rem;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.3);
+    -webkit-transition: color 0.1s ease-out;
+    -moz-transition: color 0.1s ease-out;
+    -o-transition: color 0.1s ease-out;
+    -ms-transition: color 0.1s ease-out;
+    transition: color 0.1s ease-out;
+    top: 0;
+    bottom: 0;
+    margin: auto 10px;
+    height: 30%; }
+    .slide-container .trigger:hover, .slide-container .prev:hover, .slide-container .next:hover {
+      color: rgba(255, 255, 255, 0.8); }
+  .slide-container .prev {
+    left: 0; }
+  .slide-container .next {
+    right: 0; }
   .slide-container .slide {
     position: absolute;
     width: 100%;

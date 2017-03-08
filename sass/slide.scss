@@ -9,7 +9,7 @@
     margin: auto;
     width: 100%;
     will-change : transform, opacity;
-    height: 200px;
+    height: 20rem;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -38,6 +38,30 @@
           }
       }
 
+    }
+.trigger {
+  position: absolute;
+  z-index: 2;
+  font-size: 3rem;
+  cursor: pointer;
+  color : rgba(255,255,255,0.3);
+  @include transition(color 0.1s ease-out);
+  top : 0;
+  bottom : 0;
+  margin: auto 10px;
+  height: 30%;
+  &:hover{
+    color : rgba(255,255,255,0.8);
+  }
+}
+
+    & .prev{
+        @extend .trigger;
+        left : 0;
+    }
+    & .next{
+        @extend .trigger;
+        right: 0;
     }
     & .slide{
         position: absolute;

@@ -16,7 +16,6 @@
 */
       var slide = function(selector, option){
         if ( this instanceof slide ){
-          console.log(selector, option);
           this.init(selector, option);
         } else {
           return new slide(selector, option);
@@ -28,6 +27,7 @@
         this.setDisplay(this._Element.getElementsByClassName("slide"));
         this.setSlideimage();
         this.setSwipe();
+        this.setTrigger();
      };
      function getSlide(element){
       var ele = element;
@@ -40,40 +40,58 @@
         }
         return ele;
      }
+
+
+     function triggerClick(e){
+        var self = this;
+        var _Element = self._Element;
+        var indexElement = _Element.querySelector(".active");
+        var nextElement= indexElement.nextSibling;
+        var prevElement = indexElement.previousSibling;
+        var lastIndex = self.slideLength - 1;
+        var triggerElement, trigger;
+
+        if( e instanceof MouseEvent ){
+            triggerElement = e.target || e.srcElement;
+            trigger = twCom.fn.hasClass(triggerElement, "next") ? "next" : "prev";
+        }else{
+            trigger = e.type === "swipeleft" ? "next" : "prev";
+        }
+
+
+        if ( indexElement.getAttribute("data-index") === "0" &&  prevElement === null ){
+            prevElement = indexElement.parentElement.childNodes[self.slideLength - 1];
+        }
+
+        if ( indexElement.getAttribute("data-index") === lastIndex.toString() &&  nextElement === null ){
+            nextElement = indexElement.parentElement.childNodes[0];
+        }
+
+        if( trigger === "next" ){
+          twCom.fn.removeClass(indexElement, "active");
+          twCom.fn.addClass(nextElement, "active");
+          self.setSliding(nextElement);
+        }else{
+          twCom.fn.removeClass(indexElement, "active");
+          twCom.fn.addClass(prevElement, "active");
+          self.setSliding(prevElement);
+        }
+     }
+     
+     slide.prototype.setTrigger = function(){
+        var self = this;
+        var _Element = self._Element;
+        var nextTrigger = _Element.getElementsByClassName("next")[0];
+        var prevTrigger = _Element.getElementsByClassName("prev")[0];
+
+        nextTrigger.addEventListener("click", triggerClick.bind(this));
+        prevTrigger.addEventListener("click", triggerClick.bind(this));
+     };
      slide.prototype.setSwipe = function(){
         var self = this;
         var _Element = this._Element;
         var mc = new Hammer(_Element);
-        mc.on("swipeleft swiperight", function(e){
-            var slide = getSlide(e.target);
-            if ( slide === null) { return false; }
-
-            var indexElement = slide.parentElement.querySelector(".active");
-            var nextElement= indexElement.nextSibling;
-            var prevElement = indexElement.previousSibling;
-            var lastIndex = self.slideLength - 1;
-            if ( indexElement.getAttribute("data-index") === "0" &&  prevElement === null ){
-                prevElement = indexElement.parentElement.childNodes[self.slideLength - 1];
-            }
-
-            if ( indexElement.getAttribute("data-index") === lastIndex.toString() &&  nextElement === null ){
-                nextElement = indexElement.parentElement.childNodes[0];
-            }
-            if ( e.type === "swiperight" ){
-              twCom.fn.removeClass(indexElement, "active");
-              twCom.fn.addClass(prevElement, "active");
-              self.setSliding(prevElement);
-            } else if( e.type === "swipeleft" ){
-              twCom.fn.removeClass(indexElement, "active");
-              twCom.fn.addClass(nextElement, "active");
-              self.setSliding(nextElement);
-            }
-
-
-
-
-
-      });
+        mc.on("swipeleft swiperight", triggerClick.bind(self));
     };
      slide.prototype.displayClick = function(e){
         var clickElement = e.target || e.srcElement;
@@ -105,8 +123,8 @@
             slide_css.setCss("-o-transform", translateX);
             slide_css.setCss("-webkit-transform", translateX);
             slide_css.setCss("-ms-transform", translateX);
-            slide_css.setCss("transform", translateX);
             slide_css.setCss("-moz-transform", translateX);
+            slide_css.setCss("transform", translateX);
         }
     };
 
@@ -182,9 +200,39 @@
 
 
 
-
-
-
+    //
+    // function(e){
+    //     console.log(e);
+    //     var slide = getSlide(e.target);
+    //     if ( slide === null) { return false; }
+    //
+    //     var indexElement = slide.parentElement.querySelector(".active");
+    //     var nextElement= indexElement.nextSibling;
+    //     var prevElement = indexElement.previousSibling;
+    //     var lastIndex = self.slideLength - 1;
+    //     if ( indexElement.getAttribute("data-index") === "0" &&  prevElement === null ){
+    //         prevElement = indexElement.parentElement.childNodes[self.slideLength - 1];
+    //     }
+    //
+    //     if ( indexElement.getAttribute("data-index") === lastIndex.toString() &&  nextElement === null ){
+    //         nextElement = indexElement.parentElement.childNodes[0];
+    //     }
+    //     if ( e.type === "swiperight" ){
+    //       twCom.fn.removeClass(indexElement, "active");
+    //       twCom.fn.addClass(prevElement, "active");
+    //       self.setSliding(prevElement);
+    //     } else if( e.type === "swipeleft" ){
+    //       twCom.fn.removeClass(indexElement, "active");
+    //       twCom.fn.addClass(nextElement, "active");
+    //       self.setSliding(nextElement);
+    //     }
+    //
+    //
+    //
+    //
+    //
+    // }
+    //
 
 
 
