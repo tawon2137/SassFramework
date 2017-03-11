@@ -2,7 +2,38 @@
 @import "./variable.scss";
 @import "./function.scss";
 
+.trigger {
+  position: absolute;
+  z-index: 2;
+  font-size: 3rem;
+  cursor: pointer;
+  color : rgba(255,255,255,0.3);
+  @include transition(color 0.1s ease-out);
+  top : 0;
+  bottom : 0;
+  margin: auto 5%;
+  height: 4rem;
+  &:hover{
+    color : rgba(255,255,255,0.8);
+  }
+}
 
+.view-git{
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  width: 15rem;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 1.2rem;
+  text-align: center;
+  // padding: 0;
+  font-weight: bold;
+}
 .slide-container{
     // max-width: 2000px;
     position: relative;
@@ -13,6 +44,9 @@
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    &.fullscreen{
+        height: 100vh;
+    }
     & .displayList{
       padding-left: 0;
       list-style-type: none;
@@ -22,15 +56,15 @@
       bottom : 0;
       margin: 0;
       text-align: center;
-
+      z-index: 1;
       & .display-item{
           position: relative;
-          width: 10px;
-          height: 10px;
+          width: 1rem;
+          height: 1rem;
           display: inline-block;
           background-color: rgba(255,255,255, 0.5);
           border-radius: 50%;
-          margin: 15px 5px;
+          margin: 1rem 5px;
           cursor: pointer;
           @include transition(background 0.3s ease-out);
           &.active {
@@ -39,21 +73,6 @@
       }
 
     }
-.trigger {
-  position: absolute;
-  z-index: 2;
-  font-size: 3rem;
-  cursor: pointer;
-  color : rgba(255,255,255,0.3);
-  @include transition(color 0.1s ease-out);
-  top : 0;
-  bottom : 0;
-  margin: auto 10px;
-  height: 30%;
-  &:hover{
-    color : rgba(255,255,255,0.8);
-  }
-}
 
     & .prev{
         @extend .trigger;
@@ -70,13 +89,24 @@
         top:0;
         left:0;
         text-align: center;
-        & .text{
+        & .text-container{
             position: absolute;
             top: 0;
             left:0;
             right:0;
-            margin: auto 0;
+            bottom: 0;
+            width: 80%;
+            height: 30%;
+            margin: auto auto;
             color : white;
+            & .title {
+              font-size: 3rem;
+              font-weight: bold;
+            }
+            & .content {
+              font-size: 1.5rem;
+            }
+
         }
         & img {
             width: 100%;
@@ -86,4 +116,27 @@
             -webkit-tap-highlight-color : rgba(0,0,0,0);
         }
     }
+}
+
+
+
+@media only screen and (max-width : 1366px) {
+  .slide-container{
+    &.fullscreen{
+      height: 60vh;
+    }
+  }
+  .view-git{
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width : 720px) {
+  .slide-container{
+    &.fullscreen{
+      height: 40vh;
+    }
+  }
+  .view-git{
+    font-size: 1rem;
+  }
 }

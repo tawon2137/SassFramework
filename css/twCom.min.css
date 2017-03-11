@@ -1,22 +1,13 @@
-.button, .tw-btn, .tw-btn-large, .tw-btn-clear, .tw-btn-Round, .tw-btn-Round-large, .tw-btn-float-large {
-  border: none;
-  display: inline-block;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  overflow: hidden;
-  position: relative;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  outline: 0;
-  font-family: inherit;
-  font-size: inherit; }
+/*
+ * Iropke Batang (Korean)
+ * http://font.iropke.com/batang/
+ */
+@font-face {
+  font-family: 'Iropke Batang';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//cdn.jsdelivr.net/font-iropke-batang/1.2/IropkeBatangM.eot);
+  src: url(//cdn.jsdelivr.net/font-iropke-batang/1.2/IropkeBatangM.eot?#iefix) format("embedded-opentype"), url(//cdn.jsdelivr.net/font-iropke-batang/1.2/IropkeBatangM.woff) format("woff"), url(//cdn.jsdelivr.net/font-iropke-batang/1.2/IropkeBatangM.ttf) format("truetype"); }
 
 .red {
   background-color: #F44336 !important; }
@@ -1564,7 +1555,8 @@
   box-sizing: inherit; }
 
 html {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  font-family: 'Iropke Batang', serif; }
 
 body {
   margin: 0; }
@@ -1875,6 +1867,40 @@ body {
       .row .col.pull-l12 {
         right: 100%; } }
 
+.hide-l {
+  display: none !important; }
+
+.show-l {
+  display: block !important; }
+
+.hide-m {
+  display: block !important; }
+
+.show-m {
+  display: none !important; }
+
+.hide-s {
+  display: block !important; }
+
+.show-s {
+  display: none !important; }
+
+@media only screen and (max-width: 1366px) {
+  .hide-l {
+    display: block !important; }
+  .show-l {
+    display: none !important; }
+  .hide-m {
+    display: none !important; }
+  .show-m {
+    display: block !important; } }
+
+@media only screen and (max-width: 720px) {
+  .hide-s {
+    display: none !important; }
+  .show-s {
+    display: block !important; } }
+
 #shadow-area {
   position: fixed;
   left: 0px;
@@ -1965,9 +1991,6 @@ body {
       font-size: .9em;
       padding-bottom: 1em; }
 
-header {
-  margin-bottom: 20px; }
-
 .tw-navbar {
   height: 60px;
   line-height: 60px;
@@ -1981,31 +2004,51 @@ header {
   -o-transition: all 0.2s ease-in;
   -ms-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
-  background: white;
-  z-index: 100; }
+  z-index: 100;
+  user-select: none; }
   .tw-navbar.clear {
-    box-shadow: none;
-    background-color: transparent; }
-  .tw-navbar ul {
-    padding: 0;
-    position: relative;
     top: 0;
-    left: 0; }
+    position: absolute;
+    box-shadow: none;
+    background-color: transparent;
+    color: white; }
+  .tw-navbar ul {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    height: 100%;
+    width: 80%; }
     .tw-navbar ul .right {
       float: right; }
-    .tw-navbar ul .right {
+    .tw-navbar ul .left {
       float: left; }
     .tw-navbar ul li {
       display: block;
-      float: left;
+      float: right;
       position: relative;
-      padding: 0 2rem;
+      padding: 0 1rem;
       text-align: center;
-      background-color: transparent; }
+      background-color: transparent;
+      -webkit-transition: background 0.2s ease-out;
+      -moz-transition: background 0.2s ease-out;
+      -o-transition: background 0.2s ease-out;
+      -ms-transition: background 0.2s ease-out;
+      transition: background 0.2s ease-out;
+      border-radius: 5px; }
+      .tw-navbar ul li a {
+        text-decoration: none;
+        color: inherit; }
+      .tw-navbar ul li.logoTitle {
+        font-size: 2rem;
+        font-weight: bold; }
+      .tw-navbar ul li:hover {
+        background: rgba(0, 0, 0, 0.3); }
       .tw-navbar ul li a {
         cursor: pointer; }
-        .tw-navbar ul li a:hover {
-          background: rgba(0, 0, 0, 0.1); }
   .tw-navbar .left {
     float: left; }
   .tw-navbar .right {
@@ -2020,29 +2063,6 @@ header {
     -o-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%); }
-  .tw-navbar .logoTitle {
-    font-size: 2rem;
-    color: black; }
-
-.button, .tw-btn, .tw-btn-large, .tw-btn-clear, .tw-btn-Round, .tw-btn-Round-large, .tw-btn-float-large {
-  border: none;
-  display: inline-block;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  overflow: hidden;
-  position: relative;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  outline: 0;
-  font-family: inherit;
-  font-size: inherit; }
 
 #modal-shadow {
   position: fixed;
@@ -2050,7 +2070,7 @@ header {
   top: 0px;
   width: 100%;
   height: 120vh;
-  z-index: 998;
+  z-index: 1002;
   background-color: black;
   will-change: opacity;
   opacity: 0; }
@@ -2067,7 +2087,7 @@ header {
   box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.3);
   will-change: transform;
   opacity: 0;
-  z-index: 999;
+  z-index: 1003;
   background-color: white;
   border-radius: 5px;
   overflow: hidden; }
@@ -2080,26 +2100,6 @@ header {
     padding: 0.2rem;
     text-align: right;
     margin: 0 1.2rem; }
-
-.button, .tw-btn, .tw-btn-large, .tw-btn-clear, .tw-btn-Round, .tw-btn-Round-large, .tw-btn-float-large {
-  border: none;
-  display: inline-block;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  text-align: center;
-  vertical-align: middle;
-  text-decoration: none;
-  overflow: hidden;
-  position: relative;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  outline: 0;
-  font-family: inherit;
-  font-size: inherit; }
 
 ::-webkit-input-placeholder {
   color: grey; }
@@ -2144,7 +2144,8 @@ html {
 
 .tw-input-field {
   position: relative;
-  margin: .5rem 0; }
+  margin: .5rem 0;
+  user-select: none; }
   .tw-input-field hr.focusline {
     position: absolute;
     background: grey;
@@ -2164,7 +2165,10 @@ html {
     -ms-transform: scaleX(0);
     transform: scaleX(0);
     z-index: 1;
-    border: 0; }
+    border: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent; }
   .tw-input-field hr.bottomline {
     margin: 0;
     z-index: -1;
@@ -2245,7 +2249,10 @@ input[type=search] {
     transform: scaleX(1); }
 
 .tw-select-box {
-  display: block; }
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent; }
   .tw-select-box .select-input {
     cursor: pointer; }
   .tw-select-box .select-dropdown {
@@ -2283,8 +2290,7 @@ input[type=search] {
   -o-transform: scaleY(0.7);
   -ms-transform: scaleY(0.7);
   transform: scaleY(0.7);
-  border-radius: 5px;
-  -webkit-tap-highlight-color: transparent; }
+  border-radius: 5px; }
   .tw-dropdown li {
     text-transform: none;
     list-style-type: none;
@@ -3927,7 +3933,10 @@ input[type=search] {
   transition: all 0.2s ease-out;
   outline: 0;
   font-family: inherit;
-  font-size: inherit; }
+  font-size: inherit;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent; }
 
 .tw-btn {
   height: 36px;
@@ -3950,7 +3959,7 @@ input[type=search] {
   border-radius: 3px;
   background-color: transparent; }
   .tw-btn-clear:hover {
-    background: rgba(0, 0, 0, 0.1); }
+    background: rgba(0, 0, 0, 0.3); }
 
 i.fa::before {
   padding: .1rem; }
@@ -4047,6 +4056,39 @@ i.fa::before {
     background: -moz-radial-gradient(rgba(255, 0, 0, 0.1) 0,rgba(255, 0, 0, 0.3) 30%,rgba(255, 0, 0, 0.4) 40%,rgba(255, 0, 0, 0.5) 50%, rgba(255, 0, 0, 0.6) 60%, rgba(255, 0, 0, 0.7) 70%, rgba(255, 0, 0, 0.5) 60%, rgba(255, 0, 0, 0.4) 70%, rgba(255, 0, 0, 0));
     background: radial-gradient(rgba(255, 0, 0, 0.1) 0,rgba(255, 0, 0, 0.3) 30%,rgba(255, 0, 0, 0.4) 40%,rgba(255, 0, 0, 0.5) 50%, rgba(255, 0, 0, 0.6) 60%, rgba(255, 0, 0, 0.7) 70%, rgba(255, 0, 0, 0.5) 60%, rgba(255, 0, 0, 0.4) 70%, rgba(255, 0, 0, 0)); }
 
+.trigger, .slide-container .prev, .slide-container .next {
+  position: absolute;
+  z-index: 2;
+  font-size: 3rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.3);
+  -webkit-transition: color 0.1s ease-out;
+  -moz-transition: color 0.1s ease-out;
+  -o-transition: color 0.1s ease-out;
+  -ms-transition: color 0.1s ease-out;
+  transition: color 0.1s ease-out;
+  top: 0;
+  bottom: 0;
+  margin: auto 5%;
+  height: 4rem; }
+  .trigger:hover, .slide-container .prev:hover, .slide-container .next:hover {
+    color: rgba(255, 255, 255, 0.8); }
+
+.view-git {
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 3rem auto;
+  padding: 0 1rem;
+  width: 15rem;
+  height: 3rem;
+  line-height: 3rem;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold; }
+
 .slide-container {
   position: relative;
   margin: auto;
@@ -4056,6 +4098,8 @@ i.fa::before {
   border-radius: 5px;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); }
+  .slide-container.fullscreen {
+    height: 100vh; }
   .slide-container .displayList {
     padding-left: 0;
     list-style-type: none;
@@ -4064,15 +4108,16 @@ i.fa::before {
     right: 0;
     bottom: 0;
     margin: 0;
-    text-align: center; }
+    text-align: center;
+    z-index: 1; }
     .slide-container .displayList .display-item {
       position: relative;
-      width: 10px;
-      height: 10px;
+      width: 1rem;
+      height: 1rem;
       display: inline-block;
       background-color: rgba(255, 255, 255, 0.5);
       border-radius: 50%;
-      margin: 15px 5px;
+      margin: 1rem 5px;
       cursor: pointer;
       -webkit-transition: background 0.3s ease-out;
       -moz-transition: background 0.3s ease-out;
@@ -4081,23 +4126,6 @@ i.fa::before {
       transition: background 0.3s ease-out; }
       .slide-container .displayList .display-item.active {
         background-color: white; }
-  .slide-container .trigger, .slide-container .prev, .slide-container .next {
-    position: absolute;
-    z-index: 2;
-    font-size: 3rem;
-    cursor: pointer;
-    color: rgba(255, 255, 255, 0.3);
-    -webkit-transition: color 0.1s ease-out;
-    -moz-transition: color 0.1s ease-out;
-    -o-transition: color 0.1s ease-out;
-    -ms-transition: color 0.1s ease-out;
-    transition: color 0.1s ease-out;
-    top: 0;
-    bottom: 0;
-    margin: auto 10px;
-    height: 30%; }
-    .slide-container .trigger:hover, .slide-container .prev:hover, .slide-container .next:hover {
-      color: rgba(255, 255, 255, 0.8); }
   .slide-container .prev {
     left: 0; }
   .slide-container .next {
@@ -4109,16 +4137,36 @@ i.fa::before {
     top: 0;
     left: 0;
     text-align: center; }
-    .slide-container .slide .text {
+    .slide-container .slide .text-container {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      margin: auto 0;
+      bottom: 0;
+      width: 80%;
+      height: 30%;
+      margin: auto auto;
       color: white; }
+      .slide-container .slide .text-container .title {
+        font-size: 3rem;
+        font-weight: bold; }
+      .slide-container .slide .text-container .content {
+        font-size: 1.5rem; }
     .slide-container .slide img {
       width: 100%;
       height: 100%;
       user-select: none;
       -webkit-user-drag: none;
       -webkit-tap-highlight-color: transparent; }
+
+@media only screen and (max-width: 1366px) {
+  .slide-container.fullscreen {
+    height: 60vh; }
+  .view-git {
+    font-size: 1.2rem; } }
+
+@media only screen and (max-width: 720px) {
+  .slide-container.fullscreen {
+    height: 40vh; }
+  .view-git {
+    font-size: 1rem; } }

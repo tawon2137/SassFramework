@@ -70,10 +70,15 @@ if( typeof window.twCom === "undefined"){
               }
             },
             setCss : function(prop , value){
+              if( typeof prop === "string" ){
                 Ele.style[prop] = value;
+              } else {
+                throw new Error("Css propertyName은 String 으로 정의해주세요.");
+              }
             },
             cssEach : function(cssobj){
-
+              if( typeof cssobj !== "object" ){return false;}
+              
                 for (var key in cssobj){
                   if(cssobj.hasOwnProperty(key)){
                       Ele.style[key] = cssobj[key];
