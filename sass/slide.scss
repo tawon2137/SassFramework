@@ -18,22 +18,7 @@
   }
 }
 
-.view-git{
-  position: absolute;
-  z-index: 3;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: 3rem auto;
-  padding: 0 1rem;
-  width: 15rem;
-  height: 3rem;
-  line-height: 3rem;
-  font-size: 1.2rem;
-  text-align: center;
-  // padding: 0;
-  font-weight: bold;
-}
+
 .slide-container{
     // max-width: 2000px;
     position: relative;
@@ -41,7 +26,7 @@
     width: 100%;
     will-change : transform, opacity;
     height: 20rem;
-    border-radius: 5px;
+    border-radius: 3px;
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     &.fullscreen{
@@ -99,9 +84,17 @@
             height: 30%;
             margin: auto auto;
             color : white;
+            opacity: 0;
+            @include transition("opacity .75s cubic-bezier(0.23, 1, 0.32, 1),top 1.5s cubic-bezier(0.23, 1, 0.32, 1),transform .75s cubic-bezier(0.23, 1, 0.32, 1),top 1.5s cubic-bezier(0.23, 1, 0.32, 1)");
+            @include transform("translateY(50px)");
+            &.show {
+              opacity: 1;
+              @include transform("translateY(0px)");
+            }
             & .title {
               font-size: 3rem;
               font-weight: bold;
+              margin-bottom: 0.5rem;
             }
             & .content {
               font-size: 1.5rem;
@@ -121,22 +114,34 @@
 
 
 @media only screen and (max-width : 1366px) {
-  .slide-container{
-    &.fullscreen{
-      height: 60vh;
-    }
-  }
-  .view-git{
-    font-size: 1.2rem;
-  }
+   .slide-container{
+     &.fullscreen{
+       height: 60vh;
+     }
+   }
+
+   .text-container{
+     & .title{
+       font-size: 2rem !important;
+     }
+     & .content{
+       font-size: 1.2rem !important;
+     }
+   }
 }
 @media only screen and (max-width : 720px) {
-  .slide-container{
-    &.fullscreen{
-      height: 40vh;
+   .slide-container{
+     &.fullscreen{
+       height: 40vh;
+     }
+   }
+
+  .text-container{
+    & .title{
+      font-size: 1.6rem !important;
     }
-  }
-  .view-git{
-    font-size: 1rem;
+    & .content{
+      font-size: 1rem !important;
+    }
   }
 }

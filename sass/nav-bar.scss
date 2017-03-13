@@ -10,7 +10,7 @@
       width: 100%;
       box-shadow: $nav-shadow;
       will-change : opacity;
-      @include transition(all .2s ease-in);
+      @include transition(opacity 0.2s ease-in);
       z-index: 100;
       user-select : none;
       &.clear{
@@ -45,13 +45,16 @@
           background-color: transparent;
           @include transition(background 0.2s ease-out);
           border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
           & a{
             text-decoration: none;
             color : inherit;
           }
           &.logoTitle{
+            position: absolute;
             font-size: 2rem;
-            font-weight: bold;
+            top:0;
           }
           &:hover{
             background: rgba(0,0,0,0.3);
@@ -75,7 +78,26 @@
           left : 50%;
           @include transform(translateX(-50%));
       }
+  }
 
+  .not-cursor{
+    cursor: default !important;
+    &:hover{
+      background: transparent !important;
+    }
+  }
 
-
+  @media only screen and (max-width : 1366px) {
+    .tw-navbar{
+      & ul{
+        width: 90%;
+      }
+    }
+  }
+  @media only screen and (max-width : 720px) {
+    .tw-navbar{
+      & ul{
+        width: 95%;
+      }
+    }
   }

@@ -9,23 +9,24 @@
 
        if ( sideNav_trigger !== null ){
          var trigger_type = sideNav_trigger.getAttribute("data-trigger") || "open";
-
-         if ( e instanceof TouchEvent && sideNav_trigger.getAttribute("id") === "drag-target" ) {
-           return false;
-         }
-         sideNav[trigger_type](e, sideNav_trigger);
+           if ( "ontouchstart" in window && sideNav_trigger.getAttribute("id") === "drag-target"){
+              return false;
+           }else{
+             sideNav[trigger_type](e, sideNav_trigger);
+           }
 
        }
      }
-
+     var Option = {
+       width : 200,
+     };
 
      function swipe(e, element){
-
        var sidenav_element = getSidenavElement(e, element);
        var shadowELement = createShadow(sidenav_element);
 
        var sideEle_css = twCom.fn.cssObject(sidenav_element);
-       var width = sidenav_element.getAttribute("data-width") || 300;
+       var width = sidenav_element.getAttribute("data-width") || Option.width;
        width = Number(width);
        var x = (e.center.x - width);
 
@@ -33,6 +34,7 @@
        if( x > 0 ){
          x = 0;
        }
+
        if ( x < -width ){
          x = -width;
        }
@@ -57,7 +59,7 @@
      function swipeEnd(e, element){
        var sidenav_element = getSidenavElement(e, element);
        var sideEle_css = twCom.fn.cssObject(sidenav_element);
-       var width = sidenav_element.getAttribute("data-width") || 300;
+       var width = sidenav_element.getAttribute("data-width") || Option.width;
        var tx =  sideEle_css.getCss("transform").split(",")[4];
        var currentX = Number(width) + Number(tx);
 
@@ -72,7 +74,7 @@
      function tap(e, element){
        var sidenav_element = getSidenavElement(e, element);
        var sideEle_css = twCom.fn.cssObject(sidenav_element);
-       var width = sidenav_element.getAttribute("data-width") || 300;
+       var width = sidenav_element.getAttribute("data-width") || Option.width;
 
        var shadowElement = document.getElementById("shadow-area");
        if ( shadowElement === null ){
@@ -152,6 +154,7 @@
         var mc = new Hammer(drag_element);
 
         mc.on("panleft panright panend pancancel tap", function(e){
+          if ( e.eventType === 8 ) { return false; }
           if ( e.pointerType !== "touch" ) { return false; }
 
           if( e.type === "panright" || e.type === "panleft" ){
@@ -181,7 +184,7 @@
 
 
             // sidenav css설정 custom attribute에서 설정한값 default = 300
-            cssObject["width"] = sidenavElement.getAttribute("data-width") || 300;
+            cssObject["width"] = sidenavElement.getAttribute("data-width") || Option.width;
             cssObject["width"] += "px";
             var translateX = "translateX(0px)";
             cssObject['-webkit-transform'] = translateX;
@@ -221,7 +224,6 @@
             cssObject2['transition-timing-function']         = easing;
 
             //drag target CSS 변경
-            console.log(dragTarget);
             var dragTarget_css = twCom.fn.cssObject(dragTarget);
             cssObject3 = {
                 right : 0,
@@ -316,8 +318,6 @@
         }else{
             document.body.addEventListener('click', triggerCheck, false);
         }
-
-        var drag_element = document.getElementById("drag-target");
-
+        createdragTarget(document.getElementById("myside-nav"));
     });
 })();
