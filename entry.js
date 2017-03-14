@@ -4,3 +4,4 @@ require('./js/modal');
 require('./js/waves');
 require('./js/sidenav');
 require('./js/slide');
+require("./js/pushpin");
