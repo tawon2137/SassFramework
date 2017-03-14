@@ -84,7 +84,6 @@ var pushpin = function(){
           if( markCheck <= 0 ){
             element_css.setCss("top", (pushZones[i].offsetHeight - navbarClientHeight) + "px" );
             twCom.fn.hasClass(navElement, "fixed") ? twCom.fn.removeClass(navElement, "fixed") : '';
-            twCom.fn.hasClass(content, "show") ? twCom.fn.removeClass(content , "show") : '' ;
             twCom.fn.addClass(navElement,"push-pin");
           }
 
