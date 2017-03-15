@@ -102,9 +102,9 @@
           var modalElement = modal.Element;
           var shadowElement = modal.createShadow(target);
           var modalOption = modal.Option;
-          console.log("asd");
           TweenLite.to( shadowElement, modalOption.delay, { opacity : modalOption.shadow_opacity } );
           TweenLite.to( modalElement, modalOption.delay, modalOption.openOption);
+          document.body.style.overflow = "hidden";
         }else{
           throw new Error("Error Modal Open Error");
         }
@@ -123,7 +123,6 @@
           var shadowElement = modal.shadowEle;
           var modalOption = modal.Option;
 
-
           TweenLite.to( shadowElement, modalOption.delay, {
             opacity : 0,
             onComplete: function(){
@@ -133,6 +132,7 @@
             }
         });
           TweenLite.to(modalElement, modalOption.delay, modalOption.closeOption);
+          document.body.style.overflow = "";
       }else{
         throw new Error("Error Modal Close Error");
       }
@@ -174,7 +174,6 @@
 })();
 
 window.addEventListener("DOMContentLoaded",function(){
-    twCom.Modal.list = document.getElementsByClassName("modal");
     twCom.Modal["logmodal"] = twCom.Modal.init(document.getElementById("logmodal"));
     twCom.Modal["logmodal2"] = twCom.Modal.init(document.getElementById("logmodal2"));
     twCom.Modal["aboutModal"] = twCom.Modal.init(document.getElementById("aboutModal"));
